@@ -162,9 +162,21 @@ async function sendEmail({ to, subject, html }: { to: string | string[], subject
 let auth: any;
 try {
   if (admin.apps.length === 0) {
-    admin.initializeApp({
-      projectId: firebaseConfig.projectId
-    });
+    const serviceAccountPath = path.join(process.cwd(), "serviceAccountKey.json");
+    if (fs.existsSync(serviceAccountPath)) {
+      const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        projectId: firebaseConfig.projectId
+      });
+      console.log("Firebase Admin initialized with serviceAccountKey.json");
+    } else {
+      admin.initializeApp({
+        credential: admin.credential.applicationDefault(),
+        projectId: firebaseConfig.projectId
+      });
+      console.log("Firebase Admin initialized without explicit credentials (ADC fallback via applicationDefault())");
+    }
   }
   auth = admin.auth();
 } catch (e) {
@@ -382,13 +394,23 @@ async function startServer() {
               const firstName = displayName.split(' ')[0] || '';
               const lastName = displayName.split(' ').slice(1).join(' ') || '';
 
-              // Create Auth User
-              const userRecord = await auth.createUser({
-                email: userEmail,
-                emailVerified: true,
-                password: tempPassword,
-                displayName: displayName,
-              });
+              let userRecord;
+              try {
+                userRecord = await auth.getUserByEmail(userEmail);
+                console.log(`User already exists in Auth, updating password: ${userRecord.uid}`);
+                await auth.updateUser(userRecord.uid, { password: tempPassword });
+              } catch (e: any) {
+                if (e.code === 'auth/user-not-found') {
+                  userRecord = await auth.createUser({
+                    email: userEmail,
+                    emailVerified: true,
+                    password: tempPassword,
+                    displayName: displayName,
+                  });
+                } else {
+                  throw e;
+                }
+              }
 
               // Create Firestore Profile
               await setDoc(doc(db, 'users', userRecord.uid), {
@@ -1137,12 +1159,22 @@ async function startServer() {
 
       if (!email || !password) return res.status(400).json({ error: "Email et mot de passe requis" });
 
-      const userRecord = await auth.createUser({
-        email: email,
-        emailVerified: true,
-        password: password,
-        displayName: `${firstName} ${lastName}`.trim(),
-      });
+      let userRecord;
+      try {
+        userRecord = await auth.createUser({
+          email: email,
+          emailVerified: true,
+          password: password,
+          displayName: `${firstName} ${lastName}`.trim(),
+        });
+      } catch (e: any) {
+        if (e.code === 'auth/email-already-exists') {
+          userRecord = await auth.getUserByEmail(email);
+          await auth.updateUser(userRecord.uid, { password: password, displayName: `${firstName} ${lastName}`.trim() });
+        } else {
+          throw e; // fail loudly for other errors
+        }
+      }
 
       await setDoc(doc(db, 'users', userRecord.uid), {
         uid: userRecord.uid,
@@ -1198,12 +1230,22 @@ async function startServer() {
             const firstName = displayName.split(' ')[0] || '';
             const lastName = displayName.split(' ').slice(1).join(' ') || '';
 
-            const userRecord = await auth.createUser({
-              email: userEmail,
-              emailVerified: true,
-              password: tempPassword,
-              displayName: displayName,
-            });
+            let userRecord;
+            try {
+              userRecord = await auth.getUserByEmail(userEmail);
+              await auth.updateUser(userRecord.uid, { password: tempPassword, displayName: displayName });
+            } catch (e: any) {
+              if (e.code === 'auth/user-not-found') {
+                userRecord = await auth.createUser({
+                  email: userEmail,
+                  emailVerified: true,
+                  password: tempPassword,
+                  displayName: displayName,
+                });
+              } else {
+                throw e;
+              }
+            }
 
             await setDoc(doc(db, 'users', userRecord.uid), {
               uid: userRecord.uid,
