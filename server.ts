@@ -282,7 +282,11 @@ async function startServer() {
 
     console.log(`Webhook event type: ${event.type}`);
 
-    // Handle the event
+    // Return a 200 response quickly to Stripe before processing
+    // This prevents Stripe from timing out when sending emails or saving to DB
+    res.json({ received: true });
+
+    // Handle the event asynchronously
     if (event.type === 'checkout.session.completed') {
       const session = event.data.object as Stripe.Checkout.Session;
       const userId = session.metadata?.userId || session.client_reference_id;
@@ -471,8 +475,6 @@ async function startServer() {
         }
       }
     }
-
-    res.json({ received: true });
   });
 
   app.use(express.json({ limit: '50mb' }));
