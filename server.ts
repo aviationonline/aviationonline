@@ -1365,6 +1365,7 @@ async function startServer() {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         client_reference_id: userId, // Added for better tracking
+        allow_promotion_codes: true, // Enable promo codes
         line_items: [
           {
             price_data: {
