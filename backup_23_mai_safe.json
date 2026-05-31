@@ -1,0 +1,1873 @@
+{
+  "modules": [
+    {
+      "id": "5X846XE1S7SXG3qvZqY8",
+      "order": 10,
+      "pdfUrl": "",
+      "description": "",
+      "title": "Conduite d'une approche"
+    },
+    {
+      "id": "7LXEsMfjhj3P3qzxxvJn",
+      "title": "Les approches IFR",
+      "order": 7,
+      "description": ""
+    },
+    {
+      "id": "CGXdTeVpHQhW4rbHm5Dd",
+      "title": "Préparation de la navigation IFR",
+      "order": 11,
+      "description": ""
+    },
+    {
+      "id": "PZbEHzPwQpHYTJdSFqSI",
+      "title": "Calcul mental",
+      "description": "",
+      "order": 2
+    },
+    {
+      "id": "WvzvZfSyKqUV16CayFeI",
+      "description": "",
+      "order": 8,
+      "title": "Minimas opérationnels"
+    },
+    {
+      "id": "Xeg4Y0SElywCAc3oHUpy",
+      "title": "Situations particulières",
+      "description": "",
+      "order": 13
+    },
+    {
+      "id": "fiChT8RQxqpeBWFKF36L",
+      "title": "Les protections en IFR",
+      "description": "",
+      "order": 5
+    },
+    {
+      "id": "gmFAXM6edfs5ArySy1Gz",
+      "title": "Phraséo radio IFR",
+      "description": "",
+      "order": 14
+    },
+    {
+      "id": "mod_approche",
+      "title": "Moyens de radionavigation",
+      "description": "",
+      "pdfUrl": "",
+      "order": 3
+    },
+    {
+      "id": "mod_nav_ifr",
+      "description": "",
+      "title": "Les procédures d'attente",
+      "order": 4,
+      "pdfUrl": ""
+    },
+    {
+      "id": "mod_psv",
+      "description": "Introduction aux principes fondamentaux du vol aux instruments, physiologie et illusions sensorielles.",
+      "order": 1,
+      "title": "Pilotage Sans Visibilité (PSV)"
+    },
+    {
+      "id": "sdae9NyglFiE00jL1Tw6",
+      "description": "",
+      "order": 6,
+      "title": "Les espacements en IFR"
+    },
+    {
+      "id": "u9sRXPI3AC8E9VgWD58q",
+      "description": "",
+      "order": 12,
+      "title": "Réalisation de la navigation IFR"
+    },
+    {
+      "id": "xLS3km5tvVLjyCJx7uDg",
+      "title": "Documentation Jeppesen",
+      "order": 9,
+      "description": ""
+    }
+  ],
+  "courses": [
+    {
+      "id": "5PHV9GxaDVyzVRHM8o6s",
+      "moduleId": "5X846XE1S7SXG3qvZqY8",
+      "pdfUrl": "https://view.genially.com/66f3da5e8be9a024920a91db",
+      "createdAt": {
+        "seconds": 1775227627,
+        "nanoseconds": 557000000
+      },
+      "order": 4,
+      "title": "LFMP ILS33",
+      "content": ""
+    },
+    {
+      "id": "FnpklVBOZwtruNpOntzk",
+      "moduleId": "5X846XE1S7SXG3qvZqY8",
+      "createdAt": {
+        "seconds": 1775227659,
+        "nanoseconds": 505000000
+      },
+      "order": 1,
+      "pdfUrl": "https://view.genially.com/653a271788f6fc0011586ab3",
+      "title": "LFQQ VOR26",
+      "content": ""
+    },
+    {
+      "id": "H9OUOgZDvGsHwmMHftvU",
+      "moduleId": "5X846XE1S7SXG3qvZqY8",
+      "content": "",
+      "title": "LFMK RNP09",
+      "createdAt": {
+        "seconds": 1775227600,
+        "nanoseconds": 79000000
+      },
+      "order": 3,
+      "pdfUrl": "https://view.genially.com/66f3d1db5b85c78dc11d30c1"
+    },
+    {
+      "id": "UPqhMm3tKfAxWH1cNViy",
+      "moduleId": "5X846XE1S7SXG3qvZqY8",
+      "title": "LFSB RNP15",
+      "content": "",
+      "order": 5,
+      "createdAt": {
+        "seconds": 1775227760,
+        "nanoseconds": 217000000
+      },
+      "pdfUrl": "https://view.genially.com/66f3db675530f002d547c945"
+    },
+    {
+      "id": "yMoDi319Vgi3mCWRYCYo",
+      "moduleId": "5X846XE1S7SXG3qvZqY8",
+      "pdfUrl": "https://view.genially.com/66f3d902edbccb4f6e970a54",
+      "order": 2,
+      "createdAt": {
+        "seconds": 1775227572,
+        "nanoseconds": 319000000
+      },
+      "title": "LFBH NDB27",
+      "content": ""
+    },
+    {
+      "id": "UkP7EDJT6yxv5YNryfvj",
+      "moduleId": "7LXEsMfjhj3P3qzxxvJn",
+      "createdAt": {
+        "seconds": 1775227179,
+        "nanoseconds": 815000000
+      },
+      "order": 5,
+      "pdfUrl": "https://view.genially.com/652173b8e8c5250011a36b15",
+      "title": "Approches type A et type B",
+      "content": ""
+    },
+    {
+      "id": "YH4usscW2VbmyIXSSPWm",
+      "moduleId": "7LXEsMfjhj3P3qzxxvJn",
+      "pdfUrl": "https://view.genially.com/652168cd9526ee0012a9c796",
+      "order": 2,
+      "createdAt": {
+        "seconds": 1775227056,
+        "nanoseconds": 574000000
+      },
+      "title": "Approches directes et indirectes",
+      "content": ""
+    },
+    {
+      "id": "fDOlTh6f2VfhOUmat0Qr",
+      "moduleId": "7LXEsMfjhj3P3qzxxvJn",
+      "pdfUrl": "https://view.genially.com/65216eba3865fb00118afc9a",
+      "createdAt": {
+        "seconds": 1775227085,
+        "nanoseconds": 993000000
+      },
+      "order": 3,
+      "title": "Approches de précision et NPA",
+      "content": ""
+    },
+    {
+      "id": "quJktEQAWXf011EivI42",
+      "moduleId": "7LXEsMfjhj3P3qzxxvJn",
+      "title": "Approches conventionnelles et GNSS",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/652171db3865fb00118cac19",
+      "createdAt": {
+        "seconds": 1775227144,
+        "nanoseconds": 473000000
+      },
+      "order": 4
+    },
+    {
+      "id": "rgvwGHqAr6N02qOuDhvI",
+      "moduleId": "7LXEsMfjhj3P3qzxxvJn",
+      "title": "Introduction",
+      "content": "",
+      "createdAt": {
+        "seconds": 1775227030,
+        "nanoseconds": 945000000
+      },
+      "order": 1,
+      "pdfUrl": "https://view.genially.com/6521662ee8c52500119d232d"
+    },
+    {
+      "id": "yYdvdvpnuWVmIFvzw9uV",
+      "moduleId": "7LXEsMfjhj3P3qzxxvJn",
+      "title": "A quoi cela ressemble t-il ?",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/6521768e3865fb00118f2d80",
+      "order": 6,
+      "createdAt": {
+        "seconds": 1775227209,
+        "nanoseconds": 719000000
+      }
+    },
+    {
+      "id": "KXxQw4BjwdhbPm9aj4Vr",
+      "moduleId": "CGXdTeVpHQhW4rbHm5Dd",
+      "createdAt": {
+        "seconds": 1775227832,
+        "nanoseconds": 85000000
+      },
+      "order": 1,
+      "pdfUrl": "https://view.genially.com/6568dfe0f0b86900149e3138",
+      "title": "Réglementation",
+      "content": ""
+    },
+    {
+      "id": "kWTlXAJeiz8jW4wSWKqp",
+      "moduleId": "PZbEHzPwQpHYTJdSFqSI",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775663725,
+        "nanoseconds": 424000000
+      },
+      "pdfUrl": "https://view.genially.com/651fb8c90bcdeb001147c6d7",
+      "title": "Calcul mental",
+      "content": ""
+    },
+    {
+      "id": "Hld7BvvTum6F53sLlqSk",
+      "moduleId": "WvzvZfSyKqUV16CayFeI",
+      "title": "Minimas cas particuliers",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/6522ef4db64e5f0012a14db9",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775227470,
+        "nanoseconds": 393000000
+      }
+    },
+    {
+      "id": "WlZM2MFC0JUMRH4dw1Tb",
+      "moduleId": "WvzvZfSyKqUV16CayFeI",
+      "pdfUrl": "https://view.genially.com/652251a11647a10011af7f86",
+      "createdAt": {
+        "seconds": 1775227402,
+        "nanoseconds": 35000000
+      },
+      "order": 1,
+      "title": "Minimas de préparation du vol",
+      "content": ""
+    },
+    {
+      "id": "sjz9TcQMLUqoOTo8ZqPh",
+      "moduleId": "WvzvZfSyKqUV16CayFeI",
+      "order": 2,
+      "createdAt": {
+        "seconds": 1775227440,
+        "nanoseconds": 815000000
+      },
+      "pdfUrl": "https://view.genially.com/652261eee8c5250011d60137",
+      "content": "",
+      "title": "Minimas de conduite du vol"
+    },
+    {
+      "id": "4HUy7T3wm0zvWxb1rtPp",
+      "moduleId": "Xeg4Y0SElywCAc3oHUpy",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775228090,
+        "nanoseconds": 583000000
+      },
+      "pdfUrl": "https://view.genially.com/6575c1824fa9440015e67e1d",
+      "title": "La panne technique",
+      "content": ""
+    },
+    {
+      "id": "9i3s0PCPGU5HjwQpAjGc",
+      "moduleId": "Xeg4Y0SElywCAc3oHUpy",
+      "createdAt": {
+        "seconds": 1775228066,
+        "nanoseconds": 535000000
+      },
+      "order": 2,
+      "pdfUrl": "https://view.genially.com/65748c96d8531700131b25ae",
+      "title": "La panne radio",
+      "content": ""
+    },
+    {
+      "id": "ZCpMBJX5xbNayAz4zukM",
+      "moduleId": "Xeg4Y0SElywCAc3oHUpy",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775228044,
+        "nanoseconds": 535000000
+      },
+      "pdfUrl": "https://view.genially.com/657764b7d283cb0014facd76",
+      "title": "Le déroutement en vol",
+      "content": ""
+    },
+    {
+      "id": "1slpMtI5XhoXcQ9ILADS",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "title": "Les protections RNAV",
+      "content": "",
+      "order": 7,
+      "createdAt": {
+        "seconds": 1775226888,
+        "nanoseconds": 59000000
+      },
+      "pdfUrl": "https://view.genially.com/652160673865fb00118405db"
+    },
+    {
+      "id": "2trlvlA2oDYQWk6M3x5D",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "order": 8,
+      "createdAt": {
+        "seconds": 1775226918,
+        "nanoseconds": 77000000
+      },
+      "pdfUrl": "https://view.genially.com/652164391647a10011795161",
+      "title": "Les protections en manoeuvres à vue",
+      "content": ""
+    },
+    {
+      "id": "BghZ8jcTbbHUB75OnBr0",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "pdfUrl": "https://view.genially.com/652151a7e8c52500119451d3",
+      "order": 4,
+      "createdAt": {
+        "seconds": 1775226799,
+        "nanoseconds": 335000000
+      },
+      "content": "",
+      "title": "Les protections en approche"
+    },
+    {
+      "id": "VdB5SWftuAcSRp7UOxzy",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "pdfUrl": "https://view.genially.com/652128609526ee00128a1045",
+      "createdAt": {
+        "seconds": 1775226741,
+        "nanoseconds": 493000000
+      },
+      "order": 2,
+      "title": "Les protections en route",
+      "content": ""
+    },
+    {
+      "id": "XNXOcbsTMlHIX7181hYT",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "createdAt": {
+        "seconds": 1775226826,
+        "nanoseconds": 283000000
+      },
+      "order": 5,
+      "pdfUrl": "https://view.genially.com/652154a33865fb00117f79f9",
+      "title": "Les protections en approche interrompue",
+      "content": ""
+    },
+    {
+      "id": "sBsNkRu4dQ0NatffXVTI",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "title": "Les protections en attente",
+      "content": "",
+      "order": 6,
+      "createdAt": {
+        "seconds": 1775226853,
+        "nanoseconds": 641000000
+      },
+      "pdfUrl": "https://view.genially.com/65215c0ae8c525001198cf5b"
+    },
+    {
+      "id": "uYu0p3wZsVfikd6GaSKF",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "pdfUrl": "https://view.genially.com/65214f5b1647a10011709883",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775226770,
+        "nanoseconds": 307000000
+      },
+      "title": "Les protections à l'arrivée",
+      "content": ""
+    },
+    {
+      "id": "uf5pfKc1751n5wPNiwZ6",
+      "moduleId": "fiChT8RQxqpeBWFKF36L",
+      "title": "Les protections au départ",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/652125d39526ee0012886f26",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775226710,
+        "nanoseconds": 857000000
+      }
+    },
+    {
+      "id": "lDnFpTfMCEr7lW5CZsfG",
+      "moduleId": "gmFAXM6edfs5ArySy1Gz",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775228150,
+        "nanoseconds": 297000000
+      },
+      "pdfUrl": "https://view.genially.com/657b221293d6f60013d8b70c",
+      "title": "Phraséo radio IFR",
+      "content": ""
+    },
+    {
+      "id": "5TK2uXok8giWaidyhvlp",
+      "moduleId": "mod_approche",
+      "pdfUrl": "https://view.genially.com/652000611647a1001108052d",
+      "order": 6,
+      "createdAt": {
+        "seconds": 1775225381,
+        "nanoseconds": 679000000
+      },
+      "content": "",
+      "title": "L'interface G1000"
+    },
+    {
+      "id": "9nhqN6wUN0EYYed6AwE7",
+      "moduleId": "mod_approche",
+      "title": "Retours sur axe",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/6520188c87c30b00111dff61",
+      "order": 11,
+      "createdAt": {
+        "seconds": 1775225538,
+        "nanoseconds": 57000000
+      }
+    },
+    {
+      "id": "DdrjRxWFKdjwZ7uI5PJF",
+      "moduleId": "mod_approche",
+      "title": "L'ILS",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/652027681647a100111fdd76",
+      "order": 8,
+      "createdAt": {
+        "seconds": 1775225442,
+        "nanoseconds": 77000000
+      }
+    },
+    {
+      "id": "ESPJFZlk9stv4wO1HT8y",
+      "moduleId": "mod_approche",
+      "pdfUrl": "https://view.genially.com/651fdc38cf267e0012af6f62",
+      "order": 2,
+      "createdAt": {
+        "seconds": 1775225260,
+        "nanoseconds": 617000000
+      },
+      "title": "Orientation",
+      "content": ""
+    },
+    {
+      "id": "GR8gf7XV4XViS8Fg3rTW",
+      "moduleId": "mod_approche",
+      "order": 4,
+      "createdAt": {
+        "seconds": 1775225317,
+        "nanoseconds": 665000000
+      },
+      "pdfUrl": "https://view.genially.com/651ffa5e9526ee00122f8436",
+      "content": "",
+      "title": "Le DME"
+    },
+    {
+      "id": "GoxpGemR4KCnF5r2Nqsm",
+      "moduleId": "mod_approche",
+      "pdfUrl": "https://view.genially.com/6520081587c30b00111332db",
+      "createdAt": {
+        "seconds": 1775225471,
+        "nanoseconds": 983000000
+      },
+      "order": 9,
+      "title": "Alignements sur axe",
+      "content": ""
+    },
+    {
+      "id": "OFhQPy1kcHMPhk6Ns2fG",
+      "moduleId": "mod_approche",
+      "pdfUrl": "https://view.genially.com/6520023487c30b00110fe0f9",
+      "order": 7,
+      "createdAt": {
+        "seconds": 1775225410,
+        "nanoseconds": 303000000
+      },
+      "title": "Utilisation du GPS",
+      "content": ""
+    },
+    {
+      "id": "Tx7N2W3w2kLQFqQnls5o",
+      "moduleId": "mod_approche",
+      "title": "Exercices",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/65202a0de8c52500114067ab",
+      "order": 17,
+      "createdAt": {
+        "seconds": 1775225722,
+        "nanoseconds": 993000000
+      }
+    },
+    {
+      "id": "aKQgL8AaamsWq4JXL94U",
+      "moduleId": "mod_approche",
+      "title": "Changements d'axe",
+      "content": "",
+      "order": 10,
+      "createdAt": {
+        "seconds": 1775924115,
+        "nanoseconds": 561000000
+      },
+      "pdfUrl": "https://view.genially.com/65201d0f8a12980011904ad3"
+    },
+    {
+      "id": "gYVH3ncOmcETVeP5jt3f",
+      "moduleId": "mod_approche",
+      "content": "",
+      "title": "La variation",
+      "pdfUrl": "https://view.genially.com/65201fcce8c52500113aed5e",
+      "order": 13,
+      "createdAt": {
+        "seconds": 1775225592,
+        "nanoseconds": 175000000
+      }
+    },
+    {
+      "id": "hkIMUoyxxJViteSVPJbA",
+      "moduleId": "mod_approche",
+      "pdfUrl": "https://view.genially.com/651fe5548a129800116cbaa1",
+      "order": 5,
+      "createdAt": {
+        "seconds": 1775225337,
+        "nanoseconds": 369000000
+      },
+      "title": "L'ADF",
+      "content": ""
+    },
+    {
+      "id": "pVmZMA6YioHY2jYtUJIb",
+      "moduleId": "mod_approche",
+      "order": 16,
+      "createdAt": {
+        "seconds": 1775225679,
+        "nanoseconds": 143000000
+      },
+      "pdfUrl": "https://view.genially.com/652025e39526ee00124982a0",
+      "content": "",
+      "title": "Les effets du vent"
+    },
+    {
+      "id": "sM0ipyv2vArDbphaAb94",
+      "moduleId": "mod_approche",
+      "title": "Recherche de vent sur axe",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/65200d1be8c52500112fc147",
+      "order": 15,
+      "createdAt": {
+        "seconds": 1775225652,
+        "nanoseconds": 869000000
+      }
+    },
+    {
+      "id": "v8pG5c60SGOomhkOjqJt",
+      "moduleId": "mod_approche",
+      "title": "L'arc DME",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/652023e01647a100111e00f7",
+      "order": 14,
+      "createdAt": {
+        "seconds": 1775225620,
+        "nanoseconds": 815000000
+      }
+    },
+    {
+      "id": "vNXacOxoRO7IXmjpnwRx",
+      "moduleId": "mod_approche",
+      "content": "",
+      "title": "Le VOR",
+      "pdfUrl": "https://view.genially.com/651fe0eb31662900125a59a3",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775225292,
+        "nanoseconds": 199000000
+      }
+    },
+    {
+      "id": "yjRuh0jtIZtc37iNC9Tw",
+      "moduleId": "mod_approche",
+      "createdAt": {
+        "seconds": 1775225561,
+        "nanoseconds": 39000000
+      },
+      "order": 12,
+      "pdfUrl": "https://view.genially.com/65201a849526ee0012431974",
+      "title": "Retours rapides",
+      "content": ""
+    },
+    {
+      "id": "0ZK8ldTBWGkYB5kQ9vRq",
+      "moduleId": "mod_nav_ifr",
+      "pdfUrl": "https://view.genially.com/65211857e8c5250011757d27",
+      "createdAt": {
+        "seconds": 1775226520,
+        "nanoseconds": 135000000
+      },
+      "order": 7,
+      "title": "Attentes toutes entrées sans vent",
+      "content": ""
+    },
+    {
+      "id": "56rnN5CxrRkk0le72LP9",
+      "moduleId": "mod_nav_ifr",
+      "createdAt": {
+        "seconds": 1775226484,
+        "nanoseconds": 91000000
+      },
+      "order": 6,
+      "pdfUrl": "https://view.genially.com/65211560e8c5250011741a25",
+      "title": "L'entrée parallèle inverse",
+      "content": ""
+    },
+    {
+      "id": "9jNi3a1YTpwhlctrhQtk",
+      "moduleId": "mod_nav_ifr",
+      "pdfUrl": "https://view.genially.com/6520f535e8c52500116b26c0",
+      "order": 4,
+      "createdAt": {
+        "seconds": 1775226427,
+        "nanoseconds": 707000000
+      },
+      "title": "L'entrée perpendiculaire",
+      "content": ""
+    },
+    {
+      "id": "IMsM89y6zH2AEGJj5YLU",
+      "moduleId": "mod_nav_ifr",
+      "title": "Attentes toutes entrées avec vent",
+      "content": "",
+      "order": 9,
+      "createdAt": {
+        "seconds": 1775226585,
+        "nanoseconds": 169000000
+      },
+      "pdfUrl": "https://view.genially.com/65211e9f9526ee0012848cf0"
+    },
+    {
+      "id": "OO4siEBdt9djb0dDJ8P3",
+      "moduleId": "mod_nav_ifr",
+      "pdfUrl": "https://view.genially.com/652111121647a1001151391e",
+      "order": 5,
+      "createdAt": {
+        "seconds": 1775226455,
+        "nanoseconds": 763000000
+      },
+      "title": "L'entrée décalée",
+      "content": ""
+    },
+    {
+      "id": "YLRXA3VE9bv5Zcw7U3pl",
+      "moduleId": "mod_nav_ifr",
+      "title": "Recherche de vent en atttente",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/65211c991647a1001156a2d5",
+      "order": 8,
+      "createdAt": {
+        "seconds": 1775226551,
+        "nanoseconds": 999000000
+      }
+    },
+    {
+      "id": "Z9TeGqIuMe6jkfw369rM",
+      "moduleId": "mod_nav_ifr",
+      "title": "Introduction",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/65204fbb1647a1001131bb34",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775226343,
+        "nanoseconds": 215000000
+      }
+    },
+    {
+      "id": "fGHhawK2PyBpT02NTicK",
+      "moduleId": "mod_nav_ifr",
+      "pdfUrl": "https://view.genially.com/652056f58a12980011ab6486",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775226400,
+        "nanoseconds": 381000000
+      },
+      "title": "L'entrée directe",
+      "content": ""
+    },
+    {
+      "id": "wZnJ6Z2h1PohqsoPJCPc",
+      "moduleId": "mod_nav_ifr",
+      "pdfUrl": "https://view.genially.com/652053578a12980011aa1ea0",
+      "createdAt": {
+        "seconds": 1775226378,
+        "nanoseconds": 501000000
+      },
+      "order": 2,
+      "title": "Les secteurs d'entrée en attente",
+      "content": ""
+    },
+    {
+      "id": "6naKLoQs72kaOPQrphnR",
+      "moduleId": "mod_psv",
+      "content": "",
+      "title": "Le virage en montée / descente",
+      "pdfUrl": "https://view.genially.com/651f02bb948d2f0011e84b99",
+      "order": 8,
+      "createdAt": {
+        "seconds": 1775224034,
+        "nanoseconds": 64000000
+      }
+    },
+    {
+      "id": "AeCnAknzL0g9XY1NJTn5",
+      "moduleId": "mod_psv",
+      "pdfUrl": "https://view.genially.com/651c535b4c1a4a0010253ea4",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775223812,
+        "nanoseconds": 481000000
+      },
+      "content": "",
+      "title": "Les changements de configuration"
+    },
+    {
+      "id": "DGTT8nV8Rselqwnl4fBM",
+      "moduleId": "mod_psv",
+      "pdfUrl": "https://view.genially.com/651efd6b948d2f0011e54c70",
+      "order": 9,
+      "createdAt": {
+        "seconds": 1775224088,
+        "nanoseconds": 681000000
+      },
+      "title": "Virages à inclinaison 30° / 45°",
+      "content": ""
+    },
+    {
+      "id": "GYGth1ZDBwtmeq2l8pm3",
+      "moduleId": "mod_psv",
+      "title": "Les figures géométriques",
+      "content": "",
+      "order": 11,
+      "createdAt": {
+        "seconds": 1775224167,
+        "nanoseconds": 941000000
+      },
+      "pdfUrl": "https://view.genially.com/651f08700bcdeb001117bd25"
+    },
+    {
+      "id": "R12usSkcdzZvmETqXGGW",
+      "moduleId": "mod_psv",
+      "pdfUrl": "https://view.genially.com/651ee44325f5b70011b9f547",
+      "order": 5,
+      "createdAt": {
+        "seconds": 1775223926,
+        "nanoseconds": 507000000
+      },
+      "content": "",
+      "title": "Descente à vitesse constante"
+    },
+    {
+      "id": "d4W1qmVsTWOCOndT1KKt",
+      "moduleId": "mod_psv",
+      "createdAt": {
+        "seconds": 1775223770,
+        "nanoseconds": 369000000
+      },
+      "order": 2,
+      "pdfUrl": "https://view.genially.com/651d86fcf99fbe0010ecbb81",
+      "title": "Le circuit visuel",
+      "content": ""
+    },
+    {
+      "id": "g3Soup7QgrvmslT42vjR",
+      "moduleId": "mod_psv",
+      "content": "",
+      "title": "Descente VNO",
+      "pdfUrl": "https://view.genially.com/651ee82725f5b70011bc4526",
+      "order": 6,
+      "createdAt": {
+        "seconds": 1775223958,
+        "nanoseconds": 357000000
+      }
+    },
+    {
+      "id": "jnOxw8QNGXBNy8CZ5dH4",
+      "moduleId": "mod_psv",
+      "title": "Le virage standard",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/651eed6b6b394d0011e5da2e",
+      "createdAt": {
+        "seconds": 1775224006,
+        "nanoseconds": 557000000
+      },
+      "order": 7
+    },
+    {
+      "id": "ntgKzh0CA8eLh9pcidks",
+      "moduleId": "mod_psv",
+      "order": 10,
+      "createdAt": {
+        "seconds": 1775224126,
+        "nanoseconds": 435000000
+      },
+      "pdfUrl": "https://view.genially.com/651f0567f0b3b500112968eb",
+      "title": "Sortie de positions inusuelles",
+      "content": ""
+    },
+    {
+      "id": "ruk1Ezdaqqj78CkNzSEd",
+      "moduleId": "mod_psv",
+      "content": "",
+      "title": "Montée à vitesse constante",
+      "order": 4,
+      "createdAt": {
+        "seconds": 1775223847,
+        "nanoseconds": 279000000
+      },
+      "pdfUrl": "https://view.genially.com/651e8ceee9f360001130538c"
+    },
+    {
+      "id": "mX3BTbtFisOb0WDGQQM5",
+      "moduleId": "sdae9NyglFiE00jL1Tw6",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775226970,
+        "nanoseconds": 779000000
+      },
+      "pdfUrl": "https://view.genially.com/657861b6ce9694001488a46a",
+      "title": "Espacements en IFR",
+      "content": ""
+    },
+    {
+      "id": "AG5LbmgKh5Se86YVxs53",
+      "moduleId": "u9sRXPI3AC8E9VgWD58q",
+      "content": "",
+      "title": "Départ / arrivée sans organisme de la circulation aérienne",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775227985,
+        "nanoseconds": 207000000
+      },
+      "pdfUrl": "https://view.genially.com/6578147cafe19a001445be43"
+    },
+    {
+      "id": "vzKn7dAS5INhhVjptETh",
+      "moduleId": "u9sRXPI3AC8E9VgWD58q",
+      "title": "Dégagement à destination",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/6574758fdd7b040014f082d6",
+      "createdAt": {
+        "seconds": 1775227941,
+        "nanoseconds": 711000000
+      },
+      "order": 2
+    },
+    {
+      "id": "zSTQucPK7wlyomfxBk53",
+      "moduleId": "u9sRXPI3AC8E9VgWD58q",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775227914,
+        "nanoseconds": 899000000
+      },
+      "pdfUrl": "https://view.genially.com/65721e2d97f08e001479df9d",
+      "title": "Exécution de la navigation IFR",
+      "content": ""
+    },
+    {
+      "id": "ObobafC3U2fbJvCt29bW",
+      "moduleId": "xLS3km5tvVLjyCJx7uDg",
+      "content": "",
+      "title": "Jeppesen cartes d'approche",
+      "pdfUrl": "https://view.genially.com/66f311d5b8695c7794a2324f",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775227338,
+        "nanoseconds": 737000000
+      }
+    },
+    {
+      "id": "ewQGMyLnnagEP3R4eFXc",
+      "moduleId": "xLS3km5tvVLjyCJx7uDg",
+      "title": "Jeppesen présentation",
+      "content": "",
+      "pdfUrl": "https://view.genially.com/66f307c75b85c78dc19da3df",
+      "createdAt": {
+        "seconds": 1775227285,
+        "nanoseconds": 137000000
+      },
+      "order": 1
+    },
+    {
+      "id": "oMAO3Oadog26kWWwpLxy",
+      "moduleId": "xLS3km5tvVLjyCJx7uDg",
+      "pdfUrl": "https://view.genially.com/66f30fbb8d819c3a51b09ef2",
+      "order": 2,
+      "createdAt": {
+        "seconds": 1775227306,
+        "nanoseconds": 475000000
+      },
+      "title": "Jeppesen routiers",
+      "content": ""
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "1Q18RIDjo5y2w85YqZUt",
+      "description_en": "",
+      "title": "QCM minimas opérationnels",
+      "description": "",
+      "title_en": "Operational Minima Quiz",
+      "order": 8
+    },
+    {
+      "id": "5JHCcSEdW6YHelTFMOb4",
+      "title_en": "Flight Prep Quiz",
+      "order": 11,
+      "description_en": "",
+      "title": "QCM prepa vol",
+      "description": ""
+    },
+    {
+      "id": "9TSHkF3BMxCTAcMEkuSl",
+      "description_en": "",
+      "description": "",
+      "title": "QCM situations particulieres",
+      "title_en": "MCQ Special Situations",
+      "order": 13
+    },
+    {
+      "id": "9WES9NaVDKdv09oS79Fi",
+      "order": 14,
+      "title_en": "Phraseology MCQ",
+      "description": "",
+      "title": "QCM phraseo",
+      "description_en": ""
+    },
+    {
+      "id": "FBgUUpoMfqjjsnmIlswy",
+      "description_en": "",
+      "title": "QCM Moyens Radionav",
+      "description": "",
+      "title_en": "MR MCQ",
+      "order": 3
+    },
+    {
+      "id": "KdYHM9KGu7SlwZHsx75g",
+      "description_en": "",
+      "title": "QCM protections ifr",
+      "description": "",
+      "title_en": "IFR Protections MCQ",
+      "order": 5
+    },
+    {
+      "id": "WVxsHgl8w1iKZtjbZT3J",
+      "order": 12,
+      "title_en": "MCQ navigation execution",
+      "description": "",
+      "title": "QCM execution navigation",
+      "description_en": ""
+    },
+    {
+      "id": "YRP6WLQ6hVf8eJJvOIZe",
+      "description_en": "",
+      "title": "QCM Attentes",
+      "description": "",
+      "title_en": "ATT MCQ",
+      "order": 4
+    },
+    {
+      "id": "ZUFnfZjhZjLgWvuWLiWS",
+      "description_en": "",
+      "description": "",
+      "title": "QCM Jeppesen",
+      "title_en": "Jeppesen MCQ",
+      "order": 7
+    },
+    {
+      "id": "approches",
+      "title_en": "Approaches MCQ",
+      "order": 9,
+      "description_en": "Test your knowledge on the different types of IFR approaches (ILS, LPV, LNAV, etc.)",
+      "title": "QCM Approches",
+      "description": "Testez vos connaissances sur les différents types d'approches IFR (ILS, LPV, LNAV, etc.)",
+      "category": "IFR"
+    },
+    {
+      "id": "fYgz2hjA8EIyWQnQDpJ9",
+      "title_en": "Approach Procedure MCQ",
+      "order": 10,
+      "description_en": "",
+      "description": "",
+      "title": "QCM conduite approche"
+    },
+    {
+      "id": "liVPMru2Ci23rwzLwJcR",
+      "title_en": "Spacing MCQ",
+      "order": 6,
+      "description_en": "",
+      "description": "",
+      "title": "QCM espacements"
+    },
+    {
+      "id": "nRciiK1OXaMucvzLzKnf",
+      "title": "QCM Calcul Mental",
+      "order": 2,
+      "description": ""
+    },
+    {
+      "id": "z17kE5ufOwvyue33ODjl",
+      "title": "QCM PSV",
+      "order": 1,
+      "description": ""
+    }
+  ],
+  "questions": [],
+  "testimonials": [
+    {
+      "id": "0gQHohQ2UwLCgTAU7cWI",
+      "text_en": "For my part, you inspired confidence in us. With your calm and your pedagogical approach, you knew how to put us at ease during some difficult moments of our training. Your ability to pass on your aeronautical knowledge gave us even more of a desire to do this job… I am happy and honored to be one of the students who went through the simulator with you as an instructor…",
+      "text": "Pour ma part, tu nous a mis en confiance. Avec ton calme et ta pédagogie, tu as su nous mettre à l'aise à des moments pas simples de notre formation. La capacité que tu as eu à nous transmettre tes connaissances aéronautiques a su nous donner encore plus l’envie d'exercer ce métier… Je suis heureux et honoré de faire parti des élèves qui sont passé au simu avec toi comme instructeur…",
+      "rating": 5,
+      "role_en": "First Officer ATR72-600 Air Calédonie",
+      "author": "Anthony Robert",
+      "role": "OPL ATR72-600 Air Calédonie",
+      "order": 8,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 816000000
+      }
+    },
+    {
+      "id": "32aaHThMvMVS97hVeAjh",
+      "text": "J'ai eu le plaisir d'effectuer mon stage MCC-JOC avec Jean-Claude. Pédagogue, patient, et professionnel il sait montrer à ses stagiaires l'importance des compétences humaines et techniques dans un cockpit. Je le recommande sans hésiter !",
+      "text_en": "I had the pleasure of completing my MCC-JOC course with Jean-Claude. A great teacher, patient, and professional, he knows how to show his trainees the importance of human and technical skills in a cockpit. I recommend him without hesitation!",
+      "role_en": "First Officer B737 Air France - Transavia",
+      "rating": 5,
+      "author": "Damien Gaure",
+      "role": "OPL B737 Air France -Transavia",
+      "order": 26,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      }
+    },
+    {
+      "id": "3Pqo8VEwq5V392lSHcy3",
+      "order": 57,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 825000000
+      },
+      "role": "FO B737 at Ryanair",
+      "author": "André BRUN",
+      "rating": 5,
+      "role_en": "FO B737 at Ryanair",
+      "text": "Merci à toi Jean-Claude ! Je n’oublierais jamais la qualité de cette formation IR et MCC effectué par tes soins.\n4 ans plus tard, je m’en rappelle encore et applique toujours les méthodes et astuces alors enseignées, même si, je l’avoue un peu moins pour les attentes, merci le FMC … 😅.",
+      "text_en": "Thank you, Jean-Claude! I will never forget the quality of this IR and MCC training provided by you. 4 years later, I still remember it and still apply the methods and tips taught back then, even if, I admit, a bit less for holding patterns, thanks to the FMC … 😅."
+    },
+    {
+      "id": "4SQfjtimACCDyagEFmis",
+      "order": 43,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      },
+      "role": "CDB Phenom 100/300 Pan Européenne",
+      "author": "Aurélien B.",
+      "rating": 5,
+      "role_en": "Captain Phenom 100/300 Pan Européenne",
+      "text": "J'ai rencontré Jean-Claude en 2018 pendant ma formation IR, j'ai ensuite été embauché à Pan Européenne sur Chambéry en copilote sur Phenom 100/300 en 2019 puis commandant de bord depuis 2022.\nJe garde des supers souvenirs de Jean-Claude, c'est une personne à l'écoute, très calme et super pédagogue.\nIl nous fait progresser rapidement et toujours dans la bonne humeur, je recommande !",
+      "text_en": "I met Jean-Claude in 2018 during my IR training. I was subsequently hired at Pan Européenne in Chambéry as a co-pilot on Phenom 100/300 in 2019, and have been a Captain since 2022. I have great memories of Jean-Claude; he is an attentive listener, very calm, and an excellent teacher. He helps us progress quickly and always with a positive attitude—I highly recommend him!"
+    },
+    {
+      "id": "5YAOEENM3jnImcyEoVHZ",
+      "text": "j'ai effectué ma formation professionnelle en 2018 et j'ai eu la chance d'avoir Jean-Claude comme instructeur pour la formation aux fondements de l'IFR en simulateur.\nUn homme passionné qui aime transmettre son savoir, rigoureux et bienveillant à l'écoute de ses stagiaires et qui met tout en œuvre pour les amener au niveau requis.\nJe garde un excellent souvenir de mes séances au simulateur avec lui et je l'en remercie encore. Et je n'hésiterai pas à m'adresser à lui pour le maintien de mes compétences",
+      "text_en": "I completed my professional training in 2018 and I was lucky to have Jean-Claude as my instructor for the simulator-based IFR fundamentals training. He is a passionate man who loves sharing his knowledge, rigorous and kind, attentive to his trainees and doing everything possible to bring them to the required level. I have excellent memories of my simulator sessions with him and I thank him again. I will not hesitate to turn to him for the maintenance of my skills.",
+      "rating": 5,
+      "role_en": "Flight Instructor/President of the Aero Club Les Ailes du Cotentin-Cherbourg",
+      "author": "Jérome LabartheCPL/IRME/",
+      "role": "FI/président Aero club Les Ailes du Cotentin-Cherbourg",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 817000000
+      },
+      "order": 11
+    },
+    {
+      "id": "83ujvoHSPdEBEOm4PjFP",
+      "rating": 5,
+      "role_en": "Captain TRI TRE B787-9 Air Tahiti Nui",
+      "text": "J’ai connu Jean Claude au début d’Airways pour ma formation PP-IFR-FTE (Cpl-Ir-Mcc). J’ai réellement apprécié sa pédagogie, son calme et sa bonne humeur constante, en plus de sa grande compétence. Les séances de simu étaient toujours un plaisir où l’on apprenait et évoluait à chaque séance, sans stress.\nJean Claude fait preuve de respect et patience dans son enseignement, avec des briefings et débriefings toujours clairs.\nCe fut un réel plaisir d’avoir pu faire ma formation de base, si importante, avec lui et je souhaite à tout pilote qui débute ou désir se perfectionner de le faire avec Jean Claude ».",
+      "text_en": "I first met Jean Claude at the start of Airways for my PP-IFR-FTE (Cpl-Ir-Mcc) training. I truly appreciated his teaching methods, his calm demeanor, and his constant good mood, in addition to his great expertise. Simulator sessions were always a pleasure, where we learned and progressed in each session, without stress. Jean Claude demonstrates respect and patience in his teaching, with briefings and debriefings that were always clear. It was a real pleasure to have been able to do my basic training, which is so important, with him, and I recommend any pilot starting out or wishing to improve their skills to do so with Jean Claude.",
+      "order": 33,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      },
+      "role": "CDB TRI TRE B787-9 AirTahitiNui",
+      "author": "Benjamin Hauret"
+    },
+    {
+      "id": "86Z6OZOxu2AgnOzucMXw",
+      "text": "Je tiens à exprimer ma plus profonde gratitude pour l'incroyable qualité de formation, basée sur des valeurs de connaissance, d'attitude, de CRM et d'accompagnement que Jean Claude m'a apporté lors de ma formation de MCC et JOC.\nSon dévouement à l'enseignement et sa passion pour l'aviation ont laissé une marque indélébile sur ma carrière d'une manière que je ne peux pas exprimer de manière adéquate.\nAlors que je poursuis mon parcours de commandant de bord d'Airbus A320, j'emporte avec moi les leçons qu'il m'a dispensées, les méthodes qu'il a incarnées, le professionnalisme et le sérieux que Jean Claude m'a transmis.\nEncore et encore merci d'être un instructeur et un modèle exceptionnel.",
+      "text_en": "I would like to express my deepest gratitude for the incredible quality of training, based on values of knowledge, attitude, CRM, and support that Jean Claude provided me during my MCC and JOC training. His dedication to teaching and his passion for aviation have left an indelible mark on my career in a way that I cannot adequately express. As I continue my journey as an Airbus A320 Captain, I carry with me the lessons he taught, the methods he embodied, and the professionalism and seriousness that Jean Claude passed on to me. Thank you again and again for being an exceptional instructor and role model.",
+      "rating": 5,
+      "role_en": "Captain A320 Easyjet",
+      "author": "Federico Di Cesare",
+      "role": "CdB A320 Easyjet",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      },
+      "order": 28
+    },
+    {
+      "id": "A0oX0w2xVC5KWlvgBdjx",
+      "role": "CDB A320 Easyjet",
+      "author": "Gilles Ducas",
+      "order": 35,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      },
+      "text": "Arrivant au terme de ma formation de pilote professionnel, j'ai eu la chance de faire ma formation MCC avec Jean-Claude au sein d'Airways-formation à Agen. La réputation de Jean-Claude en terme de qualité de la formation était déjà notoire au sein de l'école, et je n'ai pas été déçu. La pédagogie et l'approche professionnelle qu'apportait Jean-Claude m'a d'une part amené à un niveau optimum pour commencer ma carrière, et d'autre part m'a donné une confiance en moi et en mes capacités qui m'a regonflé d'énergie pour affronter les difficultés de décrocher mon premier job dans l'aérien. Jean-Claude fait parti de ses instructeurs qui facilitent la carrière d'un pilote par le niveau de la formation qu'ils dispensent.",
+      "text_en": "As I was reaching the end of my professional pilot training, I had the chance to complete my MCC training with Jean-Claude at Airways-formation in Agen. Jean-Claude's reputation for the quality of his training was already well-known within the school, and I was not disappointed. The teaching methods and professional approach that Jean-Claude provided on the one hand brought me to an optimal level to start my career, and on the other hand gave me a sense of self-confidence in my abilities that re-energized me to face the challenges of landing my first job in aviation. Jean-Claude is one of those instructors who facilitate a pilot's career through the high standard of training they provide.",
+      "rating": 5,
+      "role_en": "A320 Captain, EasyJet"
+    },
+    {
+      "id": "AbH6T1EHgaqRsWdwLiiZ",
+      "order": 31,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      },
+      "role": "OPL A330 XL Airways",
+      "author": "Sébastien Peigné",
+      "rating": 5,
+      "role_en": "First Officer A330 XL Airways",
+      "text": "Grâce à ma formation IFR-IMCC avec Jean-Claude, j’ai pu commencer ma carrière de pilote dans de très bonnes conditions (A320 et ensuite A330), avec de solides bases en IFR. J’ai toujours apprécié ses qualités humaines et son sens de la pédagogie.",
+      "text_en": "Thanks to my IFR-MCC training with Jean-Claude, I was able to start my pilot career under excellent conditions (A320 and then A330), with a solid foundation in IFR. I have always appreciated his human qualities and his teaching skills."
+    },
+    {
+      "id": "BxMBqavFNM31an1neAqN",
+      "order": 53,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "author": "Pierre Massard",
+      "role": "OPL APG Airlines",
+      "role_en": "First Officer, APG Airlines",
+      "rating": 5,
+      "text": "J'ai connu Jean-Claude en tant qu'Instructeur lors de la phase IR et MCC au cours de ma formation. Toute l'instruction théorique ainsi que les sessions sur simulateur effectuées avec lui ont été très enrichissantes. Jean-Claude dispose d'une pédagogie calme et structurée, à l'écoute de toute remarque et question. Ses briefings et debriefings sont pertinents et justes. Je garde un excellent souvenir des moments partagés ensemble.",
+      "text_en": "I met Jean-Claude as an Instructor during the IR and MCC phases of my training. All the theoretical instruction and simulator sessions conducted with him were very enriching. Jean-Claude has a calm and structured teaching style, and is attentive to every comment and question. His briefings and debriefings are relevant and accurate. I have excellent memories of the time spent together."
+    },
+    {
+      "id": "CC0qYi5nL5fC8nBGieZT",
+      "text": "J’ai effectué plusieurs séances de simulateur avec Jean-Claude durant ma formation IR et MCC. J’ai beaucoup apprécié son enseignement à la fois rigoureux et pragmatique tourné vers une application pratique de ce à quoi je serai plus tard confrontée en compagnie. Le tout dans un environnement convivial ,il a toujours su se montrer disponible pour ses stagiaires et de très bon conseil.",
+      "text_en": "I completed several simulator sessions with Jean-Claude during my IR and MCC training. I greatly appreciated his teaching, which was both rigorous and pragmatic, focused on the practical application of what I would later face in an airline. All within a friendly environment, he was always available for his trainees and provided excellent advice.",
+      "role_en": "B737 Captain, Air France-Transavia",
+      "rating": 5,
+      "author": "Stéphanie Mathieu",
+      "role": "CDB B737 Air France-Transavia",
+      "order": 45,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      }
+    },
+    {
+      "id": "EWB5hBN1M9tteaoEbIoo",
+      "author": "Nathan Frauilich",
+      "role": "OPL JetFly",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 819000000
+      },
+      "order": 20,
+      "text": "C’est un réel plaisir d’avoir eu Jean-Claude en formation tant en IFR qu’en MCC.\nIl sait nous faire appréhender les vols en IFR avec beaucoup de pédagogie, c’est un vrai plus dans la formation. À bientôt",
+      "text_en": "It was a real pleasure to have had Jean-Claude for both IFR and MCC training. He knows how to help us understand IFR flights with great teaching skills; it's a real asset to the training. See you soon.",
+      "rating": 5,
+      "role_en": "First Officer JetFly"
+    },
+    {
+      "id": "F8RwhauVnYCaYTKLJQeq",
+      "order": 15,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 818000000
+      },
+      "role": "LTC EMB550, TRI/TRE C525, MCCI, FI",
+      "author": "Didier AucoinLuxaviation Malta,",
+      "rating": 5,
+      "role_en": "LTC EMB550, TRI/TRE C525, MCCI, FI",
+      "text": "J’ai effectué en 1998 mon IFR/FTE(MCC) à Airways Formation Agen en 1998, et j’ai eu la chance de rencontrer et d’avoir comme instructeur Simu Jean-Claude. Sa passion pour l'enseignement et son expertise dans la formation IFR et le travail en équipage ont grandement contribué au reste de ma carrière. Les sessions simulateur étaient dispensées avec une clairvoyance, sans un mot de trop avec une gentillesse et une simplicité qui pour moi ressemblait à de la magie à l’époque. Les compétences que j'ai acquises sous sa tutelle me servent chaque jour dans mon métier. Alors aujourd’hui avec 25ans de plus dans la formation de pilote, je pense qu’il fait partie des références dans le monde aéronautique.\nMerci à toi Jean- Claude, je remercie la vie de m’avoir fait croiser ton chemin. Amitiés.",
+      "text_en": "I completed my IFR/FTE(MCC) at Airways Formation Agen in 1998, and I had the chance to meet and have Jean-Claude as my simulator instructor. His passion for teaching and his expertise in IFR training and crew resource management (CRM) greatly contributed to the rest of my career. The simulator sessions were delivered with insight, without a word too many, and with a kindness and simplicity that, to me, felt like magic at the time. The skills I acquired under his tutelage serve me every day in my profession. So today, with 25 more years in pilot training, I believe he is one of the benchmarks in the aeronautical world. Thank you, Jean-Claude; I am grateful to life for having our paths cross. Best regards."
+    },
+    {
+      "id": "FpIVYJAsjKmKA3Bw9f05",
+      "author": "Frédéric Kirscher",
+      "role": "CDB A320 Volotea",
+      "order": 44,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      },
+      "text_en": "Jean Claude: I remember our MCC, now several years ago... Your instruction always brilliantly combined the technical and non-technical aspects of our profession. Our MCC together undoubtedly contributed to the development of my skills and therefore my career! A big thank you to you for the quality of your instruction, your good humor, and your unfailing availability! Best regards, Fred",
+      "text": "' Jean Claude : je me souviens de notre MCC il y a maintenant quelques années déjà… Ton instruction a toujours sû associer avec brio le aspects techniques et non techniques de notre métier. Notre MCC passée ensemble a sans aucun doute contribué au développement de mes compétences et donc de ma carrière ! Un grand merci à toi pour la qualité de ton instruction, à ta bonne humeur et à ta disponibilité sans faille ! Amicalement Fred",
+      "rating": 5,
+      "role_en": "Captain A320 Volotea"
+    },
+    {
+      "id": "GJMZx16zQI4zODnEOpAR",
+      "role": "CDB TRE CRK - FC CRMT HOP!",
+      "author": "Stéphane LEFORT",
+      "order": 38,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      },
+      "text": "En 1992, j’engage une reconversion de pilote de ligne et rejoins Airways pour obtenir mon PP-IFR-FTE (CPL-IR-MCC). Pas simple de reprendre des études à 32 ans, mais par sa rigueur, la qualité de ses briefings, sa bienveillance et sa pédagogie, Jean Claude a été un acteur essentiel dans mon parcours de formation. Doté d’une grande capacité d’adaptation à ses élèves et d’une forte expertise dans l’instruction, vous ne pourrez que progresser.",
+      "text_en": "In 1992, I began a career change to become an airline pilot and joined Airways to obtain my PP-IFR-FTE (CPL-IR-MCC). It was not easy returning to studies at the age of 32, but thanks to his rigor, the quality of his briefings, his kindness, and his teaching skills, Jean Claude was an essential figure in my training journey. With a great ability to adapt to his students and strong expertise in instruction, you can only progress.",
+      "rating": 5,
+      "role_en": "Captain TRE CRK - FC CRMT HOP!"
+    },
+    {
+      "id": "Gn0Qz8rrncFVa0VOp4Zz",
+      "author": "Frédéric Echassoux",
+      "role": "CDB Transavia / Air France",
+      "order": 3,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 815000000
+      },
+      "text_en": "When you have been in our profession for a few years, you quickly realize the category of instructors who are behind your back watching you struggle in adversity. There are the patient ones, the impatient ones, the silent ones, the loud ones, the cold ones, the friendly ones, there are those who are there for you and those who are there for other reasons. Among those who are there for you, there are those who look at your instruments, those who look at your hands and those, the rarest and brightest, who look at where you put your eyes and who know how to deduce from it, even before you start thinking about it, what difficulties you are getting yourself into. Jean-Claude is one of those instructors, he knows how to adjust your workload to the exact point where you will progress, He knows how to tell you what you need to hear, he knows how to keep quiet when he feels you are understanding and assimilating, He knows when to intervene and when to wait. Whatever your experience, you will come out grown from the precious time he will have devoted to you. There are instructors and there is Jean-Claude Chenard.",
+      "text": "Quand on est dans notre métier depuis quelques années on réalise assez vite la catégorie d’instructeurs qui se trouve dans notre dos en train de nous observer nous débattre dans l’adversité. Il y a les patients, les impatients, les silencieux, les sonores, les froids, les amicaux, il y a ceux qui sont là pour vous et ceux qui sont là pour d’autres raisons. Parmi ceux qui sont là pour vous il y a ceux qui regardent vos instruments, ceux qui regardent vos mains et ceux, les plus rares et les plus lumineux, qui regardent où vous posez vos yeux et qui savent en déduire, avant même que vous commenciez à y penser, dans quelles difficultés vous êtes en train de vous engager. Jean-Claude est de ces instructeurs-là, il sait ajuster votre surcharge de travail au point exact ou vous allez progresser, Il sait vous dire ce que vous avez besoin d’entendre, il sait se taire quand il vous sent en train de comprendre et assimiler, Il sait quand intervenir et quand attendre. Quelque soit votre expérience vous sortirez grandi du temps précieux qu’il vous aura consacré. Il y a des instructeurs et il y a Jean-Claude Chenard.",
+      "role_en": "Captain Transavia / Air France",
+      "rating": 5
+    },
+    {
+      "id": "GrbDQnoKO2WVvlppvmtw",
+      "text_en": "I was lucky to have Jean-Claude as an instructor during my MCC course, a great teacher. I am very grateful to have been able to benefit from his experience and knowledge.",
+      "text": "J'ai eu la chance d'avoir Jean-Claude comme instructeur lors de mon stage MCC, grand pédagogue . Je suis très reconnaissant d'avoir pu profité de son expérience et de son savoir.",
+      "rating": 5,
+      "role_en": "First Officer ERJ135/145 Amelia",
+      "author": "Jean-Baptiste Issanchou",
+      "role": "OPL ERJ135/145 Amelia",
+      "order": 10,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 817000000
+      }
+    },
+    {
+      "id": "IDmijfRUvNUCKLCdTMTu",
+      "order": 47,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "author": "Imène Oudia",
+      "role": "CDB Hondajet - Aviation d'affaires",
+      "role_en": "HondaJet Captain - Business Aviation",
+      "rating": 5,
+      "text": "Ayant toujours rêvé de devenir pilote de ligne j'ai entamé une formation integrée à Airways Formation à Agen après mon BAC Math élémentaires.\nJ'ai eu la chance d'avoir Jean Claude Chenard comme instructeur pendant la MCC. Ce stage s'est parfaitement déroulé grâce à son professionnalisme.\nJean Claude est un instructeur pédagogue et passionné et cela se ressent à travers les scénarios qu'il élabore lui même et qu'il adapte à ses binômes. Chaque séance de simu avec Jean Claude était très enrichissante et se déroulait dans la bienveillance qui le caractérise.\nAujourd'hui je suis Captain sur Hondajet et tout ce que Jean-Claude m'a inculqué ,voila maintenant 6 ans, me sert tous les jours dans le cockpit.​",
+      "text_en": "Having always dreamed of becoming an airline pilot, I began an integrated training course at Airways Formation in Agen after my advanced mathematics baccalaureate. I was lucky to have Jean Claude Chenard as my instructor during the MCC. This course went perfectly thanks to his professionalism. Jean Claude is a pedagogical and passionate instructor, and this is evident through the scenarios he develops himself and adapts to his student pairs. Every simulator session with Jean Claude was very enriching and took place with the kindness that characterizes him. Today, I am a Captain on a HondaJet, and everything Jean-Claude taught me six years ago serves me every day in the cockpit."
+    },
+    {
+      "id": "IJLTnYuCXXYcxJGTjrkj",
+      "text": "J'ai terminé ma formation en 2012 pour la qualification de vol aux instruments et la MCC avec Jean Claude, et je ne peux pas exprimer suffisamment ma satisfaction à l'égard de l'ensemble de l'expérience.\nJean-Claude est un instructeur exceptionnel qui va au-delà pour s'assurer que ses élèves atteignent non seulement les normes requises, mais développent également une compréhension approfondie.\nSa capacité à décomposer des concepts complexes en segments facilement compréhensibles a rendu le processus d'apprentissage beaucoup plus fluide. L'accent mis sur des scénarios réels et des applications pratiques lors de nos séances de formation a été inestimable, me fournissant les compétences et la confiance nécessaires pour exceller lors de sélections. Apres Airways j\"ai rejoint Ryanair et c\"est en grande partie grâce a Jean-Claude.",
+      "text_en": "I completed my training in 2012 for the instrument rating and the MCC with Jean Claude, and I cannot express enough my satisfaction with the entire experience. Jean-Claude is an exceptional instructor who goes above and beyond to ensure that his students not only meet the required standards but also develop a deep understanding. His ability to break down complex concepts into easily understandable segments made the learning process much smoother. The emphasis on real-world scenarios and practical applications during our training sessions was invaluable, providing me with the skills and confidence necessary to excel during selections. After Airways, I joined Ryanair, and it is largely thanks to Jean-Claude.",
+      "rating": 5,
+      "role_en": "Captain 737 Ryanair",
+      "author": "Jamil Djema",
+      "role": "CDB 737 Ryanair",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      },
+      "order": 46
+    },
+    {
+      "id": "JCyZy9mgFL1hKa7UsNLk",
+      "text": "Stagiaire MCC en 2009, j’ai eu le privilège de suivre les cours de Jean-Claude. Son expérience dans le domaine m’a fait comprendre l’importance d’une formation MCC de qualité.\nSa grande pédagogie et son observation bienveillante des stagiaires m’ont permis de développer mon CRM.\nJ’utilise toujours,15 ans plus tard, les notions instruites par Jean-Claude.",
+      "text_en": "As an MCC trainee in 2009, I had the privilege of attending Jean-Claude's courses. His experience in the field made me understand the importance of high-quality MCC training. His excellent teaching methods and his caring observation of the trainees allowed me to develop my CRM. Fifteen years later, I still use the concepts taught by Jean-Claude.",
+      "rating": 5,
+      "role_en": "First Officer, Challenger 350 - Business Aviation",
+      "author": "Mathieu M.",
+      "role": "OPL, Challenger 350 - Aviation d'affaires",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      },
+      "order": 39
+    },
+    {
+      "id": "JZA4Ow6VvI7LW6ky4R1J",
+      "order": 23,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 820000000
+      },
+      "author": "Guillaume PARPET",
+      "role": "CDB A330 TRI/TREChef pilote CMA-CGM AIR CARGO.",
+      "role_en": "Captain A330 TRI/TRE, Chief Pilot CMA-CGM AIR CARGO",
+      "rating": 5,
+      "text": "Bonjour, j’ai effectué ma formation IR MCC en 2001 chez Airways. J’ai eu la chance d’avoir Jean-Claude comme instructeur qui a su me transmettre les bonnes bases pour mon métier de pilote de ligne. J’ai le souvenir d’un grand pédagogue.",
+      "text_en": "Hello, I completed my IR MCC training in 2001 at Airways. I was lucky enough to have Jean-Claude as an instructor, who was able to pass on the right fundamentals for my career as an airline pilot. I remember him as a great educator."
+    },
+    {
+      "id": "K7R5Qvt0w2BmCauXBsa8",
+      "role_en": "Captain C510 Business Aviation",
+      "rating": 5,
+      "text": "Ma formation IFR avec Jean Claude reste un souvenir mémorable. Les cours approfondis qu'il dispense m'ont offert une compréhension approfondie des tenants et aboutissants pratiques de l'IFR. Sa passion pour l'aviation et son dévouement en tant qu'instructeur ont été une source constante d'inspiration. Les sessions de simulateur ont été bien plus que des exercices techniques. Elles ont su recréer avec fidélité les défis réels auxquels nous faisons face dans le ciel. L'approche pédagogique complète de Jean Claude couvre tous les aspects du stage pratique IFR. Son initiative de fournir des formations en ligne est une excellente nouvelle pour les pilotes qui cherchent à se qualifier, à maintenir leurs compétences ou à se préparer à de futures opportunités. Je recommande chaleureusement ses services à tous ceux qui cherchent à perfectionner leurs compétences IFR ou à se préparer à de nouvelles étapes dans leur carrière aéronautique.",
+      "text_en": "My IFR training with Jean Claude remains a memorable experience. The in-depth courses he provides gave me a thorough understanding of the practical ins and outs of IFR. His passion for aviation and dedication as an instructor have been a constant source of inspiration. The simulator sessions were much more than just technical exercises; they faithfully recreated the real-world challenges we face in the sky. Jean Claude's comprehensive pedagogical approach covers all aspects of the practical IFR training. His initiative to provide online training is excellent news for pilots looking to qualify, maintain their skills, or prepare for future opportunities. I warmly recommend his services to anyone looking to perfect their IFR skills or prepare for new stages in their aviation career.",
+      "order": 19,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 819000000
+      },
+      "author": "Maxime Pagnoux",
+      "role": "CdB C510 Aviation d'affaires"
+    },
+    {
+      "id": "KNpSABOXlSNCV1wdKhKw",
+      "rating": 5,
+      "role_en": "Captain Gulfstream G600 Business Aviation",
+      "text": "Je garde un excellent souvenir de Jean Claude et de la qualité de la formation dispensée pendant mon stage MCC. Il est un instructeur érudit, très bon pédagogue, qui m’a beaucoup apporté. Je peux dire que c’est durant cette phase finale de ma formation de pilote de ligne que Jean Claude a su faire éclore le professionnel que je suis aujourd’hui.",
+      "text_en": "I have excellent memories of Jean Claude and the quality of the training provided during my MCC course. He is a knowledgeable instructor and an excellent educator who has contributed a great deal to my development. I can say that it was during this final phase of my airline pilot training that Jean Claude helped the professional I am today to emerge.",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "order": 48,
+      "author": "Laurent Giarrizzo",
+      "role": "CdB Gulfstream G600 Aviation d’affaires"
+    },
+    {
+      "id": "LJwk059m4OD8nM2oOGIX",
+      "text": "Pour mon stage MCC, on ne peut pas rêvé mieux que d’avoir Jean-Claude en tant qu’instructeur. Il ne te prépare pas juste à obtenir la MCC, il te prépare aussi à être le plus performant pour de futures sélections compagnies et potentiellement être à l’aise sur une éventuelle QT.\nJe retiens de lui sa patience et son calme légendaire pendant les séances de simulateur ainsi que ses connaissances poussées en IFR.",
+      "text_en": "For my MCC course, one couldn't have dreamed of anyone better than Jean-Claude as an instructor. He doesn't just prepare you to obtain the MCC; he also prepares you to perform at your best for future airline assessments and to potentially be comfortable during an eventual Type Rating. I will remember his patience and legendary calm during the simulator sessions, as well as his extensive knowledge of IFR.",
+      "rating": 5,
+      "role_en": "Captain ATR 42/72-600 Air Tahiti",
+      "author": "Roarii Chavez",
+      "role": "CDB ATR42/72-600 Air Tahiti",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 818000000
+      },
+      "order": 16
+    },
+    {
+      "id": "N6TN7osqm7uhUjusEAuH",
+      "rating": 5,
+      "role_en": "A330-900 Neo First Officer at Corsair International",
+      "text": "J’ai eu le plaisir et la chance d’avoir Jean-Claude comme instructeur MCC/JOC chez Airways en 2015.\nD’une extrême gentillesse, passionné, dévoué à ses élèves, avec une fibre pédagogique difficilement égalable, je tiens une nouvelle fois à te remercier Jean-Claude pour ce stage de fin de formation, qui reste l’un des meilleurs moments passés à l’école de pilotage.",
+      "text_en": "I had the pleasure and the luck to have Jean-Claude as my MCC/JOC instructor at Airways in 2015. Extremely kind, passionate, and dedicated to his students, with a teaching talent that is hard to match, I would like to thank you once again, Jean-Claude, for this end-of-training course, which remains one of the best moments I spent at flight school.",
+      "order": 29,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      },
+      "role": "OPL A330-900 Néo chez Corsair International",
+      "author": "Tom Jésu"
+    },
+    {
+      "id": "O6ozN8bo74VmzUYt6vqA",
+      "order": 12,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 818000000
+      },
+      "role": "CdB / TRI A320 Air France",
+      "author": "Olivier",
+      "rating": 5,
+      "role_en": "Captain / TRI A320 Air France",
+      "text": "Excellent souvenir de formation avec Jean-Claude à Agen !",
+      "text_en": "Excellent training memory with Jean-Claude in Agen!"
+    },
+    {
+      "id": "R9486tn0IpjlVoQRtIwC",
+      "author": "Nicolas Harment",
+      "role": "OPL B777 CMA-CGM",
+      "order": 32,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      },
+      "text_en": "Throughout our CPL/IR/MCC training, Jean-Claude supported the class I was part of by giving his all and always taking the time to explain with the necessary patience and determination. He has an ability to adapt to students and personalize his instruction to better lead them toward success, all within a relaxed, productive, and professional working atmosphere.",
+      "text": "Tout au long de notre formation CPL/IR/MCC, Jean-Claude a su accompagner la promotion dont je faisais partie en donnant le meilleur de lui-même et en prenant toujours le temps d'expliquer avec la patience et la détermination requise. Il a une capacité à s'adapter aux élèves et à personnaliser sa prestation pour mieux les porter vers le succès, tout cela dans une atmosphère de travail détendue, productive, professionnelle.",
+      "rating": 5,
+      "role_en": "B777 First Officer, CMA-CGM"
+    },
+    {
+      "id": "TQ3wxuJdlfuFDIMP7miD",
+      "role_en": "A350 First Officer, Air France",
+      "rating": 5,
+      "text": "J’ai connu Jean-Claude lors de ma formation IR et MCC chez Airways en 2015. De part son expérience, sa connaissance et sa pédagogie j’ai pu acquérir de solides compétences que j’utilise au quotidien.\nJe recommande son instruction sans hésiter.",
+      "text_en": "I met Jean-Claude during my IR and MCC training at Airways in 2015. Thanks to his experience, knowledge, and teaching methods, I was able to acquire solid skills that I use on a daily basis. I recommend his instruction without hesitation.",
+      "order": 50,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "author": "Clément Teboul",
+      "role": "OPL A350 Air France"
+    },
+    {
+      "id": "TYIfZcZkmpAwqXE08W89",
+      "text": "Bonjour à tous. J’ai connu Jean-Claude CHENARD lors de ma formation initiale CPL-IR/ME + MCC réalisée en 2004 à Airways Agen.\nJean-Claude nous a dispensé l’ensemble des cours et séances de simulateur, à mon binôme et moi-même.\nLa première chose qui m’a frappée dans son approche du cours, c’est qu’il adossait systématiquement ses briefings à des exemples réels piochés dans la littérature spécialisée, et souvent dans le mensuel interne Air France SÛRVOL, qui liste, commente, et détaille, de multiples incidents survenus dans toutes les flottes de la compagnie. C’était une rareté, cette approche : Jean-Claude CHENARD n’était pas là pour nous faire passer une séance. Il était là pour nous faire comprendre que la séance du jour, était le reflet d’incidents réels! rencontrés en vol.\nDifférence fondamentale !\nFinis de faire les bons élèves dans l’optique d’un diplôme !\nC’était de formation Opérationnelle qu’il s’agissait. Le but de Jean-Claude n’était pas de nous amener à la MCC. Son but était, au travers d’une MCC, de nous donner une maturité Top Niveau, pour être Pros au jour 1 de notre activité, performants immédiatement lors du simu de sélection, à l'aise tout de suite en cursus transfo-réacteur en compagnie.\nVous saisissez la différence ? Et ça ça n’est pas donné à tout le monde :\nÊtre un professionnel de la formation pilotes avec des dizaines d’années d’expérience, avoir toujours été plus intéressé par sortir du stagiaire OPÉRATIONNEL et pro au jour 1, que par la simple obtention du morceau de papier.\nEt c'est ça que vous aurez sans aucun doute en faisant appel à AVIATIONONLINE :\nUn service Pro, Opérationnel, pour vous amener comme moi, dans les cockpits des compagnies les plus exigeantes.\nVraiment je crois à la réussite de Jean-Claude CHENARD et d’AVIATION ON LINE.\nPourquoi ? Parce que c’est un très bon techniquement, très expérimenté, et quelqu’un de bien, trois qualités fondamentales, mais inégalement réparties dans le secteur de la formation des Pilotes..\nTous mes Meilleurs de Vœux de Succès l’accompagnent dans cette entreprise !\nMoi j'y crois ! Vous pouvez y croire aussi !\nBon courage à vous !\nAéronautiquement,",
+      "text_en": "Hello everyone. I met Jean-Claude CHENARD during my initial CPL-IR/ME + MCC training in 2004 at Airways Agen.\nJean-Claude gave all the courses and simulator sessions to my partner and me.\nThe first thing that struck me about his approach to the course was that he systematically backed up his briefings with real examples drawn from specialized literature, and often from the internal Air France monthly SÛRVOL, which lists, comments on, and details multiple incidents that have occurred in all the company's fleets. This approach was a rarity: Jean-Claude CHENARD was not there to get us through a session. He was there to make us understand that today's session was a reflection of real incidents! encountered in flight.\nFundamental difference!\nNo more playing the good student with a view to getting a diploma!\nIt was Operational training. Jean-Claude's goal was not to get us to the MCC. His goal was, through an MCC, to give us Top Level maturity, to be Pros on day 1 of our activity, immediately performing during the selection sim, immediately at ease in the jet transition course in the company.\nDo you grasp the difference? And that is not given to everyone:\nBeing a professional in pilot training with decades of experience, having always been more interested in turning out an OPERATIONAL and pro trainee on day 1, than in simply obtaining the piece of paper.\nAnd that is what you will undoubtedly have by calling on AVIATIONONLINE:\nA Pro, Operational service, to bring you like me, into the cockpits of the most demanding companies.\nI truly believe in the success of Jean-Claude CHENARD and AVIATION ON LINE.\nWhy? Because he is very good technically, very experienced, and a good person, three fundamental qualities, but unequally distributed in the pilot training sector..\nAll my Best Wishes for Success accompany him in this enterprise!\nI believe in it! You can believe in it too!\nGood luck to you!\nAeronautically,",
+      "role_en": "Captain A220 Air France",
+      "rating": 5,
+      "role": "Captain A220 Air France",
+      "author": "Falk WINKLER",
+      "order": 2,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 815000000
+      }
+    },
+    {
+      "id": "U50VaPpCJmLFnbziWXXU",
+      "order": 7,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 816000000
+      },
+      "author": "Guillaume Carré",
+      "role": "OPL B777 Air France",
+      "rating": 5,
+      "role_en": "B777 First Officer, Air France",
+      "text_en": "Hi Jean-Claude, I have great memories of a MEP training course and a highly competent instructor with you (with my partner Nicolas L.) in September / October 2003!",
+      "text": "Salut Jean-Claude, Je garde un excellent souvenir d’un stage MEP et d’un instructeur super compétent avec toi (avec mon binôme Nicolas L.) en septembre / octobre 2003 !"
+    },
+    {
+      "id": "VATl4LhJnxdoz7JGXRPr",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 817000000
+      },
+      "order": 9,
+      "author": "Adrien Joseph",
+      "role": "OPL A350 Air France",
+      "rating": 5,
+      "role_en": "First Officer A350 Air France",
+      "text": "Jean Claude a toujours été un de mes meilleurs souvenirs d'instruction de par sa pédagogie et sa bienveillance, il a parfaitement su inculquer les bases de ce qu'est mon quotidien professionnel aujourd'hui.",
+      "text_en": "Jean Claude has always been one of my best training memories due to his teaching methods and kindness; he perfectly instilled the foundations of what makes up my daily professional life today."
+    },
+    {
+      "id": "WJ2PzS07dxo0GYQYAaqj",
+      "role_en": "TRIBOUILLARD, B737-800 NG Captain, Air France-Transavia",
+      "rating": 5,
+      "text": "Bonjour à tous, ces quelques lignes afin de partager mon expérience en tant qu'élève lors de ma formation PP IFR FTE débutée en 99 à Agen et des séances de FNPT2 instruites par Jean-Claude. En toute honnêteté et sincérité Jean-Claude restera de très loin l'un des meilleurs instructeurs que j'ai pu rencontrer tout au long de ma carrière. Une incroyable patience, une pédagogie et un sens de l'instruction rarement égalé durant mon parcours et son éternel et indécrochable sourire vous mettent sincèrement en confiance et permettent d'aborder une séance d'instruction de façon optimale. Je lui serai éternellement reconnaissant de l'empreinte qu'il a laissé lors de ma formation qui s'est avérée être un réel atout pour la suite de mes pérégrinations ( 12 compagnies aériennes au total dont 8 à l'étranger). Je recommande aveuglement son expertise et sa fibre instructive mais avant tout le personnage. Vous serez en d'excellentes mains.",
+      "text_en": "Hello everyone, these few lines are to share my experience as a student during my PP IFR FTE training, which began in '99 in Agen, and the FNPT2 sessions instructed by Jean-Claude. In all honesty and sincerity, Jean-Claude remains by far one of the best instructors I have encountered throughout my career. His incredible patience, teaching skills, and a sense of instruction rarely matched during my journey, along with his eternal and unshakeable smile, truly put you at ease and allow you to approach an instruction session in an optimal way. I will be eternally grateful to him for the mark he left during my training, which proved to be a real asset for the rest of my career path (12 airlines in total, 8 of which were abroad). I blindly recommend his expertise and his instructional flair, but above all, the person himself. You will be in excellent hands.",
+      "order": 40,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      },
+      "author": "Gilles",
+      "role": "TRIBOUILLARDCDB B737-800 NG Air Fance-Transavia"
+    },
+    {
+      "id": "WNspyBE1OQqCbcDgkmZ1",
+      "rating": 5,
+      "role_en": "737 First Officer Air France - Transavia",
+      "text_en": "Jean-Claude knows how to pass on the fundamentals of our future profession thanks to his experience, pedagogy, and kindness. He gave me the necessary tools to be ready for future recruitment processes. Jean-Claude was one of the instructors with whom I most enjoyed learning our job. He is the one who, in part, enabled me to be where I am today.",
+      "text": "Jean-Claude sait nous transmettre les bases de notre futur métier grâce à son expérience, sa pédagogie et sa bienveillance. Il m’a permis d’avoir les armes nécessaires afin d’être prêt aux futurs recrutements. Jean-Claude a été un des instructeurs avec lequel j’ai le plus aimé apprendre notre métier. Celui qui, en partie, m’a permis d’être où je suis aujourd’hui.",
+      "order": 58,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 825000000
+      },
+      "author": "Mathieu Hayes",
+      "role": "OPL 737 Air France - Transavia"
+    },
+    {
+      "id": "XDvsNqn3dA7HIzXvFMuU",
+      "rating": 5,
+      "role_en": "Captain ATR 42/72 ASL Airlines",
+      "text_en": "I was lucky enough to have Jean-Claude as my instructor during my MCC training in 2005. I remember his calmness and patience. I finished my training during a difficult time, and in 2006, I finally landed my first airline selection. On paper, I didn't stand a chance since I had no experience. Jean-Claude's preparation allowed me to land my first pilot job. The hardest part was done... Thank you, Jean-Claude!",
+      "text": "J’ai eu la chance d’avoir Jean-Claude comme instructeur pendant ma formation MCC en 2005. Je garde le souvenir de son calme et de sa patience. Je suis sorti de formation à une période compliquée et en 2006 j’ai finalement décroché une première sélection en compagnie. Sur le papier, je n’avais aucune chance n’ayant aucune expérience. La préparation de Jean-Claude m’a permis de décrocher mon premier emploi de pilote. Le plus dur était fait… Merci Jean-Claude !",
+      "order": 24,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 820000000
+      },
+      "author": "Vincent Mexis",
+      "role": "CDB ATR 42/72 ASL Airlines"
+    },
+    {
+      "id": "bdGIHFeBuCrNY78SQalA",
+      "text": "J'ai eu l'immense chance d'avoir été formé pendant mon IR et ma MCC par le très réputé Jean-Claude CHENARD.\nJ'ai, grâce à toi, des bases solides, qui sont un atout formidable en compagnie aérienne.\nJe ne te remercierai jamais assez pour avoir partagé avec moi tes connaissances et ton savoir-faire.\nMa carrière de pilote se déroule à merveille et j'ai pour preuve ma nomination au poste d'adjoint RDOV d'EWA Air.\nJe te souhaite le meilleur et à bientôt.",
+      "text_en": "I had the immense good fortune of being trained during my IR and MCC by the highly renowned Jean-Claude CHENARD. Thanks to you, I have solid foundations, which are a formidable asset in an airline. I can never thank you enough for sharing your knowledge and expertise with me. My pilot career is going wonderfully, and as proof, I have been appointed to the position of Deputy RDOV at EWA Air. I wish you the best and see you soon.",
+      "rating": 5,
+      "role_en": "First Officer ATR 72 - EWA Air",
+      "role": "OPL ATR 72 - EWA Air",
+      "author": "Damien Daroussi",
+      "order": 6,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 816000000
+      }
+    },
+    {
+      "id": "csuY3GciHxWBEvDwRhEk",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      },
+      "order": 34,
+      "author": "Julian Fabrègue",
+      "role": "OPL B777 Air France",
+      "rating": 5,
+      "role_en": "First Officer B777 Air France",
+      "text": "Je m’appelle Julian Fabrègue, après quelques années dans le transport privé, puis chez Wizzair et chez Hop!, je suis maintenant copilote sur Boeing 777 à Air France et j’ai eu l’occasion d’être formé par Jean-Claude au cours de ma formation initiale et plus particulièrement pour la partie MCC. Jean-Claude est un grand professionnel qui sait transmettre sa grande expérience dans un climat sympathique et apaisé. Je garde un excellent souvenir de ses séances de simulateur toujours faites avec une approche très axée « CRM » semblable aux standards de formation que j’ai eu l’occasion de rencontrer tout au long de ma carrière. C’est avec une grande confiance que je recommande ses services.",
+      "text_en": "My name is Julian Fabrègue. After a few years in private transport, then at Wizzair and Hop!, I am now a First Officer on the Boeing 777 at Air France, and I had the opportunity to be trained by Jean-Claude during my initial training, particularly for the MCC part. Jean-Claude is a great professional who knows how to transmit his vast experience in a friendly and calm atmosphere. I have excellent memories of his simulator sessions, which were always conducted with a very 'CRM'-focused approach, similar to the training standards I have encountered throughout my career. It is with great confidence that I recommend his services."
+    },
+    {
+      "id": "cvH8fTt9OQgSfhCoL2zV",
+      "order": 13,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 818000000
+      },
+      "author": "Tanguy Doucerain",
+      "role": "CdB Boeing 737 Air France -Transavia",
+      "role_en": "Boeing 737 Captain, Air France - Transavia",
+      "rating": 5,
+      "text": "Cela remonte maintenant à quelques années, mais le point culminant de ma formation de pilote a été la MCC chez Airways, avec Jean-Claude.. Ce qu'il nous a enseigné, avec une incroyable pédagogie et une solide et riche compétence, m'a servi absolument toute ma carrière. Faisant de cette MCC (avec le CPL et l'IR également chez Airways) le socle solide du \"savoir faire et savoir être\", essentiels au métier. Un grand merci Jean-Claude, tu fais parti des piliers qui ont fait de moi le pilote que je suis aujourd'hui.",
+      "text_en": "It was a few years ago now, but the highlight of my pilot training was the MCC at Airways with Jean-Claude. What he taught us, with incredible pedagogy and solid, rich expertise, has served me throughout my entire career. This MCC (along with the CPL and IR also completed at Airways) became the solid foundation of the 'know-how and interpersonal skills' essential to the profession. A huge thank you, Jean-Claude; you are one of the pillars who made me the pilot I am today."
+    },
+    {
+      "id": "drSchuZ20fM1fWc2Vu5c",
+      "text": "J’ai effectué une formation CPL-IR-MCC à Airways Agen en 2005. J’ai pu profiter d’une formation qui m’a donné des bases solides afin d’exercer ce metier/passion qu’est le métier de pilote. Toute l’équipe de l’époque était parfaite, notamment Jean-Claude. L’utilisation d’un bon équilibre de CRM, de motivation et de technique en ont fait une formation d’une très haute qualité à mes yeux. Ces bases solides m’ont réellement aidé lors de mon parcours jusqu’à l’heure actuelle.",
+      "text_en": "I completed CPL-IR-MCC training at Airways Agen in 2005. I was able to benefit from training that gave me a solid foundation to pursue this profession and passion that is being a pilot. The whole team at the time was perfect, especially Jean-Claude. The use of a good balance of CRM, motivation, and technique made it a very high-quality training program in my eyes. These solid foundations have really helped me throughout my career up to the present day.",
+      "rating": 5,
+      "role_en": "A321 Captain, La Compagnie",
+      "author": "Grégory Morin",
+      "role": "CdB A321 La Compagnie",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 820000000
+      },
+      "order": 25
+    },
+    {
+      "id": "h65Rpfe5suVSjFZs7RhQ",
+      "text_en": "The transition from single pilot piston aircraft to high performance jet aircraft and multi crew operation is a hugely significant and stressful phase in the pilot’s career progression. This is where you need Jean-Claude as your instructor! Jean Claude is kind, calm, patient and extremely experienced. Thanks to Jean-Claude, my MCC course became the most enjoyable part of my training. Ten years and hundreds of simulator sessions later with many different instructors as part of the regular training in airline, I can honestly say Jean Claude is one of the best and if I had to do it all again, I would again ask for Jean-Claude!",
+      "text": "The transition from single pilot piston aircraft to high performance jet aircraft and multi crew operation is a hugely significant and stressful phase in the pilot’s career progression.\nThis is where you need Jean-Claude as your instructor!Jean Claude is kind, calm, patient and extremely experienced. Thanks to Jean-Claude, my MCC course became the most enjoyable part of my training.Ten years and hundreds of simulator sessions later with many different instructors as part of the regular training in airline, I can honestly say Jean Claude is one of the best and if I had to do it all again, I would again ask for Jean-Claude!",
+      "rating": 5,
+      "role_en": "Senior First Officer A330/350 Cathay Pacific Airways",
+      "author": "Remy Vadrot",
+      "role": "Senior First Officer A330/350 Cathay Pacific Airways",
+      "order": 55,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 825000000
+      }
+    },
+    {
+      "id": "h6LwTmAxvGL6k2c3RioF",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      },
+      "order": 30,
+      "author": "Jean Dechezelles",
+      "role": "OPL B777 Air France",
+      "rating": 5,
+      "role_en": "First Officer B777 Air France",
+      "text": "J’ai fait du travail aérien en sortant d’AWY, qq années, puis pendant 2 ans et demi de l’ATR cargo pour FARNAIR, boîte suisse basée en Allemagne et vers l’Europe de l’Est essentiellement..Puis HOP pendant 10 ans (ATR Airlinair, puis ERJ145 et eJET 170-190, puis B737 sur Transavia et depuis qq semaines en formation sur B777 a Air France, Bref DisneyLand depuis qq années où tout va de mieux en mieux.\nJ’ai gardé un plutôt bon souvenir de la formation, et 1 excellent de la MCC en particulier.",
+      "text_en": "I did aerial work for a few years after leaving AWY, then for two and a half years I flew ATR cargo for FARNAIR, a Swiss company based in Germany and operating mainly towards Eastern Europe... Then HOP for 10 years (ATR Airlinair, then ERJ145 and eJET 170-190), then B737 at Transavia, and for a few weeks now I have been in training on the B777 at Air France. In short, it has been like Disneyland for a few years where everything keeps getting better and better. I have quite good memories of the training, and an excellent one of the MCC in particular."
+    },
+    {
+      "id": "h7cJmZ6dpMbtr8qKdba6",
+      "text": "Formation MCC réussie en 2010 chez Airways avec Jean-Claude, super professionnel, grosse expérience opérationnelle et d’instructeur, méthode solide, bon suivi, positive training, synergie, brief/debrief sont au rendez-vous, formation associée avec exemples concret de la vraie vie opérationnelle, facteurs humains, en résumé préparant parfaitement à l’entrée en compagnie aérienne et décollage de la carrière",
+      "text_en": "Successful MCC training in 2010 at Airways with Jean-Claude, highly professional, extensive operational and instructor experience, solid methodology, good follow-up, positive training, synergy, briefings/debriefings are all there, training combined with concrete real-life operational examples, human factors, in summary perfectly preparing for airline entry and career takeoff.",
+      "role_en": "A320 Pilot, Expert Professional Pilot Specialist in human factors applied to design-flight testing and simulators-certification of new/retrofit cockpits, C3RIOS CANADA",
+      "rating": 5,
+      "author": "Xavier Colin",
+      "role": "Pilote A320, Expert Pilote Professionnel Spécialiste en facteurs humains appliqués au design-tests en vol et simulateurs-certification des nouveaux/rétrofit cockpits, C3RIOS CANADA",
+      "order": 17,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 819000000
+      }
+    },
+    {
+      "id": "j0PqJMAnOrwQGTpArfk3",
+      "rating": 5,
+      "role_en": "First Officer, Global 7500",
+      "text": "Jean-Claude a contribué à ma formation IR en 2013. Toujours calme et à l’écoute il a su m’inculquer la méthodologie et la rigueur requise. J’ai le souvenir de débriefings clairs, précis et bienveillants. Je garde un excellent souvenir de ma formation à ses côtés.",
+      "text_en": "Jean-Claude contributed to my IR training in 2013. Always calm and attentive, he was able to instill the necessary methodology and rigor in me. I remember clear, precise, and constructive debriefings. I have excellent memories of my training alongside him.",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 816000000
+      },
+      "order": 5,
+      "author": "Harold Vernoux",
+      "role": "OPL Global 7500"
+    },
+    {
+      "id": "kdKXld29t3loP4PJxqVB",
+      "text": "Chenard, un nom bien connu dans les cockpits… \".\nVoilà par quoi il faudrait commencer pour parler de Jean-Claude. J’ai profité de son expérience et de sa pédagogie en 2004, lors de ma MCC. Je garde un excellent souvenir de ce moment de ma formation. Jean-Claude nous a appris les fondamentaux du travail en équipage, dans une atmosphère à la fois rigoureuse et détendue. On travaille de la même manière à bord d’un 777 que dans un simulateur, avec Jean-Claude. C’est pourquoi il faut se tourner vers les bons instructeurs. Jean-Claude vous donnera les bons outils pour votre future carrière! Instructeur ⭐️⭐️⭐️⭐️⭐️. Je recommande.",
+      "text_en": "\"Chenard, a well-known name in cockpits…\" That is how one should begin when talking about Jean-Claude. I benefited from his experience and teaching methods in 2004, during my MCC. I have excellent memories of that time in my training. Jean-Claude taught us the fundamentals of crew teamwork, in an atmosphere that was both rigorous and relaxed. One works the same way on board a 777 as in a simulator with Jean-Claude. That is why you need to turn to the right instructors. Jean-Claude will give you the right tools for your future career! 5-star instructor ⭐️⭐️⭐️⭐️⭐️. I recommend.",
+      "rating": 5,
+      "role_en": "First Officer B777F CMA-CGM AIRCARGO",
+      "author": "Philippe Bourdeaux",
+      "role": "OPL B777F CMA-CGM AIRCARGO",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 821000000
+      },
+      "order": 27
+    },
+    {
+      "id": "klY70QR3vSWOZnyGWaaD",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 825000000
+      },
+      "order": 59,
+      "author": "Jean-Brice Coppolino",
+      "role": "RDFE / Suppléant RDOV Air Loyauté",
+      "rating": 5,
+      "role_en": "RDFE / Deputy Flight Operations Manager Air Loyauté",
+      "text": "J'ai travaillé pendant 17 ans aux côtés de Jean-Claude. J'ai rarement vue un engagement, une compétence et un dévouement aussi important pour les stagiaires de la part d'un instructeur.",
+      "text_en": "I worked alongside Jean-Claude for 17 years. I have rarely seen such commitment, competence, and dedication to trainees from an instructor."
+    },
+    {
+      "id": "lOMhD9IWS8cTtdFFwxKS",
+      "rating": 5,
+      "role_en": "Co-pilot CL350 Vistajet",
+      "text": "Un grand merci à Jean Claude pour la qualité de la formation MCC dispensée début d’année 2019. Son savoir et son professionnalisme sont indiscutables.",
+      "text_en": "A big thank you to Jean Claude for the quality of the MCC training provided at the beginning of 2019. His knowledge and professionalism are indisputable.",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 825000000
+      },
+      "order": 56,
+      "author": "Nicolas Coeur",
+      "role": "Copilote CL350 Vistajet"
+    },
+    {
+      "id": "mB0k9jdQkFuzoBAKXOKW",
+      "text": "Un très bon souvenir d’un bout de formation sur simulateur avec Jean-Claude, toujours très calme, posé et professionnel, qui permettait d’aller au simulateur serein et confiant, en y ressortant toujours avec de nouvelles connaissances. Un vrai sens de la pédagogie qui est indispensable et tellement appréciable en tant que stagiaire. Un grand merci pour tout !",
+      "text_en": "A very fond memory of a training session on the simulator with Jean-Claude, who was always very calm, composed, and professional, allowing me to approach the simulator feeling serene and confident, and always coming away with new knowledge. A true sense of teaching that is essential and so appreciated as a trainee. A big thank you for everything!",
+      "role_en": "A220 First Officer, Air France",
+      "rating": 5,
+      "author": "Valentin Svetchine",
+      "role": "OPL A220 Air France",
+      "order": 36,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      }
+    },
+    {
+      "id": "mlwJpRy99qT8do2ltTQK",
+      "text": "C'était au début des années 2000 chez Airways, J'ai eu la chance d'avoir Jean-Claude comme instructeur pour mon stage MCC. Ce dernier a été, et de loin, l'un des meilleurs instructeur que j'ai pu connaître durant ma carrière. Il avait une bienveillance incroyable, des compétences techniques très solides et surtout des qualités pédagogies rares, qui m'ont permis de restituer le meilleur de moi même durant ce stage, le tout dans un climat de travail super, sans pression de l'échec. Je recommande donc vivement Jean-Claude car il a ce gros plus que beaucoup d'autres n'ont pas.",
+      "text_en": "It was in the early 2000s at Airways; I was lucky enough to have Jean-Claude as my instructor for my MCC training. He was, by far, one of the best instructors I have known throughout my career. He possessed incredible kindness, very solid technical skills, and above all, rare teaching qualities, which allowed me to perform at my best during this course—all within a great working environment, without the pressure of failure. I therefore highly recommend Jean-Claude, as he has that extra something that many others lack.",
+      "rating": 5,
+      "role_en": "First Officer A330/A350 Air France",
+      "author": "Robin OLLIVEAUD",
+      "role": "OPL A330/A350 Air France",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "order": 52
+    },
+    {
+      "id": "mmOatOeRENSxpM7byMKt",
+      "order": 1,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 814000000
+      },
+      "author": "Maxime Laudat",
+      "role": "OPL Air France / Transavia",
+      "rating": 5,
+      "role_en": "First Officer Air France / Transavia",
+      "text": "Peu après Airways j’ai été recruté chez Ryanair où je suis resté six ans, avant la réussite des sélections Air France à l’été 2023, où j’officie désormais chez Transavia.\nJean Claude a été un excellent atout dans mon développement professionnel.\nJe recommande.",
+      "text_en": "Shortly after Airways I was recruited by Ryanair where I stayed for six years, before passing the Air France selections in the summer of 2023, where I now work for Transavia.\nJean Claude was an excellent asset in my professional development.\nI recommend."
+    },
+    {
+      "id": "nREpWDBcg7EspFkkYpkx",
+      "role_en": "A320 Captain easyJet / Consulting TRI Training Air",
+      "rating": 5,
+      "text": "J’ai eu la chance de passer ma MCC avec Jean Claude en 2001. Il a su introduire la réalité du vol commercial en équipage et reste de loin l’un de mes instructeurs avec qui j’ai eu le plaisir d’apprendre.",
+      "text_en": "I had the chance to complete my MCC with Jean Claude in 2001. He was able to introduce the reality of commercial multi-crew flight and remains by far one of the instructors with whom I had the pleasure of learning.",
+      "order": 54,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "author": "Nicolas Frick",
+      "role": "CdB A320 easyJet / Consulting TRI Training Air"
+    },
+    {
+      "id": "pAf1wMFqHzstCsmvzV06",
+      "order": 4,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 815000000
+      },
+      "author": "Hamza Hadded",
+      "role": "FI-CRI-TKI",
+      "role_en": "FI-CRI-TKI",
+      "rating": 5,
+      "text": "J'ai eu la chance d'avoir Jean-Claude pendant ma formation IR, et je suis reconnaissant de l'impact positive que ça a fait sur ma carrière aéronautique. J'ai beaucoup appris de son dévouement à l'excellence et de sa passion pour l'enseignement..",
+      "text_en": "I was lucky to have Jean-Claude during my IR training, and I am grateful for the positive impact it has had on my aviation career. I learned a lot from his dedication to excellence and his passion for teaching."
+    },
+    {
+      "id": "qf9iishcFr2tv41tu3pr",
+      "rating": 5,
+      "role_en": "FO 737 - Ryanair",
+      "text_en": "I had the chance to complete my MCC with Jean-Claude. His excellent knowledge of the realities of the profession and current procedures is a significant asset, which allowed me to pass airline selections without any issues. He knows how to bring out the best in everyone by creating sessions that maximize learning, always with a pedagogical approach, with the goal of transforming students into true high-level professional pilots.",
+      "text": "J'ai eu la chance d'effectuer ma MCC avec Jean-Claude. Son excellente connaissance de la réalité du métier et des procédures actuellement en vigueur est un atout considérable, qui m'a permis de passer sans problème les sélections compagnies. Il sait tirer le meilleur de chacun en créant des séances permettant d'apprendre un maximum, toujours dans un état d'esprit pédagogique, dans le but de transformer les élèves en vrais pilotes professionnels de haut niveau.",
+      "order": 49,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "author": "Yannis Beauve",
+      "role": "OPL737 - Ryanair"
+    },
+    {
+      "id": "r21LIwRKbTPtxSEztZ5y",
+      "role_en": "First Officer B787 Air Tahiti Nui",
+      "rating": 5,
+      "text": "Super formation avec Jean-Claude. On a fait ensemble quelques simus IFR et surtout ma formation MCC. Jean-Claude est super pédagogue et patient, l'idéal pour une formation au top !",
+      "text_en": "Great training with Jean-Claude. We did some IFR simulations together and especially my MCC training. Jean-Claude is a great teacher and patient, ideal for top-notch training!",
+      "order": 42,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      },
+      "author": "Barbara Bonnard",
+      "role": "OPL B787 Air Tahiti Nui"
+    },
+    {
+      "id": "sQPaBu79NHSl6ujxphGC",
+      "text": "J'ai bénéficié en 2017 lors de ma formation MCC dans le cadre d'un CPL-IR/ME, de l'expérience et des qualités pédagogiques de Jean-Claude, notamment de son expertise en matière de travail d'équipe et de formation sur les compétences non techniques. Médecin anesthésiste-réanimateur avant tout, Jean-Claude a suscité en moi une vocation : implémenter les facteurs humains, le CRM et les compétences non techniques dans le domaine de la santé. Depuis, j'ai pu participé à la rédaction des premières recommandations de pratiques professionnelles sur Facteurs Humains en situations critiques rédigées par la Société Française d'Anesthésie-Réanimation (SFAR) et le groupe Facteurs Humains en Santé. En octobre dernier, les éditions John-Libbey-Arnette ont publié un ouvrage intitulé Facteurs Humains en Santé que j'ai co-dirigé avec le Dr François Jaulin et qui regroupe plusieurs chapitres écrits par plus de 60 collaborateurs. Que ces quelques lignes me permettent de te remercier pour la qualité de ton enseignement.",
+      "text_en": "In 2017, during my MCC training as part of a CPL-IR/ME, I benefited from Jean-Claude's experience and pedagogical qualities, particularly his expertise in teamwork and non-technical skills training. Primarily an anesthesiologist-intensivist, Jean-Claude sparked a calling in me: to implement human factors, CRM, and non-technical skills in the healthcare field. Since then, I have been able to participate in drafting the first professional practice recommendations on Human Factors in critical situations, written by the French Society of Anesthesia and Intensive Care (SFAR) and the Healthcare Human Factors group. Last October, John-Libbey-Arnette published a book entitled 'Human Factors in Healthcare' that I co-edited with Dr. François Jaulin, which brings together several chapters written by more than 60 contributors. May these few lines serve to thank you for the quality of your teaching.",
+      "rating": 5,
+      "role_en": "MD, PhD, IUCT-Oncopole of Toulouse",
+      "author": "Régis Fuzier",
+      "role": "MD, PhD IUCT-Oncopole de Toulouse",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 818000000
+      },
+      "order": 14
+    },
+    {
+      "id": "vBMsuAzaauxiPRQuJ7er",
+      "rating": 5,
+      "role_en": "A320 Captain, EasyJet",
+      "text": "J'ai effectué ma formation de pilote, après une première expérience d'ingénieur aéronautique, et terminé par ma MCC (formation en équipage) avec Jean-Claude, et c'était un excellent moment de formation aéronautique. J'ai ensuite pu réaliser une qualification de type A320 chez Easyjet, puis devenir copilote A320, et passer CDB au bout de 5 années. Jean-Claude m'a permis d'approfondir mon IFR et de découvrir le travail en équipage. Jean-Claude est à la fois un instructeur IFR exigeant et de qualité mais aussi et surtout un instructeur bienveillant à l'écoute de ses élèves et qui prodigue de très bons conseils. Il a le souhait de les aider à développer leurs compétences techniques comme l'IFR et le travail en équipage, mais surtout non techniques (CRM, Non technical skills) si importantes aujourd'hui dans le métier de pilote.",
+      "text_en": "I completed my pilot training after an initial experience as an aeronautical engineer, and finished with my MCC (multi-crew coordination) with Jean-Claude, and it was an excellent aeronautical training experience. I was then able to complete an A320 type rating at EasyJet, then become an A320 first officer, and become a Captain after 5 years. Jean-Claude allowed me to deepen my IFR skills and discover multi-crew work. Jean-Claude is both a demanding and high-quality IFR instructor but also, and above all, a benevolent instructor who listens to his students and provides very good advice. He wishes to help them develop their technical skills such as IFR and multi-crew coordination, but especially non-technical skills (CRM, Non-technical skills) which are so important today in the pilot profession.",
+      "order": 41,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 823000000
+      },
+      "role": "CDB A320 Easyjet",
+      "author": "Sébastien Dufour"
+    },
+    {
+      "id": "wFtAEuldEUUZSI7YpSkN",
+      "order": 18,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 819000000
+      },
+      "author": "Nicolas Rabouille",
+      "role": "OPL 737 TransaviaAncien CDB et chef de secteur chez Jetfly Aviation",
+      "rating": 5,
+      "role_en": "737 First Officer at Transavia, Former Captain and Sector Head at Jetfly Aviation",
+      "text_en": "I had the privilege of completing my MCC training with Jean-Claude. This course was extremely rewarding, both from a technical and human perspective. Jean-Claude also retrained me during a simulator session for upcoming selections: a precise and effective session that bore fruit. His name is frequently mentioned in French-speaking cockpits, and always in high regard!",
+      "text": "J’ai eu le privilège de faire ma formation MCC avec Jean-Claude. Ce stage fut extrêmement riche d’enseignements tant sur le plan technique qu’humain.\nJean-Claude m’a aussi ré-entrainé sur une séance de simulateur en vue de sélections: séance précise, efficace et qui porta ses fruits.\nSon nom est très souvent cité dans les cockpits francophones, et c’est systématiquement pour en dire du bien!"
+    },
+    {
+      "id": "xAAP5ePiQ7NSPNQGhI3n",
+      "author": "Olivier Steinberg",
+      "role": "CDB B767 chez DHL (BAHRAIN).",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 820000000
+      },
+      "order": 22,
+      "text": "J'ai connu Jean-Claude lors de ma formation IR MCC chez Airways en 2000.\nJ'ai gardé des séances de simulateur avec lui un excellent souvenir. La qualité de l'instruction était remarquable et Jean-Claude a été vraiment calme et bienveillant à tout moment.\nC'est un des meilleurs instructeurs que j'ai rencontrés et je ne saurais trop le recommander à toute personne désireuse de suivre une formation aéronautique.",
+      "text_en": "I met Jean-Claude during my IR MCC training at Airways in 2000. I have excellent memories of the simulator sessions with him. The quality of the instruction was remarkable and Jean-Claude was truly calm and kind at all times. He is one of the best instructors I have encountered and I cannot recommend him highly enough to anyone wishing to undergo aeronautical training.",
+      "rating": 5,
+      "role_en": "B767 Captain at DHL (BAHRAIN)"
+    },
+    {
+      "id": "xBKqrcYGBjLfBLGkCz7T",
+      "rating": 5,
+      "role_en": "Managing Partner / Accountable Manager, St Barth Commuter",
+      "text": "Dans la vie d’un pilote, on est amené à croiser une poignée de professionnels qui vous marquent vraiment. Ils vous marquent par leur professionnalisme, leurs compétences et enfin par cette capacité à partager leurs connaissances en expliquant des concepts parfois complexes ou abstrait avec des mots simples, rendant l’apprentissage « presque » facile. Jean-Claude en fait indiscutablement partie. J’ai eu la chance de l’avoir comme instructeur MCC et cette formation reste l’un de mes meilleurs souvenirs d’apprentissage. Je ne peux que le recommander vivement à tout stagiaire souhaitant acquérir ou approfondir les fondamentaux de l’IFR et du travail en équipage. Bons vols",
+      "text_en": "In a pilot's life, you encounter a handful of professionals who truly leave a lasting impression. They stand out for their professionalism, their skills, and finally, for their ability to share their knowledge by explaining sometimes complex or abstract concepts in simple terms, making learning 'almost' easy. Jean-Claude is unquestionably one of them. I was fortunate to have him as my MCC instructor, and that training remains one of my best learning memories. I can only highly recommend him to any trainee wishing to acquire or deepen their understanding of the fundamentals of IFR and multi-crew cooperation. Safe flights.",
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 822000000
+      },
+      "order": 37,
+      "author": "Bertrand Magras",
+      "role": "Associé-Gérant/ Dirigeant ResponsableSt Barth Commuter"
+    },
+    {
+      "id": "yKBlrjbolVYUeTc9y8F0",
+      "author": "Benoît LAFOREST",
+      "role": "CDB Falcon 7/8 X , F900 Easy TRI TRE",
+      "order": 21,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 819000000
+      },
+      "text": "Jean-Claude a formé des dizaines de pilotes dont moi pour mon stage IFR et ma MCC. Il est de ces instructeurs qui rendent les choses simples, qui donnent leur temps, leur professionnalisme et leur gentillesse pour faire apprendre, revoir et progresser. La méthode IFR et les bases de la MCC faites avec lui m’ont accompagnées toute ma carrière,depuis mes débuts en Jar 23, jusqu’à mes stages de CDB et TRE en ligne et aviation d’affaires. Quelque soit le stage envisagé je ne peux qu’imaginer une plus value à le faire avec Jean-Claude.",
+      "text_en": "Jean-Claude has trained dozens of pilots, including me, for my IFR rating and my MCC. He is one of those instructors who make things simple, who give their time, their professionalism, and their kindness to help others learn, review, and progress. The IFR method and the MCC basics I learned with him have stayed with me throughout my career, from my beginnings in Jar 23 to my Captain and TRE training in commercial airlines and business aviation. Whatever the training considered, I can only imagine an added value in doing it with Jean-Claude.",
+      "role_en": "Captain Falcon 7/8 X, F900 Easy TRI TRE",
+      "rating": 5
+    },
+    {
+      "id": "zHfuxtLUN7Z6K7vOwabo",
+      "author": "",
+      "role": "Pilot instructor EASA TRI A320",
+      "order": 51,
+      "createdAt": {
+        "seconds": 1775454801,
+        "nanoseconds": 824000000
+      },
+      "text": "Let me cut to the chase, Jean Claude is just a rockstar! I signed up for the MCC back in the days and he just turned sim sessions into a game-changer. He isn't just a know-it-all but he gets us, the students. Jean Claude cares about our success and pushed us to be better, gave us gold-star feedback, and even threw in some real-world tips that you won't find in textbooks.",
+      "text_en": "Let me cut to the chase, Jean Claude is just a rockstar! I signed up for the MCC back in the days and he just turned sim sessions into a game-changer. He isn't just a know-it-all but he gets us, the students. Jean Claude cares about our success and pushed us to be better, gave us gold-star feedback, and even threw in some real-world tips that you won't find in textbooks.",
+      "role_en": "Pilot instructor EASA TRI A320",
+      "rating": 5
+    }
+  ]
+}

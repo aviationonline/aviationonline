@@ -1,0 +1,154 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information and subscription status",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "firstName": { "type": "string", "description": "User first name" },
+        "lastName": { "type": "string", "description": "User last name" },
+        "phone": { "type": "string", "description": "User phone number (optional)" },
+        "address": { "type": "string", "description": "User postal address" },
+        "zipCode": { "type": "string", "description": "User zip code" },
+        "city": { "type": "string", "description": "User city" },
+        "country": { "type": "string", "description": "User country" },
+        "role": { "type": "string", "enum": ["student", "admin"], "description": "User role" },
+        "isPaid": { "type": "boolean", "description": "Whether the user has paid for the course" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation date" }
+      },
+      "required": ["uid", "email", "firstName", "lastName", "address", "zipCode", "city", "country", "role", "isPaid"]
+    },
+    "Module": {
+      "title": "Course Module",
+      "description": "A high-level module containing multiple courses",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Module title" },
+        "description": { "type": "string", "description": "Module description" },
+        "pdfUrl": { "type": "string", "description": "Optional URL to a PDF document for the module" },
+        "order": { "type": "integer", "description": "Display order" }
+      },
+      "required": ["title", "order"]
+    },
+    "Course": {
+      "title": "Course Content",
+      "description": "Individual course content within a module",
+      "type": "object",
+      "properties": {
+        "moduleId": { "type": "string", "description": "ID of the parent module" },
+        "title": { "type": "string", "description": "Course title" },
+        "content": { "type": "string", "description": "Course content in Markdown format" },
+        "pdfUrl": { "type": "string", "description": "Optional URL to a PDF document" },
+        "order": { "type": "integer", "description": "Display order within the module" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation date" }
+      },
+      "required": ["moduleId", "title", "content", "order"]
+    },
+    "ConnectionLog": {
+      "title": "Connection Log",
+      "description": "Logs of user login sessions and activity",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "User ID" },
+        "email": { "type": "string", "description": "User email" },
+        "loginTime": { "type": "string", "format": "date-time", "description": "Login timestamp" },
+        "lastActive": { "type": "string", "format": "date-time", "description": "Last activity timestamp" },
+        "duration": { "type": "integer", "description": "Session duration in minutes" }
+      },
+      "required": ["uid", "email", "loginTime", "lastActive"]
+    },
+    "Quiz": {
+      "title": "Quiz",
+      "description": "A collection of questions on a specific topic",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Quiz title" },
+        "description": { "type": "string", "description": "Quiz description" },
+        "category": { "type": "string", "description": "Quiz category (e.g., PSV, Radio)" },
+        "order": { "type": "integer", "description": "Display order" }
+      },
+      "required": ["title", "category", "order"]
+    },
+    "Question": {
+      "title": "Question",
+      "description": "A multiple-choice question within a quiz",
+      "type": "object",
+      "properties": {
+        "quizId": { "type": "string", "description": "ID of the parent quiz" },
+        "text": { "type": "string", "description": "Question text" },
+        "options": { "type": "array", "items": { "type": "string" }, "description": "List of possible answers" },
+        "correctOption": { "type": "integer", "description": "Index of the correct answer in the options array" },
+        "explanation": { "type": "string", "description": "Explanation for the correct answer" },
+        "order": { "type": "integer", "description": "Display order within the quiz" }
+      },
+      "required": ["quizId", "text", "options", "correctOption", "order"]
+    },
+    "QuizAttempt": {
+      "title": "Quiz Attempt",
+      "description": "A record of a student's performance on a quiz",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "ID of the student" },
+        "userName": { "type": "string", "description": "Full name of the student" },
+        "userEmail": { "type": "string", "description": "Email of the student" },
+        "quizId": { "type": "string", "description": "ID of the quiz" },
+        "quizTitle": { "type": "string", "description": "Title of the quiz" },
+        "score": { "type": "integer", "description": "Number of correct answers" },
+        "totalQuestions": { "type": "integer", "description": "Total number of questions in the quiz" },
+        "percentage": { "type": "integer", "description": "Percentage score" },
+        "completedAt": { "type": "string", "format": "date-time", "description": "Completion timestamp" }
+      },
+      "required": ["userId", "userName", "userEmail", "quizId", "quizTitle", "score", "totalQuestions", "percentage", "completedAt"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "A testimonial from a student",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string", "description": "Testimonial text" },
+        "author": { "type": "string", "description": "Author name" },
+        "role": { "type": "string", "description": "Author role/company" },
+        "rating": { "type": "integer", "description": "Rating (1-5)" },
+        "order": { "type": "integer", "description": "Display order" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation date" }
+      },
+      "required": ["text", "author", "role", "rating", "order"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/modules/{moduleId}": {
+      "schema": "Module",
+      "description": "Course modules"
+    },
+    "/modules/{moduleId}/courses/{courseId}": {
+      "schema": "Course",
+      "description": "Courses within a module"
+    },
+    "/connection_logs/{logId}": {
+      "schema": "ConnectionLog",
+      "description": "User connection history"
+    },
+    "/quizzes/{quizId}": {
+      "schema": "Quiz",
+      "description": "Quizzes for students"
+    },
+    "/quizzes/{quizId}/questions/{questionId}": {
+      "schema": "Question",
+      "description": "Questions within a quiz"
+    },
+    "/quiz_attempts/{attemptId}": {
+      "schema": "QuizAttempt",
+      "description": "Records of quiz completions"
+    },
+    "/testimonials/{testimonialId}": {
+      "schema": "Testimonial",
+      "description": "Student testimonials"
+    }
+  }
+}
