@@ -40,5 +40,10 @@
   <loc>https://aviationonline.net/preparation-ir-easa</loc>
   <priority>1.0</priority>
   </url> 
+
+  <url>
+  <loc>https://aviationonline.net/preparation-pilote-ligne</loc>
+  <priority>1.0</priority>
+  </url>
   
 </urlset>
