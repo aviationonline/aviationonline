@@ -34,6 +34,29 @@ export default function FormationIFR() {
         <li>Mise à jour continue</li>
       </ul>
 
+      <h2 className="text-3xl font-bold mt-12 mb-4">
+      Programme de la formation IFR
+      </h2>
+
+      <p className="mb-6">
+      La formation couvre l'ensemble des compétences IFR requises pour
+      préparer une qualification IR EASA ou réussir une sélection en
+      compagnie aérienne.
+      </p>
+
+      <ul className="list-disc pl-6 space-y-2">
+      <li>Radio-navigation VOR, NDB, DME</li>
+      <li>SID et STAR</li>
+      <li>Procédures d'attente</li>
+      <li>Approches ILS</li>
+      <li>Approches RNAV GNSS</li>
+      <li>Réglementation IFR</li>
+      <li>Météorologie IFR</li>
+      <li>Facteurs humains</li>
+      <li>Gestion de la charge de travail</li>
+      <li>Préparation aux sélections compagnies aériennes</li>
+      </ul>
+      
       <div className="mt-12">
         <a
           href="/login"
