@@ -1,3 +1,4 @@
+import PreparationIREASA from './pages/PreparationIREASA';
 import FormationIFR from './pages/FormationIFR';
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link, useNavigate, useLocation } from 'react-router-dom';
