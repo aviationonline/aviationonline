@@ -1,3 +1,4 @@
+import PreparationPiloteLigne from './pages/PreparationPiloteLigne';
 import PreparationIREASA from './pages/PreparationIREASA';
 import FormationIFR from './pages/FormationIFR';
 import React, { useState, useEffect, createContext, useContext } from 'react';
