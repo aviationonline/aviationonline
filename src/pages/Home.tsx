@@ -142,19 +142,19 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
               </span>
-              Formation Excellence IFR
+              Formation IFR en ligne
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-8">
               Propulsez votre carrière <br />
               <span className="bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent italic">vers les sommets</span>
             </h1>
             <p className="text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-              Maîtrisez les procédures IFR avec une pédagogie d'exception. 
-              Une formation conçue par des experts pour les futurs pilotes de ligne.
+              Maîtrisez les procédures IFR. 
+              Une formation conçue pour les futurs pilotes de ligne.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link to="/login" className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                Commencer l'aventure <ChevronRight className="w-5 h-5" />
+                Commencer <ChevronRight className="w-5 h-5" />
               </Link>
               <a href="#pricing" className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl backdrop-blur-md border border-white/10 transition-all flex items-center justify-center gap-3 group">
                 {promotion ? ( 
@@ -366,7 +366,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-lg font-bold text-white mb-2">Expertise reconnue en instruction aéronautique</h3>
                     <p className="text-blue-100/80 text-sm leading-relaxed">
-                      Plus de <strong>25 000 heures d'instruction</strong> en vol et sur simulateur. Une expertise spécialisée en formations <strong>IFR</strong> (Instrument Flight Rules) et <strong>MCC</strong> (Multi Crew Cooperation) <strong>depuis 1989</strong>, accompagnant des centaines de pilotes de ligne vers la réussite de leurs qualifications et de leurs sélections en compagnie aérienne.
+                      Plus de <strong>25 000 heures d'instruction</strong> sur simulateur. Une expertise spécialisée en formations <strong>IFR</strong> (Instrument Flight Rules) et <strong>MCC</strong> (Multi Crew Cooperation) <strong>depuis 1989</strong>, accompagnant des centaines de pilotes de ligne vers la réussite de leurs qualifications et de leurs sélections en compagnie aérienne.
                     </p>
                   </div>
                 </div>
