@@ -1,3 +1,4 @@
+import FormationIFR from './pages/FormationIFR';
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link, useNavigate, useLocation } from 'react-router-dom';
 import { auth, db, googleProvider, OperationType, handleFirestoreError } from './firebase';
@@ -724,6 +725,7 @@ export default function App() {
                   <Route path="/legal" element={<LegalMentions />} />
                   <Route path="/terms" element={<TermsOfService />} />
                   <Route path="/testimonials" element={<Testimonials />} />
+                  <Route path="/formation-ifr-en-ligne" element={<FormationIFR />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>
