@@ -726,6 +726,7 @@ export default function App() {
                   <Route path="/terms" element={<TermsOfService />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/formation-ifr-en-ligne" element={<FormationIFR />} />
+                  <Route path="/preparation-ir-easa" element={<PreparationIREASA />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>
