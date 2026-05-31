@@ -614,6 +614,40 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 bg-slate-50">
+  <div className="max-w-4xl mx-auto px-6">
+    <h2 className="text-3xl font-bold mb-6">
+      En savoir plus
+    </h2>
+
+    <div className="space-y-4">
+
+      <a
+        href="/formation-ifr-en-ligne"
+        className="block p-4 border rounded-lg hover:bg-white"
+      >
+        Formation IFR en ligne
+      </a>
+
+      <a
+        href="/preparation-ir-easa"
+        className="block p-4 border rounded-lg hover:bg-white"
+      >
+        Préparation IR EASA
+      </a>
+
+      <a
+        href="/preparation-pilote-ligne"
+        className="block p-4 border rounded-lg hover:bg-white"
+      >
+        Préparation pilote de ligne
+      </a>
+
+    </div>
+  </div>
+</section>
+
+      
       {/* CTA Section */}
       <section className="py-24 bg-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
