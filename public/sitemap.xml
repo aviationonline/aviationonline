@@ -31,4 +31,10 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+  <loc>https://aviationonline.net/formation-ifr-en-ligne</loc>
+  <priority>1.0</priority>
+    
+</url>
+
 </urlset>
