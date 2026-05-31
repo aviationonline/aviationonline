@@ -395,7 +395,7 @@ const Navbar = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-zinc-900 leading-none">AVIATION ONLINE</span>
-                <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] mt-1 uppercase">AERO ACADEMY</span>
+                <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] mt-1 uppercase"></span>
               </div>
             </Link>
           </div>
