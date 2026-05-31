@@ -407,6 +407,7 @@ const Navbar = () => {
                 { path: '/', label: t('nav.home') },
                 { path: '/testimonials', label: t('nav.testimonials') },
                 { path: '/formation-ifr-en-ligne', label: 'Formation IFR' },
+                { path: '/preparation-ir-easa', label: 'IR EASA' },
                 { path: '/dashboard', label: t('nav.courses'), protected: true },
               ].map((link) => (
                 (!link.protected || user) && (
