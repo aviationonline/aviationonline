@@ -1,3 +1,4 @@
+import APropos from './pages/APropos';
 import PreparationPiloteLigne from './pages/PreparationPiloteLigne';
 import PreparationIREASA from './pages/PreparationIREASA';
 import FormationIFR from './pages/FormationIFR';
@@ -730,6 +731,7 @@ export default function App() {
                   <Route path="/preparation-ir-easa" element={<PreparationIREASA />} />
                   <Route path="/preparation-pilote-ligne" element={<PreparationPiloteLigne />} />
                   <Route path="*" element={<Navigate to="/" />} />
+                  <Route path="/a-propos" element={<APropos />} />
                 </Routes>
               </main>
               <Footer />
