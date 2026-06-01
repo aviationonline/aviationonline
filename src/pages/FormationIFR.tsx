@@ -1,6 +1,7 @@
 export default function FormationIFR() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-20">
+
       <h1 className="text-5xl font-bold mb-8">
         Formation IFR en ligne
       </h1>
@@ -35,28 +36,80 @@ export default function FormationIFR() {
       </ul>
 
       <h2 className="text-3xl font-bold mt-12 mb-4">
-      Programme de la formation IFR
+        Programme de la formation IFR
       </h2>
 
       <p className="mb-6">
-      La formation couvre l'ensemble des compétences IFR requises pour
-      préparer une qualification IR EASA ou réussir une sélection en
-      compagnie aérienne.
+        La formation couvre l'ensemble des compétences IFR requises pour
+        préparer une qualification IR EASA ou réussir une sélection en
+        compagnie aérienne.
       </p>
 
       <ul className="list-disc pl-6 space-y-2">
-      <li>Radio-navigation VOR, NDB, DME</li>
-      <li>SID et STAR</li>
-      <li>Procédures d'attente</li>
-      <li>Approches ILS</li>
-      <li>Approches RNAV GNSS</li>
-      <li>Réglementation IFR</li>
-      <li>Météorologie IFR</li>
-      <li>Facteurs humains</li>
-      <li>Gestion de la charge de travail</li>
-      <li>Préparation aux sélections compagnies aériennes</li>
+        <li>Radio-navigation VOR, NDB, DME</li>
+        <li>SID et STAR</li>
+        <li>Procédures d'attente</li>
+        <li>Approches ILS</li>
+        <li>Approches RNAV GNSS</li>
+        <li>Réglementation IFR</li>
+        <li>Météorologie IFR</li>
+        <li>Facteurs humains</li>
+        <li>Gestion de la charge de travail</li>
+        <li>Préparation aux sélections compagnies aériennes</li>
       </ul>
-      
+
+      <h2 className="text-3xl font-bold mt-12 mb-6">
+        Questions fréquentes sur la formation IFR
+      </h2>
+
+      <div className="space-y-6">
+
+        <div>
+          <h3 className="text-xl font-bold mb-2">
+            Qu'est-ce qu'une qualification IR ?
+          </h3>
+          <p>
+            La qualification Instrument Rating (IR) permet à un pilote de
+            voler selon les règles IFR et d'effectuer des vols en conditions
+            météorologiques dégradées en utilisant exclusivement les
+            instruments de bord.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-bold mb-2">
+            Cette formation IFR est-elle adaptée à la préparation IR EASA ?
+          </h3>
+          <p>
+            Oui. La formation couvre les principaux thèmes rencontrés lors
+            d'une qualification IR EASA : radionavigation, procédures IFR,
+            approches, réglementation et gestion de la charge de travail.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-bold mb-2">
+            Puis-je suivre la formation à mon rythme ?
+          </h3>
+          <p>
+            Oui. L'accès est disponible en ligne et sans limitation de durée
+            afin de permettre un apprentissage flexible.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-bold mb-2">
+            Cette formation convient-elle aux sélections compagnies aériennes ?
+          </h3>
+          <p>
+            Oui. Une bonne maîtrise des procédures IFR constitue un élément
+            essentiel dans la préparation des sélections pilotes et des
+            évaluations techniques.
+          </p>
+        </div>
+
+      </div>
+
       <div className="mt-12">
         <a
           href="/login"
@@ -65,6 +118,7 @@ export default function FormationIFR() {
           Accéder à la formation
         </a>
       </div>
+
     </div>
   );
 }
