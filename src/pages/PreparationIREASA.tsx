@@ -89,6 +89,45 @@ export default function PreparationIREASA() {
         </a>
       </div>
 
+      <div className="bg-slate-50 p-8 rounded-2xl mt-16">
+
+  <h2 className="text-2xl font-bold mb-4">
+    Aller plus loin
+  </h2>
+
+  <ul className="space-y-3">
+
+    <li>
+      <a
+        href="/formation-ifr-en-ligne"
+        className="text-blue-600 font-semibold"
+      >
+        Formation IFR en ligne
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/renouvellement-ir"
+        className="text-blue-600 font-semibold"
+      >
+        Renouvellement IR
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/faq-ifr"
+        className="text-blue-600 font-semibold"
+      >
+        FAQ IFR
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+
     </div>
   );
 }
