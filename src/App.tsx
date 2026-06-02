@@ -733,6 +733,7 @@ export default function App() {
                   <Route path="/preparation-ir-easa" element={<PreparationIREASA />} />
                   <Route path="/preparation-pilote-ligne" element={<PreparationPiloteLigne />} />
                   <Route path="/a-propos" element={<APropos />} />
+                  <Route path="/selection-pilote-ligne"element={<SelectionPiloteLigne />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>
