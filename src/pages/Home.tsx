@@ -648,7 +648,15 @@ export default function Home() {
         className="block p-4 border rounded-lg hover:bg-white"
       >
         Sélection pilote de ligne
+      </Link>  
+      
+      <Link
+        to="/renouvellement-ir"
+        className="block p-4 border rounded-lg hover:bg-white"
+      >
+        Renouvellement IR
       </Link>
+      
 
     </div>
   </div>
