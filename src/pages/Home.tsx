@@ -643,6 +643,13 @@ export default function Home() {
         Préparation pilote de ligne
       </a>
 
+      <Link
+        to="/selection-pilote-ligne"
+        className="block p-4 border rounded-lg hover:bg-white"
+      >
+        Sélection pilote de ligne
+      </Link>
+
     </div>
   </div>
 </section>
