@@ -127,7 +127,7 @@ export default function AdminDashboard() {
   const [questionsByQuiz, setQuestionsByQuiz] = useState<Record<string, Question[]>>({});
   const [quizAttempts, setQuizAttempts] = useState<any[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [activeTab, setActiveTab] = useState<'content' | 'users' | 'migration' | 'logs' | 'qcm' | 'results' | 'maintenance' | 'testimonials' | 'promotion'>('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'users' | 'migration' | 'logs' | 'qcm' | 'results' | 'maintenance' | 'testimonials' | 'promotion' | 'seo' >('content');
   const [promotion, setPromotion] = useState<Promotion>({ isActive: false, endDate: '', discountPercentage: 0, promoCode: '' });
   const [savingPromotion, setSavingPromotion] = useState(false);
   const [stripePaymentLink, setStripePaymentLink] = useState('');
