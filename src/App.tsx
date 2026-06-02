@@ -1,3 +1,4 @@
+import SelectionPiloteLigne from './pages/SelectionPiloteLigne';
 import APropos from './pages/APropos';
 import PreparationPiloteLigne from './pages/PreparationPiloteLigne';
 import PreparationIREASA from './pages/PreparationIREASA';
