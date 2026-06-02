@@ -55,5 +55,10 @@
   <loc>https://aviationonline.net/selection-pilote-ligne</loc>
   <priority>1.0</priority>
   </url>
+
+  <url>
+  <loc>https://aviationonline.net/renouvellement-ir</loc>
+  <priority>1.0</priority>
+  </url>
   
 </urlset>
