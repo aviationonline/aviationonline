@@ -656,6 +656,13 @@ export default function Home() {
       >
         Renouvellement IR
       </Link>
+
+      <Link
+        to="/faq-ifr"
+        className="block p-4 border rounded-lg hover:bg-white"
+      >
+        FAQ IFR
+</Link>
       
 
     </div>
