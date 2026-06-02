@@ -408,6 +408,7 @@ const Navbar = () => {
             <div className="flex items-center gap-6">
               {[
                 { path: '/', label: t('nav.home') },
+                { path: '/a-propos', label: 'À propos' },
                 { path: '/testimonials', label: t('nav.testimonials') },
                 { path: '/dashboard', label: t('nav.courses'), protected: true },
               ].map((link) => (
@@ -730,8 +731,8 @@ export default function App() {
                   <Route path="/formation-ifr-en-ligne" element={<FormationIFR />} />
                   <Route path="/preparation-ir-easa" element={<PreparationIREASA />} />
                   <Route path="/preparation-pilote-ligne" element={<PreparationPiloteLigne />} />
-                  <Route path="*" element={<Navigate to="/" />} />
                   <Route path="/a-propos" element={<APropos />} />
+                  <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>
               <Footer />
