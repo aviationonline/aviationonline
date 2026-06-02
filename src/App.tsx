@@ -1,3 +1,4 @@
+import FaqIFR from './pages/FaqIFR';
 import RenouvellementIR from './pages/RenouvellementIR';
 import SelectionPiloteLigne from './pages/SelectionPiloteLigne';
 import APropos from './pages/APropos';
@@ -736,6 +737,7 @@ export default function App() {
                   <Route path="/a-propos" element={<APropos />} />
                   <Route path="/selection-pilote-ligne"element={<SelectionPiloteLigne />} />
                   <Route path="/renouvellement-ir"element={<RenouvellementIR />} />
+                  <Route path="/faq-ifr"element={<FaqIFR />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>
