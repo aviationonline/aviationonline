@@ -1,3 +1,4 @@
+import RenouvellementIR from './pages/RenouvellementIR';
 import SelectionPiloteLigne from './pages/SelectionPiloteLigne';
 import APropos from './pages/APropos';
 import PreparationPiloteLigne from './pages/PreparationPiloteLigne';
@@ -734,6 +735,7 @@ export default function App() {
                   <Route path="/preparation-pilote-ligne" element={<PreparationPiloteLigne />} />
                   <Route path="/a-propos" element={<APropos />} />
                   <Route path="/selection-pilote-ligne"element={<SelectionPiloteLigne />} />
+                  <Route path="/renouvellement-ir"element={<RenouvellementIR />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>
