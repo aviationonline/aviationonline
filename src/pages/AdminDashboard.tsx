@@ -1799,6 +1799,15 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
             className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${activeTab === 'promotion' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-700'}`}
           >
             Promotion
+          <button
+            onClick={() => setActiveTab('seo')}
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${activeTab === 'seo'
+               ? 'bg-blue-600 text-white'
+               : 'text-zinc-400 hover:text-white hover:bg-white/10'
+            }`}
+>
+  SEO & Stats
+</button>
           </button>
         </div>
       </div>
