@@ -1565,14 +1565,47 @@ async function startServer() {
         return res.status(400).json({ error: "UserId and email are required" });
       }
 
-      let unitAmount = 7900;
+      let basePrice = 79;
+      try {
+        let priceDoc: any = null;
+        try {
+          priceDoc = await admin.firestore().collection('settings').doc('pricing').get();
+        } catch {
+          if (db) {
+            const clientDoc = await getDoc(doc(db, 'settings', 'pricing'));
+            if (clientDoc.exists()) {
+              priceDoc = { exists: true, data: () => clientDoc.data() };
+            }
+          }
+        }
+        if (priceDoc && priceDoc.exists) {
+          const pData = typeof priceDoc.data === 'function' ? priceDoc.data() : priceDoc.data;
+          if (pData && typeof pData.basePrice === 'number' && pData.basePrice >= 0) {
+            basePrice = pData.basePrice;
+          }
+        }
+      } catch (e) {
+        console.warn("Could not fetch basePrice from settings/pricing, defaulting to 79:", e);
+      }
+
+      let unitAmount = Math.round(basePrice * 100);
       
       // Calculate promo code discount
       if (promoCode) {
         try {
-          const promoDoc = await admin.firestore().collection('settings').doc('promotion').get();
-          if (promoDoc.exists) {
-            const promoData = promoDoc.data();
+          let promoDoc: any = null;
+          try {
+            promoDoc = await admin.firestore().collection('settings').doc('promotion').get();
+          } catch {
+            if (db) {
+              const clientPromoDoc = await getDoc(doc(db, 'settings', 'promotion'));
+              if (clientPromoDoc.exists()) {
+                promoDoc = { exists: true, data: () => clientPromoDoc.data() };
+              }
+            }
+          }
+          if (promoDoc && promoDoc.exists) {
+            const promoData = typeof promoDoc.data === 'function' ? promoDoc.data() : promoDoc.data;
             if (
               promoData && 
               promoData.isActive && 
@@ -1580,7 +1613,7 @@ async function startServer() {
               new Date(promoData.endDate) > new Date()
             ) {
                const discount = Math.min(100, Math.max(0, promoData.discountPercentage));
-               unitAmount = Math.max(0, Math.round(7900 * (1 - discount / 100)));
+               unitAmount = Math.max(0, Math.round(basePrice * 100 * (1 - discount / 100)));
             }
           }
         } catch(e) {
@@ -1616,7 +1649,7 @@ async function startServer() {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         client_reference_id: userId, // Added for better tracking
-        allow_promotion_codes: unitAmount === 7900, // Enable stripe promo codes only if native promo is not applied
+        allow_promotion_codes: unitAmount === Math.round(basePrice * 100), // Enable stripe promo codes only if native promo is not applied
         line_items: [
           {
             price_data: {
@@ -1721,7 +1754,9 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     console.log("Starting in PRODUCTION mode (Static)");
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = fs.existsSync(path.join(__dirname, 'index.html'))
+      ? __dirname
+      : path.join(process.cwd(), 'dist');
     console.log("Serving static files from:", distPath);
     app.use(express.static(distPath));
     app.get('*', (req, res) => {

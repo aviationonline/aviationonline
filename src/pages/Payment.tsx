@@ -23,10 +23,17 @@ export default function Payment() {
   const [promoCodeInput, setPromoCodeInput] = useState('');
   const [promotion, setPromotion] = useState<Promotion | null>(null);
   const [stripePaymentLink, setStripePaymentLink] = useState('');
+  const [basePrice, setBasePrice] = useState<number>(79);
   const isInIframe = window.self !== window.top;
   const isCancelled = searchParams.get('payment') === 'cancel';
 
   useEffect(() => {
+    const unsubPricing = onSnapshot(doc(db, 'settings', 'pricing'), (docSnap) => {
+      if (docSnap.exists() && typeof docSnap.data().basePrice === 'number') {
+        setBasePrice(docSnap.data().basePrice);
+      }
+    });
+
     const unsubPromotion = onSnapshot(doc(db, 'settings', 'promotion'), (docSnap) => {
       if (docSnap.exists()) {
         const data = docSnap.data() as Promotion;
@@ -48,12 +55,12 @@ export default function Payment() {
     });
 
     return () => {
+      unsubPricing();
       unsubPromotion();
       unsubPayment();
     };
   }, []);
 
-  const basePrice = 79;
   const isPromoValid = promotion && promoCodeInput.trim().toUpperCase() === promotion.promoCode;
   const currentPrice = isPromoValid ? Math.max(0, Math.round(basePrice * (1 - promotion.discountPercentage / 100))) : basePrice;
 

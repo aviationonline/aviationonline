@@ -127,7 +127,9 @@ export default function AdminDashboard() {
   const [questionsByQuiz, setQuestionsByQuiz] = useState<Record<string, Question[]>>({});
   const [quizAttempts, setQuizAttempts] = useState<any[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [activeTab, setActiveTab] = useState<'content' | 'users' | 'migration' | 'logs' | 'qcm' | 'results' | 'maintenance' | 'testimonials' | 'promotion' | 'seo' >('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'users' | 'migration' | 'logs' | 'qcm' | 'results' | 'maintenance' | 'testimonials' | 'promotion'>('content');
+  const [basePrice, setBasePrice] = useState<number>(79);
+  const [savingPrice, setSavingPrice] = useState(false);
   const [promotion, setPromotion] = useState<Promotion>({ isActive: false, endDate: '', discountPercentage: 0, promoCode: '' });
   const [savingPromotion, setSavingPromotion] = useState(false);
   const [stripePaymentLink, setStripePaymentLink] = useState('');
@@ -444,6 +446,12 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
+    const unsubPricing = onSnapshot(doc(db, 'settings', 'pricing'), (docSnap) => {
+      if (docSnap.exists() && typeof docSnap.data().basePrice === 'number') {
+        setBasePrice(docSnap.data().basePrice);
+      }
+    });
+
     const unsubPromotion = onSnapshot(doc(db, 'settings', 'promotion'), (docSnap) => {
       if (docSnap.exists()) {
         setPromotion(docSnap.data() as Promotion);
@@ -459,6 +467,7 @@ export default function AdminDashboard() {
     });
 
     return () => {
+      unsubPricing();
       unsubPromotion();
       unsubPayment();
     };
@@ -1416,6 +1425,25 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
     }
   };
 
+  const handleSavePrice = async () => {
+    if (isNaN(basePrice) || basePrice < 0) {
+      showStatus('error', 'Veuillez saisir un tarif valide supérieur ou égal à 0.');
+      return;
+    }
+    setSavingPrice(true);
+    try {
+      await setDoc(doc(db, 'settings', 'pricing'), {
+        basePrice: Number(basePrice),
+        updatedAt: Timestamp.now()
+      });
+      showStatus('success', `Tarif de base enregistré avec succès : ${basePrice}€`);
+    } catch (error: any) {
+      showStatus('error', "Erreur lors de l'enregistrement du tarif : " + (error.message || error));
+    } finally {
+      setSavingPrice(false);
+    }
+  };
+
   const handleSavePromotion = async () => {
     setSavingPromotion(true);
     try {
@@ -1798,16 +1826,7 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
             onClick={() => setActiveTab('promotion')}
             className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${activeTab === 'promotion' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-700'}`}
           >
-            Promotion
-          <button
-            onClick={() => setActiveTab('seo')}
-            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${activeTab === 'seo'
-               ? 'bg-blue-600 text-white'
-               : 'text-zinc-400 hover:text-white hover:bg-white/10'
-            }`}
->
-  SEO & Stats
-</button>
+            Tarif & Promotion
           </button>
         </div>
       </div>
@@ -2494,18 +2513,70 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
           </div>
         </div>
       ) : activeTab === 'promotion' ? (
-        <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-              <h2 className="text-xl font-bold text-zinc-900 flex items-center gap-2">
-                <Star className="w-5 h-5 text-amber-500" /> Promotion Spéciale
-              </h2>
-              <p className="text-sm text-zinc-500 mt-1">Configurez une promotion limitée dans le temps.</p>
+        <div className="space-y-8">
+          {/* SECTION 1: TARIF DE BASE */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-zinc-100 pb-6">
+              <div>
+                <h2 className="text-xl font-bold text-zinc-900 flex items-center gap-2">
+                  <Star className="w-5 h-5 text-blue-600" /> Tarif de base de la formation
+                </h2>
+                <p className="text-sm text-zinc-500 mt-1">
+                  Définissez le prix standard de la formation IFR. Ce tarif est répercuté en temps réel sur la page d'accueil, la page de paiement et le checkout Stripe.
+                </p>
+              </div>
+              <div className="px-4 py-2 bg-blue-50 border border-blue-100 rounded-2xl text-blue-700 font-bold text-lg whitespace-nowrap">
+                {basePrice} € TTC
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+              <div>
+                <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">
+                  Prix de base (en €)
+                </label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={basePrice}
+                    onChange={(e) => setBasePrice(Math.max(0, parseInt(e.target.value) || 0))}
+                    className="w-full pl-4 pr-12 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-lg font-bold text-zinc-900"
+                    placeholder="79"
+                  />
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-zinc-400">€</span>
+                </div>
+                <p className="text-xs text-zinc-400 mt-2">
+                  Valeur par défaut : 79€. En modifiant cette valeur, les réductions promotionnelles seront également recalculées sur cette base.
+                </p>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  onClick={handleSavePrice}
+                  disabled={savingPrice}
+                  className="w-full sm:w-auto px-8 py-3.5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  <CheckCircle2 size={18} />
+                  {savingPrice ? 'Enregistrement...' : 'Enregistrer le tarif'}
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
-            <div className="flex items-center gap-3 mb-4">
+          {/* SECTION 2: PROMOTION */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-zinc-100 pb-6">
+              <div>
+                <h2 className="text-xl font-bold text-zinc-900 flex items-center gap-2">
+                  <Star className="w-5 h-5 text-amber-500" /> Promotion Spéciale & Code Promo
+                </h2>
+                <p className="text-sm text-zinc-500 mt-1">Configurez une offre promotionnelle temporaire appliquée automatiquement ou par code.</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
               <input
                 type="checkbox"
                 id="isPromoActive"
@@ -2513,11 +2584,11 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                 onChange={(e) => setPromotion({ ...promotion, isActive: e.target.checked })}
                 className="w-5 h-5 rounded text-blue-600 focus:ring-blue-500"
               />
-              <label htmlFor="isPromoActive" className="text-sm font-bold text-zinc-700">Activer la promotion</label>
+              <label htmlFor="isPromoActive" className="text-sm font-bold text-zinc-700 cursor-pointer">Activer la promotion</label>
             </div>
 
             {promotion.isActive && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
                 <div>
                   <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Code Promo</label>
                   <input
@@ -2525,18 +2596,18 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                     value={promotion.promoCode}
                     onChange={(e) => setPromotion({ ...promotion, promoCode: e.target.value.toUpperCase() })}
                     placeholder="Ex: NOEL20"
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none uppercase"
+                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none uppercase font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Pourcentage de réduction (%)</label>
+                  <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Réduction (%)</label>
                   <input
                     type="number"
                     min="1"
                     max="100"
                     value={promotion.discountPercentage}
                     onChange={(e) => setPromotion({ ...promotion, discountPercentage: parseInt(e.target.value) || 0 })}
-                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none font-bold"
                   />
                 </div>
                 <div>
@@ -2550,49 +2621,54 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                 </div>
               </div>
             )}
-            <div className="pt-4 flex justify-end gap-4 border-b border-zinc-100 pb-6">
+            <div className="pt-2 flex justify-end">
               <button
                 onClick={handleSavePromotion}
                 disabled={savingPromotion}
-                className="px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 disabled:opacity-50"
+                className="w-full sm:w-auto px-8 py-3.5 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 transition-colors shadow-lg shadow-amber-200 disabled:opacity-50 flex items-center justify-center gap-2"
               >
+                <CheckCircle2 size={18} />
                 {savingPromotion ? 'Enregistrement...' : 'Enregistrer la promotion'}
               </button>
             </div>
+          </div>
 
-            <div className="pt-4 space-y-4">
+          {/* SECTION 3: LIEN STRIPE DIRECT */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200 shadow-sm space-y-6">
+            <div className="border-b border-zinc-100 pb-6">
               <h3 className="font-bold text-zinc-900 flex items-center gap-2 text-base">
                 <Globe className="w-5 h-5 text-zinc-500" /> Configuration Hébergement Classique (Stripe Payment Link)
               </h3>
-              <p className="text-sm text-zinc-500 leading-relaxed">
+              <p className="text-sm text-zinc-500 leading-relaxed mt-1">
                 Si votre site est hébergé sans serveur Node.js actif (Hébergement Partagé standard cPanel/Hostinger au lieu d'un VPS), les appels d'API ne fonctionnent pas. Indiquez ici un <strong>Lien de paiement Stripe</strong> généré depuis votre Tableau de bord Stripe. Les élèves y seront redirigés pour payer et leur statut passera en attente d'une activation manuelle de votre part dans l'onglet "Utilisateurs" (en un seul clic).
               </p>
-              <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 text-xs text-blue-700 leading-relaxed mb-4">
-                <strong>💡 Comment faire ?</strong><br/>
-                1. Allez sur votre <a href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer" className="underline font-bold">Tableau de bord Stripe (Liens de paiement)</a>.<br/>
-                2. Créez un lien à 79€ (ou le prix souhaité).<br/>
-                3. Configurez la redirection après paiement vers : <code className="bg-blue-100 px-1 rounded">https://aviationonline.fr/dashboard?payment_success=true</code><br/>
-                4. Copiez le lien Stripe (commençant par <code className="bg-blue-100 px-1 rounded">https://buy.stripe.com/</code>) et collez-le ci-dessous.
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Lien de paiement Stripe (Buy Link)</label>
-                <input
-                  type="url"
-                  placeholder="Ex: https://buy.stripe.com/abcde123456789"
-                  value={stripePaymentLink}
-                  onChange={(e) => setStripePaymentLink(e.target.value.trim())}
-                  className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm"
-                />
-              </div>
-              <div className="pt-2 flex justify-end">
-                <button
-                  onClick={handleSavePaymentSettings}
-                  disabled={savingPaymentSettings}
-                  className="px-6 py-3 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-colors shadow-lg disabled:opacity-50 text-sm"
-                >
-                  {savingPaymentSettings ? 'Enregistrement...' : 'Enregistrer le lien Stripe'}
-                </button>
-              </div>
+            </div>
+            <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 text-xs text-blue-700 leading-relaxed">
+              <strong>💡 Comment faire ?</strong><br/>
+              1. Allez sur votre <a href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer" className="underline font-bold">Tableau de bord Stripe (Liens de paiement)</a>.<br/>
+              2. Créez un lien au tarif souhaité ({basePrice}€).<br/>
+              3. Configurez la redirection après paiement vers : <code className="bg-blue-100 px-1 rounded">https://aviationonline.fr/dashboard?payment_success=true</code><br/>
+              4. Copiez le lien Stripe (commençant par <code className="bg-blue-100 px-1 rounded">https://buy.stripe.com/</code>) et collez-le ci-dessous.
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Lien de paiement Stripe (Buy Link)</label>
+              <input
+                type="url"
+                placeholder="Ex: https://buy.stripe.com/abcde123456789"
+                value={stripePaymentLink}
+                onChange={(e) => setStripePaymentLink(e.target.value.trim())}
+                className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm"
+              />
+            </div>
+            <div className="pt-2 flex justify-end">
+              <button
+                onClick={handleSavePaymentSettings}
+                disabled={savingPaymentSettings}
+                className="w-full sm:w-auto px-8 py-3.5 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-colors shadow-lg disabled:opacity-50 text-sm flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 size={18} />
+                {savingPaymentSettings ? 'Enregistrement...' : 'Enregistrer le lien Stripe'}
+              </button>
             </div>
           </div>
         </div>

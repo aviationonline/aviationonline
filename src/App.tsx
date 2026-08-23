@@ -1,10 +1,3 @@
-import FaqIFR from './pages/FaqIFR';
-import RenouvellementIR from './pages/RenouvellementIR';
-import SelectionPiloteLigne from './pages/SelectionPiloteLigne';
-import APropos from './pages/APropos';
-import PreparationPiloteLigne from './pages/PreparationPiloteLigne';
-import PreparationIREASA from './pages/PreparationIREASA';
-import FormationIFR from './pages/FormationIFR';
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link, useNavigate, useLocation } from 'react-router-dom';
 import { auth, db, googleProvider, OperationType, handleFirestoreError } from './firebase';
@@ -402,7 +395,7 @@ const Navbar = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-zinc-900 leading-none">AVIATION ONLINE</span>
-                <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] mt-1 uppercase"></span>
+                <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] mt-1 uppercase">AERO ACADEMY</span>
               </div>
             </Link>
           </div>
@@ -411,7 +404,6 @@ const Navbar = () => {
             <div className="flex items-center gap-6">
               {[
                 { path: '/', label: t('nav.home') },
-                { path: '/a-propos', label: 'À propos' },
                 { path: '/testimonials', label: t('nav.testimonials') },
                 { path: '/dashboard', label: t('nav.courses'), protected: true },
               ].map((link) => (
@@ -731,13 +723,6 @@ export default function App() {
                   <Route path="/legal" element={<LegalMentions />} />
                   <Route path="/terms" element={<TermsOfService />} />
                   <Route path="/testimonials" element={<Testimonials />} />
-                  <Route path="/formation-ifr-en-ligne" element={<FormationIFR />} />
-                  <Route path="/preparation-ir-easa" element={<PreparationIREASA />} />
-                  <Route path="/preparation-pilote-ligne" element={<PreparationPiloteLigne />} />
-                  <Route path="/a-propos" element={<APropos />} />
-                  <Route path="/selection-pilote-ligne"element={<SelectionPiloteLigne />} />
-                  <Route path="/renouvellement-ir"element={<RenouvellementIR />} />
-                  <Route path="/faq-ifr"element={<FaqIFR />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>

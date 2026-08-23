@@ -1,69 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://aviationonline.net/</loc>
+    <loc>https://aviationonline.fr/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://aviationonline.net/login</loc>
+    <loc>https://aviationonline.fr/login</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://aviationonline.net/testimonials</loc>
+    <loc>https://aviationonline.fr/testimonials</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <url>
-    <loc>https://aviationonline.net/payment</loc>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://aviationonline.net/legal</loc>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://aviationonline.net/terms</loc>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-  <loc>https://aviationonline.net/formation-ifr-en-ligne</loc>
-  <priority>1.0</priority>
-  </url>
-    
-  <url>
-  <loc>https://aviationonline.net/preparation-ir-easa</loc>
-  <priority>1.0</priority>
-  </url> 
-
-  <url>
-  <loc>https://aviationonline.net/preparation-pilote-ligne</loc>
-  <priority>1.0</priority>
-  </url>
-
-  <url>
-  <loc>https://aviationonline.net/a-propos</loc>
-  <priority>0.9</priority>
-  </url>
-
-  <url>
-  <loc>https://aviationonline.net/selection-pilote-ligne</loc>
-  <priority>1.0</priority>
-  </url>
-
-  <url>
-  <loc>https://aviationonline.net/renouvellement-ir</loc>
-  <priority>1.0</priority>
-  </url>
-
-  <url>
-  <loc>https://aviationonline.net/faq-ifr</loc>
-  <priority>0.9</priority>
-  </url>
-  
 </urlset>
