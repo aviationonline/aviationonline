@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { db, handleFirestoreError, OperationType, auth, testConnection } from '../firebase';
 import { collection, addDoc, updateDoc, deleteDoc, doc, query, orderBy, onSnapshot, Timestamp, writeBatch, getDocs, limit, where, getDocFromServer, setDoc } from 'firebase/firestore';
 import { defaultTestimonials } from '../data/testimonials';
-import { Plus, Trash2, Edit2, BookOpen, ChevronDown, ChevronUp, Database, FileText, X, AlertCircle, CheckCircle2, Upload, History, Mail, UserPlus, Award, Users, Search, Star, Shield, ArrowUp, ArrowDown, Globe, ExternalLink } from 'lucide-react';
+import { Plus, Trash2, Edit2, BookOpen, ChevronDown, ChevronUp, Database, FileText, X, AlertCircle, CheckCircle2, Upload, Download, History, Mail, UserPlus, Award, Users, Search, Star, Shield, ArrowUp, ArrowDown, Globe, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAuth } from '../App';
 import Papa from 'papaparse';
@@ -127,13 +127,18 @@ export default function AdminDashboard() {
   const [questionsByQuiz, setQuestionsByQuiz] = useState<Record<string, Question[]>>({});
   const [quizAttempts, setQuizAttempts] = useState<any[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [activeTab, setActiveTab] = useState<'content' | 'users' | 'migration' | 'logs' | 'qcm' | 'results' | 'maintenance' | 'testimonials' | 'promotion'>('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'users' | 'migration' | 'logs' | 'qcm' | 'results' | 'maintenance' | 'testimonials' | 'promotion' | 'site_status'>('content');
   const [basePrice, setBasePrice] = useState<number>(79);
   const [savingPrice, setSavingPrice] = useState(false);
   const [promotion, setPromotion] = useState<Promotion>({ isActive: false, endDate: '', discountPercentage: 0, promoCode: '' });
   const [savingPromotion, setSavingPromotion] = useState(false);
   const [stripePaymentLink, setStripePaymentLink] = useState('');
   const [savingPaymentSettings, setSavingPaymentSettings] = useState(false);
+  const [siteStatus, setSiteStatus] = useState<{ closedRegistrations: boolean; redirectUrl: string }>({
+    closedRegistrations: false,
+    redirectUrl: 'https://aviationonline.fr/login'
+  });
+  const [savingSiteStatus, setSavingSiteStatus] = useState(false);
   const [editingModule, setEditingModule] = useState<Partial<Module> | null>(null);
   const [editingCourse, setEditingCourse] = useState<Partial<Course> | null>(null);
   const [editingQuiz, setEditingQuiz] = useState<Partial<Quiz> | null>(null);
@@ -466,10 +471,26 @@ export default function AdminDashboard() {
       }
     });
 
+    const unsubSiteStatus = onSnapshot(doc(db, 'settings', 'siteStatus'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setSiteStatus({
+          closedRegistrations: !!data.closedRegistrations,
+          redirectUrl: data.redirectUrl || 'https://aviationonline.fr/login'
+        });
+      } else {
+        setSiteStatus({
+          closedRegistrations: false,
+          redirectUrl: 'https://aviationonline.fr/login'
+        });
+      }
+    });
+
     return () => {
       unsubPricing();
       unsubPromotion();
       unsubPayment();
+      unsubSiteStatus();
     };
   }, []);
 
@@ -604,6 +625,401 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
       showStatus('error', err.message || 'Erreur lors de la lecture du fichier');
       setIsImportingPdf(false);
       e.target.value = '';
+    }
+  };
+
+  const [isExportingQcm, setIsExportingQcm] = useState(false);
+  const [isExportingPdfQcm, setIsExportingPdfQcm] = useState(false);
+
+  // Helper pour générer le HTML stylisé imprimable en PDF pour un ou plusieurs QCM
+  const generateQuizHtmlDocument = (quizzesData: { quiz: Quiz; questions: Question[] }[], includeAnswers: boolean = true) => {
+    const dateStr = new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+    
+    return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Aviation Online - Export QCM</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      padding: 24px;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+    
+    .header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    
+    .logo-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0369a1;
+      letter-spacing: -0.5px;
+    }
+    
+    .doc-meta {
+      font-size: 11px;
+      color: #64748b;
+      text-align: right;
+    }
+    
+    .quiz-section {
+      margin-bottom: 40px;
+      page-break-after: always;
+    }
+    
+    .quiz-section:last-child {
+      page-break-after: auto;
+    }
+    
+    .quiz-header {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #0284c7;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    
+    .quiz-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    
+    .quiz-desc {
+      font-size: 12px;
+      color: #64748b;
+    }
+    
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+    
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .question-num {
+      background: #0284c7;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .question-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0f172a;
+      flex: 1;
+    }
+    
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin-left: 32px;
+      margin-top: 8px;
+    }
+    
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      border: 1px solid #f1f5f9;
+      background: #f8fafc;
+    }
+    
+    .option-letter {
+      font-weight: 700;
+      color: #475569;
+      width: 18px;
+    }
+    
+    .option-item.is-correct {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      color: #065f46;
+      font-weight: 600;
+    }
+    
+    .option-item.is-correct .option-letter {
+      color: #059669;
+    }
+    
+    .explanation-box {
+      margin-top: 10px;
+      margin-left: 32px;
+      padding: 8px 12px;
+      background: #eff6ff;
+      border-left: 3px solid #3b82f6;
+      border-radius: 4px;
+      font-size: 11.5px;
+      color: #1e40af;
+    }
+    
+    .footer {
+      font-size: 10px;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+    }
+    
+    @media print {
+      body {
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <div class="logo-title">AVIATION ONLINE</div>
+      <div style="font-size: 12px; color: #475569; font-weight: 500;">Programme de Préparation Sélection Pilote de Ligne</div>
+    </div>
+    <div class="doc-meta">
+      <div><strong>Document QCM Officiel</strong></div>
+      <div>Date d'export : ${dateStr}</div>
+      <div>${quizzesData.length} QCM exporté(s)</div>
+    </div>
+  </div>
+
+  ${quizzesData.map(({ quiz, questions }, idx) => `
+    <div class="quiz-section">
+      <div class="quiz-header">
+        <div class="quiz-title">Quiz #${quiz.order || idx + 1} : ${quiz.title}</div>
+        ${quiz.description ? `<div class="quiz-desc">${quiz.description}</div>` : ''}
+        <div style="font-size: 11px; color: #0284c7; font-weight: 600; margin-top: 4px;">Total : ${questions.length} question(s)</div>
+      </div>
+
+      ${questions.map((q, qIndex) => `
+        <div class="question-card">
+          <div class="question-header">
+            <span class="question-num">Q${q.order || qIndex + 1}</span>
+            <div class="question-text">${q.text}</div>
+          </div>
+          
+          <div class="options-grid">
+            ${(q.options || []).map((opt, optIndex) => {
+              const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+              const isCorrect = includeAnswers && optIndex === q.correctAnswer;
+              return `
+                <div class="option-item ${isCorrect ? 'is-correct' : ''}">
+                  <span class="option-letter">${letters[optIndex] || optIndex + 1}.</span>
+                  <span>${opt} ${isCorrect ? '<strong>(Bonne réponse ✓)</strong>' : ''}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          ${includeAnswers && q.explanation ? `
+            <div class="explanation-box">
+              <strong>💡 Explication :</strong> ${q.explanation}
+            </div>
+          ` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `).join('')}
+
+  <div class="footer">
+    © Aviation Online - Tous droits réservés - Document de révision pour usage personnel
+  </div>
+
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 500);
+    };
+  </script>
+</body>
+</html>`;
+  };
+
+  // Exporter un QCM en PDF
+  const handleExportSingleQuizPdf = async (quiz: Quiz) => {
+    try {
+      showStatus('info', `Génération du PDF pour "${quiz.title}"...`);
+      const questionsSnap = await getDocs(collection(db, `quizzes/${quiz.id}/questions`));
+      const questionsList = questionsSnap.docs
+        .map(d => ({ id: d.id, ...d.data() } as Question))
+        .sort((a, b) => (a.order || 999) - (b.order || 999));
+
+      const htmlContent = generateQuizHtmlDocument([{ quiz, questions: questionsList }]);
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(htmlContent);
+        printWindow.document.close();
+      } else {
+        showStatus('error', 'Veuillez autoriser les fenêtres pop-up dans votre navigateur pour exporter en PDF.');
+      }
+    } catch (err: any) {
+      console.error("Export PDF error:", err);
+      showStatus('error', `Erreur lors de l'exportation PDF : ${err.message}`);
+    }
+  };
+
+  // Exporter TOUS les QCM en un seul document PDF
+  const handleExportAllQuizzesPdf = async () => {
+    if (quizzes.length === 0) {
+      showStatus('error', 'Aucun QCM à exporter.');
+      return;
+    }
+
+    setIsExportingPdfQcm(true);
+    showStatus('info', `Récupération des données des ${quizzes.length} QCM pour le PDF...`);
+
+    try {
+      const allQuizzesData: { quiz: Quiz; questions: Question[] }[] = [];
+
+      for (const quiz of quizzes) {
+        const questionsSnap = await getDocs(collection(db, `quizzes/${quiz.id}/questions`));
+        const questionsList = questionsSnap.docs
+          .map(d => ({ id: d.id, ...d.data() } as Question))
+          .sort((a, b) => (a.order || 999) - (b.order || 999));
+
+        allQuizzesData.push({
+          quiz,
+          questions: questionsList
+        });
+      }
+
+      const htmlContent = generateQuizHtmlDocument(allQuizzesData);
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(htmlContent);
+        printWindow.document.close();
+        showStatus('success', 'Document PDF prêt ! Choisissez "Enregistrer au format PDF" dans la boîte de dialogue d\'impression.');
+      } else {
+        showStatus('error', 'Veuillez autoriser les fenêtres pop-up dans votre navigateur pour afficher le PDF.');
+      }
+    } catch (err: any) {
+      console.error("Export All PDF error:", err);
+      showStatus('error', 'Erreur lors de la génération du document PDF.');
+    } finally {
+      setIsExportingPdfQcm(false);
+    }
+  };
+
+  // Exporter un QCM individuel en JSON
+  const handleExportSingleQuiz = async (quiz: Quiz) => {
+    try {
+      showStatus('info', `Exportation du QCM "${quiz.title}"...`);
+      
+      // Récupérer les questions depuis Firestore
+      const questionsSnap = await getDocs(collection(db, `quizzes/${quiz.id}/questions`));
+      const questionsList = questionsSnap.docs
+        .map(d => ({ id: d.id, ...d.data() } as Question))
+        .sort((a, b) => (a.order || 999) - (b.order || 999));
+
+      const exportData = {
+        id: quiz.id,
+        title: quiz.title,
+        title_en: quiz.title_en || '',
+        description: quiz.description || '',
+        description_en: quiz.description_en || '',
+        category: quiz.category || '',
+        order: quiz.order || 1,
+        totalQuestions: questionsList.length,
+        exportedAt: new Date().toISOString(),
+        questions: questionsList.map(q => ({
+          id: q.id,
+          text: q.text,
+          text_en: q.text_en || '',
+          options: q.options || [],
+          options_en: q.options_en || [],
+          correctAnswer: q.correctAnswer,
+          explanation: q.explanation || '',
+          explanation_en: q.explanation_en || '',
+          attachmentUrl: q.attachmentUrl || '',
+          attachmentType: q.attachmentType || null,
+          order: q.order || 1
+        }))
+      };
+
+      const jsonStr = JSON.stringify(exportData, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const safeTitle = quiz.title.replace(/[^a-zA-Z0-9_\u00C0-\u017F-]/g, '_').toLowerCase();
+      link.href = url;
+      link.download = `qcm_${safeTitle || quiz.id}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      showStatus('success', `QCM "${quiz.title}" exporté (${questionsList.length} questions).`);
+    } catch (err: any) {
+      console.error("Export QCM error:", err);
+      showStatus('error', `Erreur lors de l'exportation : ${err.message || 'Erreur inconnue'}`);
+    }
+  };
+
+  // Exporter tous les QCM individuellement (fichiers séparés)
+  const handleExportAllQuizzesIndividually = async () => {
+    if (quizzes.length === 0) {
+      showStatus('error', 'Aucun QCM à exporter.');
+      return;
+    }
+
+    setIsExportingQcm(true);
+    showStatus('info', `Téléchargement des ${quizzes.length} QCM en cours...`);
+
+    try {
+      let count = 0;
+      for (const quiz of quizzes) {
+        await handleExportSingleQuiz(quiz);
+        count++;
+        // Petite pause entre chaque téléchargement de fichier pour que le navigateur ne bloque pas les téléchargements multiples
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+      showStatus('success', `Les ${count} QCM ont été exportés individuellement avec succès !`);
+    } catch (err: any) {
+      console.error("Export all QCM error:", err);
+      showStatus('error', 'Erreur lors de l\'exportation de certains QCM.');
+    } finally {
+      setIsExportingQcm(false);
     }
   };
 
@@ -1468,6 +1884,31 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
     }
   };
 
+  const handleSaveSiteStatus = async (overrideStatus?: { closedRegistrations: boolean; redirectUrl: string }) => {
+    setSavingSiteStatus(true);
+    const toSave = overrideStatus || siteStatus;
+    try {
+      await setDoc(doc(db, 'settings', 'siteStatus'), {
+        closedRegistrations: !!toSave.closedRegistrations,
+        redirectUrl: toSave.redirectUrl.trim() || 'https://aviationonline.fr/login',
+        updatedAt: Timestamp.now()
+      });
+      if (overrideStatus) {
+        setSiteStatus(toSave);
+      }
+      showStatus(
+        'success',
+        toSave.closedRegistrations 
+          ? 'Mode fermeture activé : Le bandeau rouge est visible sur l\'accueil et les inscriptions/paiements sont bloqués.' 
+          : 'Version normale rétablie : Les inscriptions et les paiements sont de nouveau ouverts.'
+      );
+    } catch (error: any) {
+      showStatus('error', "Erreur lors de la mise à jour du statut : " + (error.message || error));
+    } finally {
+      setSavingSiteStatus(false);
+    }
+  };
+
   const togglePaidStatus = async (uid: string, currentStatus: boolean) => {
     const nextStatus = !currentStatus;
     const currentUser = user || auth.currentUser;
@@ -1827,6 +2268,19 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
             className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${activeTab === 'promotion' ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-700'}`}
           >
             Tarif & Promotion
+          </button>
+          <button 
+            onClick={() => setActiveTab('site_status')}
+            className={`px-4 py-2 text-sm font-bold rounded-lg transition-all whitespace-nowrap flex items-center gap-2 ${
+              activeTab === 'site_status' 
+                ? 'bg-zinc-900 text-white shadow-sm' 
+                : siteStatus.closedRegistrations
+                ? 'bg-red-100 text-red-700 hover:bg-red-200'
+                : 'text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60'
+            }`}
+          >
+            <span className={`w-2.5 h-2.5 rounded-full ${siteStatus.closedRegistrations ? 'bg-red-500 animate-pulse' : 'bg-emerald-500'}`} />
+            {siteStatus.closedRegistrations ? '🔴 Inscriptions Fermées' : 'Statut Inscriptions'}
           </button>
         </div>
       </div>
@@ -2240,7 +2694,33 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
             <h2 className="text-xl font-bold text-zinc-900 flex items-center gap-2">
               <Database className="w-5 h-5" /> Gestion des QCM
             </h2>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={handleExportAllQuizzesPdf}
+                disabled={isExportingPdfQcm || quizzes.length === 0}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-700 disabled:opacity-50 text-white text-sm font-bold rounded-lg transition-colors shadow-sm"
+                title="Génère un document PDF imprimable avec l'ensemble de tous les QCM et leurs réponses"
+              >
+                {isExportingPdfQcm ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <FileText className="w-4 h-4" />
+                )}
+                {isExportingPdfQcm ? 'Génération...' : 'Exporter tout en PDF'}
+              </button>
+              <button
+                onClick={handleExportAllQuizzesIndividually}
+                disabled={isExportingQcm || quizzes.length === 0}
+                className="flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white text-sm font-bold rounded-lg transition-colors shadow-sm"
+                title="Télécharge chaque QCM dans un fichier JSON distinct"
+              >
+                {isExportingQcm ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <Download className="w-4 h-4" />
+                )}
+                {isExportingQcm ? 'Exportation...' : 'Exporter tous les QCM (JSON)'}
+              </button>
               <label className={`flex items-center justify-center gap-2 px-4 py-2 ${isImportingPdf ? 'bg-zinc-400 cursor-not-allowed' : 'bg-zinc-800 hover:bg-zinc-700 cursor-pointer'} text-white text-sm font-bold rounded-lg transition-colors`}>
                 {isImportingPdf ? (
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -2269,10 +2749,26 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                     </button>
                     <div>
                       <h3 className="font-bold text-zinc-900">{quiz.title}</h3>
-                      <p className="text-xs text-zinc-500">Quiz #{quiz.order}</p>
+                      <p className="text-xs text-zinc-500">Quiz #{quiz.order} • {questionsByQuiz[quiz.id]?.length || 0} questions</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => handleExportSingleQuizPdf(quiz)} 
+                      className="p-2 text-zinc-500 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors flex items-center gap-1 text-xs font-semibold"
+                      title="Imprimer / Télécharger ce QCM en PDF"
+                    >
+                      <FileText className="w-4 h-4" />
+                      <span className="hidden sm:inline">PDF</span>
+                    </button>
+                    <button 
+                      onClick={() => handleExportSingleQuiz(quiz)} 
+                      className="p-2 text-zinc-500 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-1 text-xs font-semibold"
+                      title="Télécharger ce QCM en JSON"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span className="hidden sm:inline">JSON</span>
+                    </button>
                     <div className="flex flex-col mr-2">
                       <button 
                         onClick={() => handleMoveQuiz(quizIdx, 'up')} 
@@ -2669,6 +3165,159 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                 <CheckCircle2 size={18} />
                 {savingPaymentSettings ? 'Enregistrement...' : 'Enregistrer le lien Stripe'}
               </button>
+            </div>
+          </div>
+        </div>
+      ) : activeTab === 'site_status' ? (
+        <div className="space-y-8 max-w-5xl">
+          {/* BANNER STATUS HEADER */}
+          <div className={`p-6 sm:p-8 rounded-3xl border shadow-sm transition-all ${
+            siteStatus.closedRegistrations
+              ? 'bg-red-50/80 border-red-200'
+              : 'bg-emerald-50/80 border-emerald-200'
+          }`}>
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md shrink-0 ${
+                  siteStatus.closedRegistrations ? 'bg-red-600' : 'bg-emerald-600'
+                }`}>
+                  <AlertCircle size={28} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                      siteStatus.closedRegistrations ? 'bg-red-200 text-red-800' : 'bg-emerald-200 text-emerald-800'
+                    }`}>
+                      {siteStatus.closedRegistrations ? '🔴 MODE FERMETURE ACTIF' : '🟢 VERSION NORMALE ACTIVE'}
+                    </span>
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-zinc-900 mt-1">
+                    {siteStatus.closedRegistrations
+                      ? 'Les nouvelles inscriptions & paiements sont bloqués'
+                      : 'Les inscriptions et les paiements sont ouverts à tous'}
+                  </h2>
+                  <p className="text-sm text-zinc-600 mt-1">
+                    {siteStatus.closedRegistrations
+                      ? 'Le bandeau rouge d\'information est affiché sur la page d\'accueil avec votre lien de connexion.'
+                      : 'Le site fonctionne normalement, les nouveaux visiteurs peuvent créer un compte et payer.'}
+                  </p>
+                </div>
+              </div>
+
+              {/* ACTION TOGGLE BUTTON */}
+              <div className="w-full md:w-auto shrink-0">
+                {siteStatus.closedRegistrations ? (
+                  <button
+                    onClick={() => handleSaveSiteStatus({ closedRegistrations: false, redirectUrl: siteStatus.redirectUrl })}
+                    disabled={savingSiteStatus}
+                    className="w-full md:w-auto px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-emerald-200 flex items-center justify-center gap-2 text-sm disabled:opacity-50 cursor-pointer"
+                  >
+                    <CheckCircle2 size={18} />
+                    {savingSiteStatus ? 'Rétablissement...' : 'Revenir à la version actuelle (Réouvrir le site)'}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleSaveSiteStatus({ closedRegistrations: true, redirectUrl: siteStatus.redirectUrl })}
+                    disabled={savingSiteStatus}
+                    className="w-full md:w-auto px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-red-200 flex items-center justify-center gap-2 text-sm disabled:opacity-50 cursor-pointer"
+                  >
+                    <AlertCircle size={18} />
+                    {savingSiteStatus ? 'Activation...' : 'Activer le mode fermeture (Bloquer & Afficher le bandeau)'}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* CONFIGURATION DU LIEN PARAMETRABLE */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200 shadow-sm space-y-6">
+            <div className="border-b border-zinc-100 pb-4">
+              <h3 className="text-lg font-bold text-zinc-900 flex items-center gap-2">
+                <Globe className="w-5 h-5 text-blue-600" />
+                URL paramétrable de connexion / redirection
+              </h3>
+              <p className="text-sm text-zinc-500 mt-1">
+                L'adresse web sur laquelle les élèves existants sont invités à cliquer dans le bandeau rouge pour se connecter à leur compte.
+              </p>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">
+                URL de destination (ex: https://aviationonline.fr/login ou lien de votre choix)
+              </label>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="url"
+                  placeholder="https://aviationonline.fr/login"
+                  value={siteStatus.redirectUrl}
+                  onChange={(e) => setSiteStatus({ ...siteStatus, redirectUrl: e.target.value })}
+                  className="flex-1 px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm font-medium"
+                />
+                <button
+                  onClick={() => handleSaveSiteStatus()}
+                  disabled={savingSiteStatus}
+                  className="px-6 py-3 bg-zinc-900 hover:bg-zinc-800 text-white text-sm font-bold rounded-xl transition-all shadow-sm disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <CheckCircle2 size={16} />
+                  {savingSiteStatus ? 'Enregistrement...' : 'Enregistrer l\'URL'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* APERÇU EN DIRECT DU BANDEAU ROUGE */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-zinc-200 shadow-sm space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-base font-bold text-zinc-900 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-zinc-500" />
+                Aperçu visuel du bandeau tel qu'il apparaît sur la page d'accueil
+              </h3>
+              <span className="text-xs text-zinc-400 font-medium">Prévisualisation en direct</span>
+            </div>
+
+            <div className="p-4 bg-zinc-900 rounded-2xl">
+              <div className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-red-500"></div> Bandeau Rouge (Accueil)
+              </div>
+              
+              {/* Le bandeau rouge réel */}
+              <div className="bg-red-600 text-white p-4 rounded-xl shadow-lg border border-red-500">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+                  <div className="flex items-center gap-3 text-sm font-medium">
+                    <AlertCircle className="w-5 h-5 shrink-0 text-white" />
+                    <span>
+                      Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
+                      <span className="underline font-bold text-white underline-offset-2">
+                        {siteStatus.redirectUrl || 'https://aviationonline.fr/login'}
+                      </span>
+                    </span>
+                  </div>
+                  <span className="px-4 py-2 bg-white text-red-700 text-xs font-bold rounded-lg whitespace-nowrap shadow-sm">
+                    Se connecter
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* RECAPITULATIF DES ACTIONS DU MODE FERMETURE */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">Page d'accueil</div>
+                <div className="text-sm font-bold text-zinc-800">Bandeau rouge actif</div>
+                <p className="text-xs text-zinc-500 mt-1">Avertit immédiatement les visiteurs et redirige les membres existants vers la connexion.</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">Page Connexion / Inscription</div>
+                <div className="text-sm font-bold text-zinc-800">Inscriptions bloquées</div>
+                <p className="text-xs text-zinc-500 mt-1">Le formulaire de création de compte est désactivé et masqué. Seule la connexion fonctionne.</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">Paiements Stripe</div>
+                <div className="text-sm font-bold text-zinc-800">Paiements bloqués</div>
+                <p className="text-xs text-zinc-500 mt-1">La page de paiement informe que les inscriptions sont closes et bloque les transactions.</p>
+              </div>
             </div>
           </div>
         </div>

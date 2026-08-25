@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { db, auth, handleFirestoreError, OperationType, testConnection, sendPasswordResetEmail } from '../firebase';
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, doc } from 'firebase/firestore';
 import { useAuth } from '../App';
 import { BookOpen, ChevronRight, Lock, CheckCircle2, Clock, ChevronDown, ChevronUp, Download, FileText, X, Shield, Key } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -39,6 +39,34 @@ export default function Dashboard() {
   const [notification, setNotification] = useState<{ message: string, type: 'success' | 'error', debug?: any } | null>(null);
   const [dbTestStatus, setDbTestStatus] = useState<{ type: 'success' | 'error' | 'loading', text: string } | null>(null);
   const [sendingResetEmail, setSendingResetEmail] = useState(false);
+  const [basePrice, setBasePrice] = useState<number>(79);
+  const [siteStatus, setSiteStatus] = useState<{ closedRegistrations: boolean; redirectUrl: string }>({
+    closedRegistrations: false,
+    redirectUrl: 'https://aviationonline.fr/login'
+  });
+
+  useEffect(() => {
+    const unsubPricing = onSnapshot(doc(db, 'settings', 'pricing'), (docSnap) => {
+      if (docSnap.exists() && typeof docSnap.data().basePrice === 'number') {
+        setBasePrice(docSnap.data().basePrice);
+      }
+    });
+
+    const unsubSiteStatus = onSnapshot(doc(db, 'settings', 'siteStatus'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setSiteStatus({
+          closedRegistrations: !!data.closedRegistrations,
+          redirectUrl: data.redirectUrl || 'https://aviationonline.fr/login'
+        });
+      }
+    });
+
+    return () => {
+      unsubPricing();
+      unsubSiteStatus();
+    };
+  }, []);
 
   const handleResetPasswordEmail = async () => {
     if (!profile?.email) {
@@ -365,7 +393,11 @@ export default function Dashboard() {
         <div className="bg-blue-600 rounded-3xl p-6 md:p-8 mb-12 text-white flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <h2 className="text-xl md:text-2xl font-bold mb-2">Débloquez votre potentiel IFR</h2>
-            <p className="opacity-90 text-sm md:text-base">Accédez à l'intégralité des cours, schémas et procédures pour 79€ seulement.</p>
+            <p className="opacity-90 text-sm md:text-base">
+              {siteStatus.closedRegistrations
+                ? "Accédez à l'intégralité des cours, schémas et procédures de la formation IFR."
+                : `Accédez à l'intégralité des cours, schémas et procédures pour ${basePrice}€ seulement.`}
+            </p>
             <button 
               onClick={handleCheckPayment}
               disabled={checkingPayment}
@@ -374,9 +406,15 @@ export default function Dashboard() {
               {checkingPayment ? t('dashboard.btn.checking') : t('dashboard.btn.alreadyPaid')}
             </button>
           </div>
-          <Link to="/payment" className="w-full md:w-auto text-center px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors whitespace-nowrap">
-            Débloquer maintenant
-          </Link>
+          {!siteStatus.closedRegistrations ? (
+            <Link to="/payment" className="w-full md:w-auto text-center px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors whitespace-nowrap">
+              Débloquer maintenant
+            </Link>
+          ) : (
+            <div className="text-xs font-bold bg-white/20 px-4 py-3 rounded-xl text-center">
+              Paiements fermés
+            </div>
+          )}
         </div>
       )}
 

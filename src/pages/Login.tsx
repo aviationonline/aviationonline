@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../App';
 import { auth, db, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, OperationType, handleFirestoreError } from '../firebase';
-import { doc, setDoc, Timestamp } from 'firebase/firestore';
+import { doc, setDoc, Timestamp, onSnapshot } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plane, Mail, Lock, User, Phone, MapPin, Globe, ArrowRight, ChevronLeft, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
@@ -18,6 +18,27 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [siteStatus, setSiteStatus] = useState<{ closedRegistrations: boolean; redirectUrl: string }>({
+    closedRegistrations: false,
+    redirectUrl: 'https://aviationonline.fr/login'
+  });
+
+  useEffect(() => {
+    const unsubSiteStatus = onSnapshot(doc(db, 'settings', 'siteStatus'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        const isClosed = !!data.closedRegistrations;
+        setSiteStatus({
+          closedRegistrations: isClosed,
+          redirectUrl: data.redirectUrl || 'https://aviationonline.fr/login'
+        });
+        if (isClosed && mode === 'register') {
+          setMode('login');
+        }
+      }
+    });
+    return () => unsubSiteStatus();
+  }, [mode]);
 
   useEffect(() => {
     if (authError) {
@@ -58,6 +79,11 @@ export default function Login() {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (siteStatus.closedRegistrations) {
+      setError("Le site n'accepte plus de nouvelle inscription. Seuls les clients déjà inscrits peuvent se connecter.");
+      setMode('login');
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
@@ -358,16 +384,30 @@ export default function Login() {
 
           <div className="mt-8 text-center">
             {mode === 'login' ? (
-              <p className="text-sm text-zinc-500">
-                {t('login.no_account')}{' '}
-                <button onClick={() => setMode('register')} className="text-blue-600 font-bold hover:underline">
-                  {t('login.btn.register')}
-                </button>
-              </p>
+              siteStatus.closedRegistrations ? (
+                <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 font-medium">
+                  Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
+                  <a 
+                    href={siteStatus.redirectUrl || '/login'}
+                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="underline font-bold text-red-900"
+                  >
+                    {siteStatus.redirectUrl || 'la page de connexion'}
+                  </a>.
+                </div>
+              ) : (
+                <p className="text-sm text-zinc-500">
+                  {t('login.no_account')}{' '}
+                  <button onClick={() => setMode('register')} className="text-blue-600 font-bold hover:underline cursor-pointer">
+                    {t('login.btn.register')}
+                  </button>
+                </p>
+              )
             ) : (
               <button 
                 onClick={() => setMode('login')} 
-                className="text-sm text-zinc-500 hover:text-zinc-900 flex items-center gap-2 mx-auto transition-colors"
+                className="text-sm text-zinc-500 hover:text-zinc-900 flex items-center gap-2 mx-auto transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" /> {t('login.back_to_login')}
               </button>

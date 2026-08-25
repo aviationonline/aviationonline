@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Plane, Shield, BookOpen, Users, ChevronRight, CheckCircle2, Radio, FileText, Map, Award, Quote, GraduationCap, Star } from 'lucide-react';
+import { Plane, Shield, BookOpen, Users, ChevronRight, CheckCircle2, Radio, FileText, Map, Award, Quote, GraduationCap, Star, AlertCircle } from 'lucide-react';
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { collection, query, orderBy, onSnapshot, doc } from 'firebase/firestore';
 import { useLanguage } from '../LanguageContext';
@@ -46,6 +46,10 @@ export default function Home() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [promotion, setPromotion] = useState<Promotion | null>(null);
   const [basePrice, setBasePrice] = useState<number>(79);
+  const [siteStatus, setSiteStatus] = useState<{ closedRegistrations: boolean; redirectUrl: string }>({
+    closedRegistrations: false,
+    redirectUrl: 'https://aviationonline.fr/login'
+  });
   const { t, language } = useLanguage();
 
   useEffect(() => {
@@ -107,12 +111,28 @@ export default function Home() {
       }
     });
 
+    const unsubSiteStatus = onSnapshot(doc(db, 'settings', 'siteStatus'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setSiteStatus({
+          closedRegistrations: !!data.closedRegistrations,
+          redirectUrl: data.redirectUrl || 'https://aviationonline.fr/login'
+        });
+      } else {
+        setSiteStatus({
+          closedRegistrations: false,
+          redirectUrl: 'https://aviationonline.fr/login'
+        });
+      }
+    });
+
     return () => {
       unsubscribeModules();
       unsubscribeTestimonials();
       Object.values(courseUnsubscribes).forEach(unsub => unsub());
       unsubPricing();
       unsubPromotion();
+      unsubSiteStatus();
     };
   }, []);
 
@@ -125,6 +145,36 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
+      {/* BANDEAU ROUGE MODE FERMETURE / RESTRICTION INSCRIPTIONS */}
+      {siteStatus.closedRegistrations && (
+        <div className="bg-red-600 text-white px-4 py-3.5 shadow-xl border-b border-red-700 relative z-30">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            <div className="flex items-center gap-3 text-sm sm:text-base font-semibold">
+              <AlertCircle className="w-6 h-6 shrink-0 text-white animate-pulse" />
+              <span>
+                Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
+                <a 
+                  href={siteStatus.redirectUrl || '/login'} 
+                  target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                  rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="underline font-black text-white hover:text-red-100 transition-colors ml-1 inline-flex items-center gap-1 cursor-pointer"
+                >
+                  {siteStatus.redirectUrl || 'la page de connexion'}
+                </a>
+              </span>
+            </div>
+            <a
+              href={siteStatus.redirectUrl || '/login'}
+              target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+              rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="px-6 py-2 bg-white text-red-700 hover:bg-red-50 text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md whitespace-nowrap active:scale-95 shrink-0"
+            >
+              Se connecter
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden py-20 md:py-0">
         <div className="absolute inset-0 z-0">
@@ -160,11 +210,22 @@ export default function Home() {
               Une formation conçue par des experts pour les futurs pilotes de ligne.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
-              <Link to="/login" className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transform hover:-translate-y-1 flex items-center justify-center gap-3">
-                Commencer l'aventure <ChevronRight className="w-5 h-5" />
-              </Link>
-              <a href="#pricing" className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl backdrop-blur-md border border-white/10 transition-all flex items-center justify-center gap-3 group">
-                {promotion ? ( 
+              {siteStatus.closedRegistrations ? (
+                <a 
+                  href={siteStatus.redirectUrl || '/login'} 
+                  target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                  rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transform hover:-translate-y-1 flex items-center justify-center gap-3"
+                >
+                  Espace Membres (Connexion) <ChevronRight className="w-5 h-5" />
+                </a>
+              ) : (
+                <Link to="/login" className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                  Commencer l'aventure <ChevronRight className="w-5 h-5" />
+                </Link>
+              )}
+              <a href="#modules" className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl backdrop-blur-md border border-white/10 transition-all flex items-center justify-center gap-3 group">
+                {!siteStatus.closedRegistrations && promotion ? ( 
                   <span className="flex items-center gap-3">
                     Accès illimité pour
                     <span className="text-2xl text-blue-400">{currentPrice}€</span>
@@ -174,7 +235,7 @@ export default function Home() {
                 )}
               </a>
             </div>
-            {promotion && (
+            {promotion && !siteStatus.closedRegistrations && (
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -274,11 +335,15 @@ export default function Home() {
           <div className="bg-white rounded-3xl md:rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-blue-900/5 border border-blue-100 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
-                <Star className="w-4 h-4" /> {t('home.pricing.special')}
+                <Star className="w-4 h-4" /> {siteStatus.closedRegistrations ? "Formation IFR" : t('home.pricing.special')}
               </div>
-              <h2 className="text-3xl font-bold text-zinc-900 mb-4 tracking-tight">{t('home.pricing.title')}</h2>
+              <h2 className="text-3xl font-bold text-zinc-900 mb-4 tracking-tight">
+                {siteStatus.closedRegistrations ? "Programme Complet de Formation IFR" : t('home.pricing.title')}
+              </h2>
               <p className="text-zinc-600 leading-relaxed mb-6">
-                {t('home.pricing.desc')}
+                {siteStatus.closedRegistrations 
+                  ? "Profitez de l'intégralité des modules, des schémas pédagogiques et du support instructeur pour perfectionner vos compétences."
+                  : t('home.pricing.desc')}
               </p>
               <div className="grid grid-cols-3 gap-4 border-t border-zinc-100 pt-6">
                 <div>
@@ -296,13 +361,31 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col items-center md:items-end gap-4">
-              <div className="text-center md:text-right">
-                <div className="text-5xl font-black text-blue-600 mb-1">79€</div>
-                <div className="text-sm font-bold text-zinc-400 uppercase tracking-widest">{t('home.pricing.payment')}</div>
-              </div>
-              <Link to="/login" className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-200 transition-all transform hover:scale-105">
-                {t('home.pricing.signup')}
-              </Link>
+              {!siteStatus.closedRegistrations ? (
+                <>
+                  <div className="text-center md:text-right">
+                    <div className="text-5xl font-black text-blue-600 mb-1">{promotion ? currentPrice : basePrice}€</div>
+                    <div className="text-sm font-bold text-zinc-400 uppercase tracking-widest">{t('home.pricing.payment')}</div>
+                  </div>
+                  <Link to="/login" className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-200 transition-all transform hover:scale-105">
+                    {t('home.pricing.signup')}
+                  </Link>
+                </>
+              ) : (
+                <div className="flex flex-col items-center md:items-end gap-3">
+                  <div className="text-xs font-bold text-zinc-400 uppercase tracking-widest text-center md:text-right">
+                    Accès réservé aux membres
+                  </div>
+                  <a 
+                    href={siteStatus.redirectUrl || '/login'}
+                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-2xl shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap"
+                  >
+                    Se connecter à mon compte
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -628,7 +711,14 @@ export default function Home() {
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 max-w-3xl mx-auto border border-white/20">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="text-center md:text-left">
-                {promotion ? (
+                {siteStatus.closedRegistrations ? (
+                  <div className="mb-6">
+                    <div className="text-white text-2xl md:text-3xl font-bold mb-2">Formation d'Excellence IFR</div>
+                    <p className="text-blue-100 text-sm max-w-md mb-2">
+                      Plateforme d'entraînement et de révision IFR réservée aux élèves et pilotes membres d'Aviation Online.
+                    </p>
+                  </div>
+                ) : promotion ? (
                   <div className="mb-6 bg-white/10 border border-amber-400/30 p-6 rounded-2xl md:w-max">
                     <div className="text-amber-300 text-sm font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
                       <Star className="w-4 h-4 fill-amber-300" />
@@ -657,9 +747,22 @@ export default function Home() {
                   <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> {t('home.cta.bullet3')}</li>
                 </ul>
               </div>
-              <Link to="/login" className="w-full md:w-auto px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors">
-                {t('home.cta.btn')}
-              </Link>
+              {siteStatus.closedRegistrations ? (
+                <div className="flex flex-col items-center gap-3 w-full md:w-auto">
+                  <a 
+                    href={siteStatus.redirectUrl || '/login'}
+                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="w-full md:w-auto px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors text-center inline-block shadow-lg"
+                  >
+                    Se connecter à mon espace
+                  </a>
+                </div>
+              ) : (
+                <Link to="/login" className="w-full md:w-auto px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors">
+                  {t('home.cta.btn')}
+                </Link>
+              )}
             </div>
           </div>
         </div>

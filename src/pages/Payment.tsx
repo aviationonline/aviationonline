@@ -24,6 +24,10 @@ export default function Payment() {
   const [promotion, setPromotion] = useState<Promotion | null>(null);
   const [stripePaymentLink, setStripePaymentLink] = useState('');
   const [basePrice, setBasePrice] = useState<number>(79);
+  const [siteStatus, setSiteStatus] = useState<{ closedRegistrations: boolean; redirectUrl: string }>({
+    closedRegistrations: false,
+    redirectUrl: 'https://aviationonline.fr/login'
+  });
   const isInIframe = window.self !== window.top;
   const isCancelled = searchParams.get('payment') === 'cancel';
 
@@ -54,10 +58,21 @@ export default function Payment() {
       }
     });
 
+    const unsubSiteStatus = onSnapshot(doc(db, 'settings', 'siteStatus'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setSiteStatus({
+          closedRegistrations: !!data.closedRegistrations,
+          redirectUrl: data.redirectUrl || 'https://aviationonline.fr/login'
+        });
+      }
+    });
+
     return () => {
       unsubPricing();
       unsubPromotion();
       unsubPayment();
+      unsubSiteStatus();
     };
   }, []);
 
@@ -65,6 +80,10 @@ export default function Payment() {
   const currentPrice = isPromoValid ? Math.max(0, Math.round(basePrice * (1 - promotion.discountPercentage / 100))) : basePrice;
 
   const handlePayment = async () => {
+    if (siteStatus.closedRegistrations) {
+      alert("Les inscriptions et paiements sont actuellement clôturés sur le site.");
+      return;
+    }
     if (!user) {
       alert(t('payment.login_required'));
       return;
@@ -213,41 +232,49 @@ export default function Payment() {
           </div>
           <div className="mb-6">
             <h2 className="text-zinc-900 font-bold text-lg mb-2">{t('payment.product')}</h2>
-            <div className="flex items-center gap-3">
-              <span className="text-5xl font-bold text-zinc-900">{currentPrice}€</span>
-              <div className="flex flex-col justify-center">
-                {isPromoValid && promotion && (
-                  <>
-                    <span className="text-zinc-400 line-through text-2xl font-bold">{basePrice}€</span>
-                    <span className="text-emerald-600 font-bold bg-emerald-100 px-2 py-0.5 rounded text-xs w-max mt-0.5">-{promotion.discountPercentage}%</span>
-                  </>
-                )}
+            {!siteStatus.closedRegistrations ? (
+              <div className="flex items-center gap-3">
+                <span className="text-5xl font-bold text-zinc-900">{currentPrice}€</span>
+                <div className="flex flex-col justify-center">
+                  {isPromoValid && promotion && (
+                    <>
+                      <span className="text-zinc-400 line-through text-2xl font-bold">{basePrice}€</span>
+                      <span className="text-emerald-600 font-bold bg-emerald-100 px-2 py-0.5 rounded text-xs w-max mt-0.5">-{promotion.discountPercentage}%</span>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="text-zinc-600 text-sm font-medium">
+                Accès réservé aux élèves déjà inscrits
+              </div>
+            )}
           </div>
 
-          <div className="mb-6">
-            <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">Code Promo</label>
-            <div className="flex gap-2">
-              <input 
-                type="text" 
-                value={promoCodeInput}
-                onChange={(e) => setPromoCodeInput(e.target.value.toUpperCase())}
-                placeholder="Ex: NOEL20"
-                className="flex-1 px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none uppercase text-sm"
-              />
+          {!siteStatus.closedRegistrations && (
+            <div className="mb-6">
+              <label className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">Code Promo</label>
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  value={promoCodeInput}
+                  onChange={(e) => setPromoCodeInput(e.target.value.toUpperCase())}
+                  placeholder="Ex: NOEL20"
+                  className="flex-1 px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none uppercase text-sm"
+                />
+              </div>
+              {isPromoValid && (
+                <p className="mt-2 text-sm text-emerald-600 font-bold flex items-center gap-1">
+                  <CheckCircle2 className="w-4 h-4" /> Code promo appliqué ! (-{promotion.discountPercentage}%)
+                </p>
+              )}
+              {promoCodeInput.trim() !== '' && !isPromoValid && (
+                <p className="mt-2 text-sm text-zinc-500 flex items-center gap-1">
+                  Code non reconnu. S'il s'agit d'un code Stripe, veuillez l'entrer à la page suivante.
+                </p>
+              )}
             </div>
-            {isPromoValid && (
-              <p className="mt-2 text-sm text-emerald-600 font-bold flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4" /> Code promo appliqué ! (-{promotion.discountPercentage}%)
-              </p>
-            )}
-            {promoCodeInput.trim() !== '' && !isPromoValid && (
-              <p className="mt-2 text-sm text-zinc-500 flex items-center gap-1">
-                Code non reconnu. S'il s'agit d'un code Stripe, veuillez l'entrer à la page suivante.
-              </p>
-            )}
-          </div>
+          )}
 
           <ul className="space-y-4 mb-8">
             <li className="flex items-center gap-3 text-sm text-zinc-600">
@@ -258,17 +285,47 @@ export default function Payment() {
             </li>
           </ul>
 
-          <button
-            onClick={handlePayment}
-            disabled={loading}
-            className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-2 disabled:opacity-50"
-          >
-            {loading ? t('payment.btn.loading') : (
-              <>
-                <CreditCard className="w-5 h-5" /> {t('payment.btn.pay')}
-              </>
-            )}
-          </button>
+          {siteStatus.closedRegistrations ? (
+            <div className="space-y-4">
+              <div className="p-4 bg-red-50 border border-red-200 rounded-2xl text-red-800 text-sm">
+                <div className="font-bold flex items-center gap-2 mb-1.5 text-red-900">
+                  <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                  Inscriptions & Paiements fermés
+                </div>
+                <p className="text-xs text-red-700 leading-relaxed">
+                  Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
+                  <a 
+                    href={siteStatus.redirectUrl || '/login'}
+                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="underline font-bold text-red-900 hover:text-red-950"
+                  >
+                    {siteStatus.redirectUrl || 'la page de connexion'}
+                  </a>.
+                </p>
+              </div>
+              <a
+                href={siteStatus.redirectUrl || '/login'}
+                target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
+                rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="w-full py-4 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 text-sm text-center inline-block"
+              >
+                Se connecter à mon compte
+              </a>
+            </div>
+          ) : (
+            <button
+              onClick={handlePayment}
+              disabled={loading}
+              className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {loading ? t('payment.btn.loading') : (
+                <>
+                  <CreditCard className="w-5 h-5" /> {t('payment.btn.pay')}
+                </>
+              )}
+            </button>
+          )}
           
           <p className="text-center text-[10px] text-zinc-400 mt-4">
             {t('payment.terms')}
