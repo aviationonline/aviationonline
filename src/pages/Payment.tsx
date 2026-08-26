@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../LanguageContext';
 import { db } from '../firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
+import { formatRedirectUrl, isExternalUrl } from '../services/urlUtils';
 
 interface Promotion {
   isActive: boolean;
@@ -295,20 +296,20 @@ export default function Payment() {
                 <p className="text-xs text-red-700 leading-relaxed">
                   Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
                   <a 
-                    href={siteStatus.redirectUrl || '/login'}
-                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    href={formatRedirectUrl(siteStatus.redirectUrl)}
+                    target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                    rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
                     className="underline font-bold text-red-900 hover:text-red-950"
                   >
-                    {siteStatus.redirectUrl || 'la page de connexion'}
+                    {formatRedirectUrl(siteStatus.redirectUrl)}
                   </a>.
                 </p>
               </div>
               <a
-                href={siteStatus.redirectUrl || '/login'}
-                target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="w-full py-4 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 text-sm text-center inline-block"
+                href={formatRedirectUrl(siteStatus.redirectUrl)}
+                target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                className="w-full py-4 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 text-sm text-center inline-block cursor-pointer"
               >
                 Se connecter à mon compte
               </a>

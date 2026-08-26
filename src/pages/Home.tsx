@@ -5,6 +5,7 @@ import { Plane, Shield, BookOpen, Users, ChevronRight, CheckCircle2, Radio, File
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { collection, query, orderBy, onSnapshot, doc } from 'firebase/firestore';
 import { useLanguage } from '../LanguageContext';
+import { formatRedirectUrl, isExternalUrl } from '../services/urlUtils';
 
 interface Module {
   id: string;
@@ -154,20 +155,20 @@ export default function Home() {
               <span>
                 Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
                 <a 
-                  href={siteStatus.redirectUrl || '/login'} 
-                  target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                  rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  href={formatRedirectUrl(siteStatus.redirectUrl)} 
+                  target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                  rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
                   className="underline font-black text-white hover:text-red-100 transition-colors ml-1 inline-flex items-center gap-1 cursor-pointer"
                 >
-                  {siteStatus.redirectUrl || 'la page de connexion'}
+                  {formatRedirectUrl(siteStatus.redirectUrl)}
                 </a>
               </span>
             </div>
             <a
-              href={siteStatus.redirectUrl || '/login'}
-              target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-              rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="px-6 py-2 bg-white text-red-700 hover:bg-red-50 text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md whitespace-nowrap active:scale-95 shrink-0"
+              href={formatRedirectUrl(siteStatus.redirectUrl)}
+              target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+              rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+              className="px-6 py-2 bg-white text-red-700 hover:bg-red-50 text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md whitespace-nowrap active:scale-95 shrink-0 cursor-pointer"
             >
               Se connecter
             </a>
@@ -212,10 +213,10 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               {siteStatus.closedRegistrations ? (
                 <a 
-                  href={siteStatus.redirectUrl || '/login'} 
-                  target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                  rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transform hover:-translate-y-1 flex items-center justify-center gap-3"
+                  href={formatRedirectUrl(siteStatus.redirectUrl)} 
+                  target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                  rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                  className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 transform hover:-translate-y-1 flex items-center justify-center gap-3 cursor-pointer"
                 >
                   Espace Membres (Connexion) <ChevronRight className="w-5 h-5" />
                 </a>
@@ -377,10 +378,10 @@ export default function Home() {
                     Accès réservé aux membres
                   </div>
                   <a 
-                    href={siteStatus.redirectUrl || '/login'}
-                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-2xl shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap"
+                    href={formatRedirectUrl(siteStatus.redirectUrl)}
+                    target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                    rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                    className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-2xl shadow-lg transition-all transform hover:scale-105 text-center whitespace-nowrap cursor-pointer"
                   >
                     Se connecter à mon compte
                   </a>
@@ -750,10 +751,10 @@ export default function Home() {
               {siteStatus.closedRegistrations ? (
                 <div className="flex flex-col items-center gap-3 w-full md:w-auto">
                   <a 
-                    href={siteStatus.redirectUrl || '/login'}
-                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="w-full md:w-auto px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors text-center inline-block shadow-lg"
+                    href={formatRedirectUrl(siteStatus.redirectUrl)}
+                    target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                    rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                    className="w-full md:w-auto px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-zinc-100 transition-colors text-center inline-block shadow-lg cursor-pointer"
                   >
                     Se connecter à mon espace
                   </a>

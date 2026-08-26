@@ -10,6 +10,7 @@ import Papa from 'papaparse';
 import firebaseConfig from '../../firebase-applet-config.json';
 import { GoogleGenAI } from "@google/genai";
 import ReactMarkdown from 'react-markdown';
+import { formatRedirectUrl, isExternalUrl } from '../services/urlUtils';
 
 interface Module {
   id: string;
@@ -1886,20 +1887,23 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
 
   const handleSaveSiteStatus = async (overrideStatus?: { closedRegistrations: boolean; redirectUrl: string }) => {
     setSavingSiteStatus(true);
-    const toSave = overrideStatus || siteStatus;
+    const rawToSave = overrideStatus || siteStatus;
+    const formattedUrl = formatRedirectUrl(rawToSave.redirectUrl);
+    const toSave = {
+      closedRegistrations: !!rawToSave.closedRegistrations,
+      redirectUrl: formattedUrl
+    };
     try {
       await setDoc(doc(db, 'settings', 'siteStatus'), {
-        closedRegistrations: !!toSave.closedRegistrations,
-        redirectUrl: toSave.redirectUrl.trim() || 'https://aviationonline.fr/login',
+        closedRegistrations: toSave.closedRegistrations,
+        redirectUrl: toSave.redirectUrl,
         updatedAt: Timestamp.now()
       });
-      if (overrideStatus) {
-        setSiteStatus(toSave);
-      }
+      setSiteStatus(toSave);
       showStatus(
         'success',
         toSave.closedRegistrations 
-          ? 'Mode fermeture activé : Le bandeau rouge est visible sur l\'accueil et les inscriptions/paiements sont bloqués.' 
+          ? `Mode fermeture activé avec l'URL de redirection : ${toSave.redirectUrl}` 
           : 'Version normale rétablie : Les inscriptions et les paiements sont de nouveau ouverts.'
       );
     } catch (error: any) {
@@ -3243,12 +3247,12 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
 
             <div>
               <label className="block text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">
-                URL de destination (ex: https://aviationonline.fr/login ou lien de votre choix)
+                URL de destination (ex: https://home.aviationonline.net ou https://aviationonline.fr/login)
               </label>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
-                  type="url"
-                  placeholder="https://aviationonline.fr/login"
+                  type="text"
+                  placeholder="https://home.aviationonline.net"
                   value={siteStatus.redirectUrl}
                   onChange={(e) => setSiteStatus({ ...siteStatus, redirectUrl: e.target.value })}
                   className="flex-1 px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-sm font-medium"
@@ -3261,6 +3265,18 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                   <CheckCircle2 size={16} />
                   {savingSiteStatus ? 'Enregistrement...' : 'Enregistrer l\'URL'}
                 </button>
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+                <span>URL active :</span>
+                <a
+                  href={formatRedirectUrl(siteStatus.redirectUrl)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 font-bold hover:underline inline-flex items-center gap-1"
+                >
+                  {formatRedirectUrl(siteStatus.redirectUrl)} <ExternalLink size={12} />
+                </a>
+                <span className="text-zinc-400">| Le préfixe https:// est ajouté automatiquement si vous l'omettez.</span>
               </div>
             </div>
           </div>
@@ -3287,14 +3303,24 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                     <AlertCircle className="w-5 h-5 shrink-0 text-white" />
                     <span>
                       Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
-                      <span className="underline font-bold text-white underline-offset-2">
-                        {siteStatus.redirectUrl || 'https://aviationonline.fr/login'}
-                      </span>
+                      <a 
+                        href={formatRedirectUrl(siteStatus.redirectUrl)}
+                        target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                        rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                        className="underline font-bold text-white underline-offset-2 hover:text-red-100"
+                      >
+                        {formatRedirectUrl(siteStatus.redirectUrl)}
+                      </a>
                     </span>
                   </div>
-                  <span className="px-4 py-2 bg-white text-red-700 text-xs font-bold rounded-lg whitespace-nowrap shadow-sm">
+                  <a
+                    href={formatRedirectUrl(siteStatus.redirectUrl)}
+                    target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                    rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                    className="px-4 py-2 bg-white text-red-700 text-xs font-bold rounded-lg whitespace-nowrap shadow-sm hover:bg-red-50 cursor-pointer"
+                  >
                     Se connecter
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>

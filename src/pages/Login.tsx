@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Plane, Mail, Lock, User, Phone, MapPin, Globe, ArrowRight, ChevronLeft, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { notificationService } from '../services/notificationService';
 import { useLanguage } from '../LanguageContext';
+import { formatRedirectUrl, isExternalUrl } from '../services/urlUtils';
 
 type AuthMode = 'login' | 'register' | 'forgot-password';
 
@@ -388,12 +389,12 @@ export default function Login() {
                 <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 font-medium">
                   Le site n'accepte plus de nouvelle inscription et reste accessible aux clients déjà inscrits. Si vous souhaitez vous inscrire connectez vous sur{' '}
                   <a 
-                    href={siteStatus.redirectUrl || '/login'}
-                    target={siteStatus.redirectUrl?.startsWith('http') ? '_blank' : undefined}
-                    rel={siteStatus.redirectUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="underline font-bold text-red-900"
+                    href={formatRedirectUrl(siteStatus.redirectUrl)}
+                    target={isExternalUrl(siteStatus.redirectUrl) ? '_blank' : undefined}
+                    rel={isExternalUrl(siteStatus.redirectUrl) ? 'noopener noreferrer' : undefined}
+                    className="underline font-bold text-red-900 hover:text-red-950"
                   >
-                    {siteStatus.redirectUrl || 'la page de connexion'}
+                    {formatRedirectUrl(siteStatus.redirectUrl)}
                   </a>.
                 </div>
               ) : (
