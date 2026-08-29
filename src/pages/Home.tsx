@@ -157,7 +157,15 @@ export default function Home() {
                 <span className="underline decoration-2 underline-offset-4 decoration-amber-200 font-extrabold text-amber-100">
                   before this date
                 </span>{' '}
-                will be able to continue accessing the course.
+                will be able to continue accessing the course. For registrations after September 5, 2026, you will need to log in at{' '}
+                <a
+                  href="https://home.aviationonline.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-black text-amber-200 hover:text-white transition-colors"
+                >
+                  https://home.aviationonline.net
+                </a>
               </>
             ) : (
               <>
@@ -165,7 +173,15 @@ export default function Home() {
                 <span className="underline decoration-2 underline-offset-4 decoration-amber-200 font-extrabold text-amber-100">
                   avant cette date
                 </span>{' '}
-                pourront continuer à accéder à la formation.
+                pourront continuer à accéder à la formation. Pour les inscriptions après le 5 septembre 2026, vous devrez vous connecter sur{' '}
+                <a
+                  href="https://home.aviationonline.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-black text-amber-200 hover:text-white transition-colors"
+                >
+                  https://home.aviationonline.net
+                </a>
               </>
             )}
           </p>
