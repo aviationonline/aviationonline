@@ -102,6 +102,8 @@ interface FirestoreErrorInfo {
   }
 }
 
+import { safeJsonStringify } from './utils/safeJson';
+
 export function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
   // Ensure we only stringify safe primitives
   const safeError = error instanceof Error ? error.message : String(error);
@@ -115,25 +117,9 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
     operationType,
     path
   };
-  
-  const getCircularReplacer = () => {
-    const seen = new WeakSet();
-    return (_key: string, value: any) => {
-      if (typeof value === "object" && value !== null) {
-        if (seen.has(value)) {
-          return "[Circular]";
-        }
-        seen.add(value);
-        // Special handling for common browser/complex objects that might cause issues
-        if (value instanceof HTMLElement) return `[HTMLElement: ${value.tagName}]`;
-        if (value instanceof Event) return `[Event: ${value.type}]`;
-      }
-      return value;
-    };
-  };
 
   try {
-    const safeErrInfo = JSON.stringify(errInfo, getCircularReplacer());
+    const safeErrInfo = safeJsonStringify(errInfo);
     console.error('Firestore Error: ', safeErrInfo);
   } catch (stringifyErr) {
     console.error('Firestore Error (serialization failed): ', safeError);

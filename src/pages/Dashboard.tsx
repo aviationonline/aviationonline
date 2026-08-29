@@ -7,6 +7,7 @@ import { BookOpen, ChevronRight, Lock, CheckCircle2, Clock, ChevronDown, Chevron
 import { motion, AnimatePresence } from 'motion/react';
 import firebaseConfig from '../../firebase-applet-config.json';
 import { useLanguage } from '../LanguageContext';
+import { safeJsonStringify } from '../utils/safeJson';
 
 interface Module {
   id: string;
@@ -285,21 +286,7 @@ export default function Dashboard() {
                   <p className="font-bold">DEBUG INFO (Admin Only)</p>
                   <button 
                     onClick={() => {
-                      const getCircularReplacer = () => {
-                        const seen = new WeakSet();
-                        return (key: string, value: any) => {
-                          if (typeof value === "object" && value !== null) {
-                            if (seen.has(value)) {
-                              return "[Circular]";
-                            }
-                            seen.add(value);
-                            if (value instanceof HTMLElement) return `[HTMLElement: ${value.tagName}]`;
-                            if (value instanceof Event) return `[Event: ${value.type}]`;
-                          }
-                          return value;
-                        };
-                      };
-                      navigator.clipboard.writeText(JSON.stringify(notification.debug, getCircularReplacer(), 2));
+                      navigator.clipboard.writeText(safeJsonStringify(notification.debug, 2));
                       alert(t('dashboard.alert.debugCopied'));
                     }}
                     className="px-2 py-0.5 bg-white/10 rounded hover:bg-white/20 transition-colors"

@@ -11,6 +11,7 @@ import firebaseConfig from '../../firebase-applet-config.json';
 import { GoogleGenAI } from "@google/genai";
 import ReactMarkdown from 'react-markdown';
 import { formatRedirectUrl, isExternalUrl } from '../services/urlUtils';
+import { safeJsonStringify } from '../utils/safeJson';
 
 interface Module {
   id: string;
@@ -2105,27 +2106,7 @@ Ne renvoie QUE le JSON, sans markdown, sans \`\`\`json, juste l'objet JSON.`
                   <button onClick={() => setServerDebugResult(null)} className="text-[10px] hover:text-white opacity-50">Fermer</button>
                 </div>
                 <pre className="text-[10px] font-mono whitespace-pre-wrap">
-                  {(() => {
-                    try {
-                      const getCircularReplacer = () => {
-                        const seen = new WeakSet();
-                        return (_key: string, value: any) => {
-                          if (typeof value === "object" && value !== null) {
-                            if (seen.has(value)) {
-                              return "[Circular]";
-                            }
-                            seen.add(value);
-                            if (value instanceof HTMLElement) return `[HTMLElement: ${value.tagName}]`;
-                            if (value instanceof Event) return `[Event: ${value.type}]`;
-                          }
-                          return value;
-                        };
-                      };
-                      return JSON.stringify(serverDebugResult, getCircularReplacer(), 2);
-                    } catch (e) {
-                      return "Error serializing debug result: " + (e instanceof Error ? e.message : String(e));
-                    }
-                  })()}
+                  {safeJsonStringify(serverDebugResult, 2)}
                 </pre>
               </div>
             )}

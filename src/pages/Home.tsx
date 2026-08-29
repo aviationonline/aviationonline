@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Plane, Shield, BookOpen, Users, ChevronRight, CheckCircle2, Radio, FileText, Map, Award, Quote, GraduationCap, Star, AlertCircle } from 'lucide-react';
+import { Plane, Shield, BookOpen, Users, ChevronRight, CheckCircle2, Radio, FileText, Map, Award, Quote, GraduationCap, Star, AlertCircle, AlertTriangle } from 'lucide-react';
 import { db, handleFirestoreError, OperationType } from '../firebase';
 import { collection, query, orderBy, onSnapshot, doc } from 'firebase/firestore';
 import { useLanguage } from '../LanguageContext';
@@ -146,6 +146,32 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
+      {/* BANDEAU ROUGE TRÈS VISIBLE : ATTENTION FIN DES INSCRIPTIONS AU TARIF ACTUEL */}
+      <div className="bg-red-600 border-b-2 border-red-700 text-white px-4 py-3.5 shadow-xl relative z-30">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-center">
+          <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 text-amber-200 animate-pulse" />
+          <p className="text-sm sm:text-base md:text-lg font-bold tracking-wide leading-snug">
+            {language === 'en' ? (
+              <>
+                Warning: Registration at current rate ends on September 5, 2026. Only those enrolled{' '}
+                <span className="underline decoration-2 underline-offset-4 decoration-amber-200 font-extrabold text-amber-100">
+                  before this date
+                </span>{' '}
+                will be able to continue accessing the course.
+              </>
+            ) : (
+              <>
+                Attention, fin des inscriptions au tarif actuel le 5 septembre 2026. Seuls les inscrits{' '}
+                <span className="underline decoration-2 underline-offset-4 decoration-amber-200 font-extrabold text-amber-100">
+                  avant cette date
+                </span>{' '}
+                pourront continuer à accéder à la formation.
+              </>
+            )}
+          </p>
+        </div>
+      </div>
+
       {/* BANDEAU ROUGE MODE FERMETURE / RESTRICTION INSCRIPTIONS */}
       {siteStatus.closedRegistrations && (
         <div className="bg-red-600 text-white px-4 py-3.5 shadow-xl border-b border-red-700 relative z-30">
